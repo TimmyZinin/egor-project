@@ -400,6 +400,128 @@
   .fb-purple { background: rgba(168,85,247,0.2); border: 1px solid var(--purple); color: var(--purple); }
   .fb-gold { background: rgba(255,215,0,0.2); border: 1px solid var(--accent-2); color: var(--accent-2); }
 
+  /* Tab navigation */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    padding: 0 40px;
+    background: var(--surface);
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .tab-btn {
+    padding: 16px 32px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dim);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .tab-btn:hover { color: var(--text); background: var(--surface-2); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-btn.panel-tab { color: var(--accent-2); }
+  .tab-btn.panel-tab.active { border-bottom-color: var(--accent-2); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Panel specific styles */
+  .expert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+  }
+
+  .expert-card.growth::before { background: var(--green); }
+  .expert-card.seo::before { background: var(--blue); }
+  .expert-card.recruiter::before { background: var(--accent); }
+  .expert-card.data::before { background: var(--purple); }
+  .expert-card.legal::before { background: var(--red); }
+  .expert-card.qa::before { background: var(--accent-2); }
+
+  .expert-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .expert-role {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .expert-card.growth .expert-name { color: var(--green); }
+  .expert-card.growth .expert-role { color: var(--green); }
+  .expert-card.seo .expert-name { color: var(--blue); }
+  .expert-card.seo .expert-role { color: var(--blue); }
+  .expert-card.recruiter .expert-name { color: var(--accent); }
+  .expert-card.recruiter .expert-role { color: var(--accent); }
+  .expert-card.data .expert-name { color: var(--purple); }
+  .expert-card.data .expert-role { color: var(--purple); }
+  .expert-card.legal .expert-name { color: var(--red); }
+  .expert-card.legal .expert-role { color: var(--red); }
+  .expert-card.qa .expert-name { color: var(--accent-2); }
+  .expert-card.qa .expert-role { color: var(--accent-2); }
+
+  .expert-section { margin-bottom: 12px; }
+  .expert-section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 4px; }
+
+  .conflict-row { background: rgba(255,107,53,0.05); }
+  .winner { font-weight: 700; color: var(--green); }
+
+  .decision-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+
+  .decision-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--accent);
+    min-width: 40px;
+  }
+
+  .question-card {
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(255,215,0,0.05) 100%);
+    border: 1px solid var(--accent-2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .question-card strong { color: var(--accent-2); }
+
   footer {
     text-align: center;
     padding: 40px;
@@ -421,6 +543,12 @@
   </div>
 </div>
 
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('research')">Исследование</button>
+  <button class="tab-btn panel-tab" onclick="switchTab('panel')">Экспертная панель</button>
+</div>
+
+<div id="tab-research" class="tab-content active">
 <div class="container">
 
 <!-- TOC -->
@@ -1687,6 +1815,296 @@ Would you be open to a 15-minute call this week?</pre>
 </section>
 
 </div>
+
+</div><!-- /container -->
+</div><!-- /tab-research -->
+
+<div id="tab-panel" class="tab-content">
+<div class="container">
+
+<section>
+  <h2 class="section-title" style="border-color: var(--accent-2);">Экспертная панель: оценка стратегии <span class="badge" style="background: var(--accent-2); color: #000;">6 экспертов</span></h2>
+
+  <p style="font-size: 16px; margin-bottom: 32px;">Виртуальная панель из 6 senior-экспертов провела stress-test спецификации скилла <code>/expert-hunter</code> и стратегии проекта в целом. Ниже — их оценки, конфликты и согласованные рекомендации.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value">6</div>
+      <div class="label">Экспертов в панели</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">5</div>
+      <div class="label">Конфликтов разрешено</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">5</div>
+      <div class="label">Ключевых решений</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">4</div>
+      <div class="label">Открытых вопроса</div>
+    </div>
+  </div>
+</section>
+
+<!-- Expert Assessments -->
+<section>
+  <h2 class="section-title">Оценки экспертов <span class="badge">Individual</span></h2>
+
+  <div class="expert-card growth">
+    <div class="expert-name">Growth Strategist</div>
+    <div class="expert-role">ROI, unit economics, масштабирование</div>
+    <div class="expert-section">
+      <div class="expert-section-title">Оценка</div>
+      <p>Модель "10 экспертов x 10K статей" = ~1,000 статей на эксперта. При $500-2K/статью за review бюджет $5-20M — нереалистично. Значит, AI-генерация + формальный approve. Это рабочая экономика: <strong>$0.50-50 per article</strong>. Скилл окупается за 1-2 недели vs ручной LinkedIn-поиск.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Главный риск</div>
+      <p>Bottleneck не поиск, а <strong>conversion</strong>. 5% response rate x 200 outreach = 10 ответов, 50% positive = 5 committed. Для 10 экспертов нужно <strong>400 outreach</strong>. При 30/день = 13 дней only outreach.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Рекомендация</div>
+      <p>Реалистичный timeline: 2 нед sourcing + 2 нед outreach + 2 нед conversion + 2 нед onboarding = <strong>8 недель идеальных, 12 реальных</strong>. Вести 2-3 ниши параллельно.</p>
+    </div>
+  </div>
+
+  <div class="expert-card seo">
+    <div class="expert-name">SEO Architect</div>
+    <div class="expert-role">E-E-A-T, Schema.org, Google signals</div>
+    <div class="expert-section">
+      <div class="expert-section-title">Оценка</div>
+      <p>Спецификация правильно идентифицирует E-E-A-T сигналы (sameAs, hasCredential, ProfilePage). Но не описывает <strong>digital footprint</strong>. CFA charterholder без публикаций бесполезен для Google — Knowledge Graph строится по цифровому следу, не по offline credentials.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Главный риск</div>
+      <p>Scoring даёт <strong>25% сертификациям и всего 10% LinkedIn activity</strong>. Для E-E-A-T это перевёрнуто. Эксперт с 50 Forbes-публикациями без CFA будет для Google авторитетнее чем CFA без публикаций.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Рекомендация</div>
+      <p>Ввести критерий <strong>"Google Entity Strength"</strong>: Knowledge Panel, Google Scholar, AI Overview цитаты. Перебалансировать: Citability 25%, Certifications 20%, Google Entity 15%.</p>
+    </div>
+  </div>
+
+  <div class="expert-card recruiter">
+    <div class="expert-name">Finance Recruiter</div>
+    <div class="expert-role">Рекрутинг экспертов, мотивация, рынок</div>
+    <div class="expert-section">
+      <div class="expert-section-title">Оценка</div>
+      <p>Boolean-запросы с "writer OR contributor" отсекут <strong>95% CFA/CFP holders</strong> — они финансисты, не писатели. Большинство лучших кандидатов НИКОГДА не писали для медиа. Они практикующие advisors, portfolio managers.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Главный риск</div>
+      <p>Самая ценная категория (практикующие advisors) пропадает. А те, кто уже "writer/contributor" — часто перегружены запросами и <strong>менее responsивны</strong>.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Рекомендация</div>
+      <p>Добавить поток <strong>"Silent experts"</strong>: CFA/CFP без медийного опыта, 10+ лет практики. Value prop: "grow your advisory practice's online presence". Conference speakers = лучший канал.</p>
+    </div>
+  </div>
+
+  <div class="expert-card data">
+    <div class="expert-name">Data Engineer</div>
+    <div class="expert-role">Pipeline, scraping, data quality</div>
+    <div class="expert-section">
+      <div class="expert-section-title">Оценка</div>
+      <p>Jina Reader для LinkedIn — нестабильный канал. Тестировал: ~40% данных для публичных профилей, ~5% для приватных. <strong>FINRA BrokerCheck — отличный источник</strong>: structured data, стабильный, легальный, содержит employment history.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Главный риск</div>
+      <p><code>max_candidates_per_scan: 50</code> через Google site:linkedin.com — реальный yield: <strong>5-10 quality candidates per query</strong>. Для 200+ нужно 20-40 запросов = 1-2 часа только на SCAN.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Рекомендация</div>
+      <p><strong>Перевернуть pipeline: VERIFY-first.</strong> FINRA BrokerCheck + CFA Directory как primary scan. LinkedIn — только для enrichment (activity, posts). Рассмотреть Proxycurl People Search API ($5/search = 100 profiles).</p>
+    </div>
+  </div>
+
+  <div class="expert-card legal">
+    <div class="expert-name">Legal / Compliance</div>
+    <div class="expert-role">LinkedIn ToS, GDPR, CAN-SPAM, SEC</div>
+    <div class="expert-section">
+      <div class="expert-section-title">Оценка</div>
+      <p>Три серьёзных blind spot: <strong>1)</strong> LinkedIn ToS 8.2 запрещает scraping даже через прокси. <strong>2)</strong> Cold email к scraped addresses — нарушение CAN-SPAM. <strong>3)</strong> SEC Rule 206(4)-1 может применяться если эксперт = registered adviser.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Главный риск</div>
+      <p>Если эксперт публикует AI-контент от своего имени без disclosure — это <strong>misleading для readers и regulators</strong>. Compliance departments некоторых фирм блокируют внешние публикации.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Рекомендация</div>
+      <p>Обязательный disclosure: <strong>"Reviewed and approved by [Name], CFA"</strong> (не "Written by"). Только LinkedIn InMail для outreach. Contributor agreement с пунктом о firm compliance.</p>
+    </div>
+  </div>
+
+  <div class="expert-card qa">
+    <div class="expert-name">QA Engineer</div>
+    <div class="expert-role">Edge cases, failure modes, data quality</div>
+    <div class="expert-section">
+      <div class="expert-section-title">Оценка</div>
+      <p>Error handling не покрывает главный failure mode: <strong>data quality degradation at scale</strong>. Auth-wall + шумный WebSearch + name mismatch в VERIFY = кандидат с 30% data coverage попадает в SCORE с нулями по 3 из 8 критериев.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Главный риск</div>
+      <p>Levenshtein distance < 3 для dedup: "John Smith" at Goldman и "John Smith" at JP Morgan будут <strong>ошибочно merged</strong>. Outreach state machine не имеет механизма трекинга ответов.</p>
+    </div>
+    <div class="expert-section">
+      <div class="expert-section-title">Рекомендация</div>
+      <p>Добавить <strong>data_completeness_score</strong> (0-1). Не скорить при completeness < 0.5. Dedup: exact linkedin_url OR (fuzzy name + same company). Manual status update через <code>/expert-hunter status</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Conflicts -->
+<section>
+  <h2 class="section-title" style="border-color: var(--red);">Конфликты и разрешения <span class="badge" style="background: var(--red);">Debate</span></h2>
+
+  <table>
+    <thead>
+      <tr><th>Тема</th><th>Позиция A</th><th>Позиция B</th><th>Решение</th></tr>
+    </thead>
+    <tbody>
+      <tr class="conflict-row">
+        <td><strong>Веса скоринга</strong></td>
+        <td>SEO Architect: Citability 25% > Certifications</td>
+        <td>Recruiter: Certifications важны для trust badge</td>
+        <td><span class="winner">SEO wins.</span> Google строит entity по digital footprint. Но +5 bonus за verified credentials</td>
+      </tr>
+      <tr>
+        <td><strong>Primary source</strong></td>
+        <td>Data Engineer: FINRA BrokerCheck primary</td>
+        <td>Spec: LinkedIn primary</td>
+        <td><span class="winner">Data Engineer wins.</span> BrokerCheck = structured, reliable, legal</td>
+      </tr>
+      <tr class="conflict-row">
+        <td><strong>Authorship disclosure</strong></td>
+        <td>Legal: "Reviewed by" not "Written by"</td>
+        <td>Growth: "Written by" = stronger signal</td>
+        <td><span class="winner">Legal wins.</span> Safety > elegance. SEC compliance</td>
+      </tr>
+      <tr>
+        <td><strong>Outreach channel</strong></td>
+        <td>Legal: Only LinkedIn InMail</td>
+        <td>Growth: Email = higher response</td>
+        <td><span class="winner">Compromise.</span> LinkedIn first. Email only from personal websites</td>
+      </tr>
+      <tr class="conflict-row">
+        <td><strong>Pipeline direction</strong></td>
+        <td>Data Engineer: VERIFY-first</td>
+        <td>Spec: SCAN -> ENRICH -> VERIFY</td>
+        <td><span class="winner">Data Engineer wins.</span> Start from registries, enrich with LinkedIn</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Key Decisions -->
+<section>
+  <h2 class="section-title" style="border-color: var(--green);">Согласованные решения <span class="badge" style="background: var(--green); color: #000;">Consensus</span></h2>
+
+  <div class="decision-card">
+    <div class="decision-num">01</div>
+    <div>
+      <h4 style="margin-top: 0; color: var(--green);">VERIFY-first pipeline</h4>
+      <p>FINRA BrokerCheck + CFA Directory как primary scan sources. LinkedIn только для enrichment. Structured data вместо noisy scraping.</p>
+      <p style="color: var(--text-dim); font-size: 13px;">Драйверы: Data Engineer + Legal</p>
+    </div>
+  </div>
+
+  <div class="decision-card">
+    <div class="decision-num">02</div>
+    <div>
+      <h4 style="margin-top: 0; color: var(--blue);">Перебалансированный scoring</h4>
+      <p>Citability 25% (было 20%), Certifications 20% (было 25%), + новый критерий Google Entity Strength 15%. Digital footprint важнее offline credentials.</p>
+      <p style="color: var(--text-dim); font-size: 13px;">Драйвер: SEO Architect</p>
+    </div>
+  </div>
+
+  <div class="decision-card">
+    <div class="decision-num">03</div>
+    <div>
+      <h4 style="margin-top: 0; color: var(--accent);">Два потока экспертов</h4>
+      <p><strong>Media experts</strong> (уже публикуются, responsive) + <strong>Silent experts</strong> (практикующие advisors, лучшие credentials, другой value prop: "grow your advisory practice"). Conference speakers = лучший канал.</p>
+      <p style="color: var(--text-dim); font-size: 13px;">Драйвер: Finance Recruiter</p>
+    </div>
+  </div>
+
+  <div class="decision-card">
+    <div class="decision-num">04</div>
+    <div>
+      <h4 style="margin-top: 0; color: var(--red);">Disclosure "Reviewed and approved by"</h4>
+      <p>Не "Written by" — защита от SEC Rule 206(4)-1 и FTC. Честно И даёт E-E-A-T credit. Contributor agreement с firm-compliance clause.</p>
+      <p style="color: var(--text-dim); font-size: 13px;">Драйвер: Legal / Compliance</p>
+    </div>
+  </div>
+
+  <div class="decision-card">
+    <div class="decision-num">05</div>
+    <div>
+      <h4 style="margin-top: 0; color: var(--accent-2);">Data completeness gate</h4>
+      <p>Добавить <code>data_completeness_score</code> (0.0-1.0). Не скорить кандидатов с completeness < 0.5. Dedup: exact URL OR (fuzzy name + same company).</p>
+      <p style="color: var(--text-dim); font-size: 13px;">Драйвер: QA Engineer</p>
+    </div>
+  </div>
+</section>
+
+<!-- Open Questions -->
+<section>
+  <h2 class="section-title" style="border-color: var(--accent-2);">Открытые вопросы <span class="badge" style="background: var(--accent-2); color: #000;">Action Required</span></h2>
+
+  <div class="question-card">
+    <strong>1. Бюджет на компенсацию экспертов?</strong><br>
+    $0 (exposure-only) vs $100-300/review vs $500+/article. Это меняет conversion rate в 3-5x. При exposure-only ~20% согласятся, при оплате — до 50%.
+  </div>
+
+  <div class="question-card">
+    <strong>2. Disclosure формат?</strong><br>
+    "Reviewed and approved by" (Legal рекомендует) vs "Written by" (сильнее для E-E-A-T) vs "Expert contributor". Юридический и маркетинговый trade-off.
+  </div>
+
+  <div class="question-card">
+    <strong>3. Proxycurl бюджет?</strong><br>
+    People Search API: $5/search = 100 профилей. 20 searches = $100 = 2,000 profiles с полными данными. Радикально упрощает SCAN.
+  </div>
+
+  <div class="question-card">
+    <strong>4. Plan B если < 10 экспертов за 8 недель?</strong><br>
+    Снижать Tier threshold? Расширять географию (Singapore, Ireland)? Пересматривать масштаб проекта? Увеличивать компенсацию?
+  </div>
+</section>
+
+<!-- Next Steps -->
+<section>
+  <h2 class="section-title">Рекомендуемые следующие шаги <span class="badge">Next</span></h2>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Действие</th><th>Приоритет</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1</strong></td><td>Обновить спецификацию: перевернуть pipeline на VERIFY-first</td><td><span class="tag tag-red">Critical</span></td></tr>
+      <tr><td><strong>2</strong></td><td>Добавить Google Entity Strength в scoring model</td><td><span class="tag tag-orange">High</span></td></tr>
+      <tr><td><strong>3</strong></td><td>Создать два outreach track-а (media + silent experts)</td><td><span class="tag tag-orange">High</span></td></tr>
+      <tr><td><strong>4</strong></td><td>Определить бюджет и disclosure формат (решение Егора)</td><td><span class="tag tag-red">Critical</span></td></tr>
+      <tr><td><strong>5</strong></td><td>MVP-тест: <code>/expert-hunter verify</code> на 5 известных finance experts для калибровки scoring</td><td><span class="tag tag-blue">Medium</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div><!-- /container -->
+</div><!-- /tab-panel -->
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.querySelector('[onclick="switchTab(\'' + tab + '\')"]').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// Handle hash navigation
+if (window.location.hash === '#panel') switchTab('panel');
+</script>
 
 <footer>
   Проект Егора | Исследование 30 марта 2026 | 150+ источников | 15 секций | GitHub: TimmyZinin/egor-project
