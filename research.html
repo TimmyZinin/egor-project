@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Проект Егора — Исследование: Google + LinkedIn + Finance SEO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface-2: #1a1a26;
+    --border: #2a2a3a;
+    --text: #e8e8f0;
+    --text-dim: #8888a0;
+    --accent: #ff6b35;
+    --accent-2: #ffd700;
+    --green: #00d68f;
+    --red: #ff4757;
+    --blue: #4ecdc4;
+    --purple: #a855f7;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  .hero {
+    padding: 80px 40px 60px;
+    background: linear-gradient(135deg, #12121a 0%, #1a0a2e 50%, #0a1628 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    max-width: 800px;
+    background: linear-gradient(135deg, #fff 0%, #ff6b35 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero .subtitle {
+    font-size: 18px;
+    color: var(--text-dim);
+    margin-top: 16px;
+    max-width: 700px;
+  }
+
+  .hero .meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .hero .meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero .meta .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+
+  .toc h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
+
+  .toc a:hover {
+    background: var(--surface-2);
+    color: var(--accent);
+  }
+
+  .toc .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    min-width: 28px;
+  }
+
+  section {
+    margin-bottom: 64px;
+    scroll-margin-top: 40px;
+  }
+
+  h2.section-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  h2.section-title .badge {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--accent);
+    color: #000;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 32px 0 16px;
+    color: var(--accent-2);
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 24px 0 12px;
+    color: var(--blue);
+  }
+
+  p { margin-bottom: 16px; color: var(--text); }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .card.highlight {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(255,107,53,0.05) 100%);
+  }
+
+  .card.green { border-color: var(--green); }
+  .card.purple { border-color: var(--purple); }
+
+  .card h4 {
+    margin-top: 0;
+    font-size: 17px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+
+  thead th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  tbody tr:hover { background: rgba(255,107,53,0.03); }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .tag-green { background: rgba(0,214,143,0.15); color: var(--green); }
+  .tag-red { background: rgba(255,71,87,0.15); color: var(--red); }
+  .tag-blue { background: rgba(78,205,196,0.15); color: var(--blue); }
+  .tag-purple { background: rgba(168,85,247,0.15); color: var(--purple); }
+  .tag-orange { background: rgba(255,107,53,0.15); color: var(--accent); }
+
+  .verdict-box {
+    background: linear-gradient(135deg, rgba(255,107,53,0.1) 0%, rgba(255,215,0,0.05) 100%);
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 32px 0;
+  }
+
+  .verdict-box h3 {
+    color: var(--accent);
+    margin-top: 0;
+    font-size: 22px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .stat-card .value {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stat-card .label {
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+
+  .timeline-item .date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .schema-block {
+    background: #0d0d18;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    color: #c8c8d8;
+  }
+
+  .schema-block .key { color: var(--blue); }
+  .schema-block .str { color: var(--green); }
+  .schema-block .type { color: var(--purple); }
+
+  ul, ol {
+    margin: 12px 0 20px 24px;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
+
+  strong { color: #fff; }
+
+  .forexbrokers-section {
+    background: linear-gradient(135deg, var(--surface) 0%, rgba(168,85,247,0.05) 100%);
+    border: 2px solid var(--purple);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 48px 0;
+  }
+
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 24px 0;
+    padding: 24px;
+    background: var(--surface-2);
+    border-radius: 12px;
+  }
+
+  .flow-box {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .flow-arrow {
+    font-size: 20px;
+    color: var(--accent);
+  }
+
+  .fb-orange { background: rgba(255,107,53,0.2); border: 1px solid var(--accent); color: var(--accent); }
+  .fb-green { background: rgba(0,214,143,0.2); border: 1px solid var(--green); color: var(--green); }
+  .fb-blue { background: rgba(78,205,196,0.2); border: 1px solid var(--blue); color: var(--blue); }
+  .fb-purple { background: rgba(168,85,247,0.2); border: 1px solid var(--purple); color: var(--purple); }
+  .fb-gold { background: rgba(255,215,0,0.2); border: 1px solid var(--accent-2); color: var(--accent-2); }
+
+  footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-dim);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Google + LinkedIn + Expert Trust</h1>
+  <div class="subtitle">Глубокое исследование: как связка экспертов из LinkedIn с публикациями на сайте влияет на ранжирование Google. Финансовая вертикаль. Best practices.</div>
+  <div class="meta">
+    <span><span class="dot"></span> Проект Егора</span>
+    <span>30 марта 2026</span>
+    <span>4 исследования, 100+ источников</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- TOC -->
+<div class="toc">
+  <h2>Содержание</h2>
+  <div class="toc-grid">
+    <a href="#updates"><span class="num">01</span> Апдейты Google 2024-2026</a>
+    <a href="#eeat"><span class="num">02</span> E-E-A-T: как Google оценивает экспертов</a>
+    <a href="#linkedin"><span class="num">03</span> LinkedIn как trust-сигнал</a>
+    <a href="#schema"><span class="num">04</span> Schema.org + sameAs механика</a>
+    <a href="#hypothesis"><span class="num">05</span> Гипотеза: LinkedIn эксперт + сайт = trust</a>
+    <a href="#finance"><span class="num">06</span> Финансовая вертикаль: модели и деньги</a>
+    <a href="#platforms"><span class="num">07</span> Платформы подбора экспертов</a>
+    <a href="#forexbrokers"><span class="num">08</span> ForexBrokers.com - кейс-стади</a>
+    <a href="#parasite"><span class="num">09</span> Parasite SEO: что карает Google</a>
+    <a href="#playbook"><span class="num">10</span> Playbook: пошаговая стратегия</a>
+  </div>
+</div>
+
+<!-- SECTION 1: Google Updates -->
+<section id="updates">
+  <h2 class="section-title">Апдейты Google 2024-2026 <span class="badge">Timeline</span></h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="date">Март 2024</div>
+      <p><strong>Helpful Content System встроен в Core Ranking.</strong> Standalone HCU больше не существует. "Полезность контента" теперь часть каждого core update. Google заявил: на 45% меньше низкокачественного контента в результатах.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Май 2024</div>
+      <p><strong>Site Reputation Abuse Policy</strong> (Parasite SEO). Ручные пенальти для Forbes, CNN, WSJ, Time. Forbes Advisor потерял -43% видимости, Time -97%.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Март 2025</div>
+      <p><strong>Core Update.</strong> Усиление E-E-A-T. Программатический SEO под ударом. Форумы (Reddit, Quora) потеряли часть ранее полученного буста.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Сентябрь 2025</div>
+      <p><strong>Quality Rater Guidelines обновлены.</strong> 182 страницы. Добавлены примеры AI Overview. YMYL расширен на гражданскую информацию. Experience-сигнал усилен.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Декабрь 2025</div>
+      <p><strong>Крупнейший Core Update.</strong> 18-дневный rollout. Сайты в топ-3 по 4+ лет упали на 4 страницу. Affiliate сайты: 71% пострадали. Health/Finance: 67%. E-commerce: 52%. Recovery: 6-18 месяцев.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">Март 2026</div>
+      <p><strong>Core Update (rolling out сейчас).</strong> Усилен сигнал Experience (первая "E"). Author identity теперь напрямую влияет на page-level authority. Параллельно: spam update.</p>
+    </div>
+  </div>
+
+  <div class="card highlight">
+    <h4>Ключевой тренд</h4>
+    <p>Google систематически движется от оценки контента изолированно к оценке <strong>кто создал контент</strong>, <strong>какие у автора верифицируемые credentials</strong>, и <strong>насколько глубоко сайт покрывает тему</strong>. Март 2026 = author identity как прямой ranking signal.</p>
+  </div>
+</section>
+
+<!-- SECTION 2: E-E-A-T -->
+<section id="eeat">
+  <h2 class="section-title">E-E-A-T: как Google оценивает экспертов <span class="badge">Core</span></h2>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value">4</div>
+      <div class="label">Компонента E-E-A-T</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">30%</div>
+      <div class="label">Шанс попасть в top-3 с сильным E-E-A-T (SEMrush)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">15%</div>
+      <div class="label">Рост видимости от Person Schema (Ranking Generals)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">67%</div>
+      <div class="label">Finance-сайтов пострадали (Dec 2025)</div>
+    </div>
+  </div>
+
+  <h3>4 компоненты</h3>
+  <table>
+    <thead>
+      <tr><th>Компонента</th><th>Что оценивает</th><th>Для финансов</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Experience</strong></td>
+        <td>First-hand опыт автора. "Был там, делал это"</td>
+        <td>Личный опыт торговли, инвестирования, работы с продуктом</td>
+      </tr>
+      <tr>
+        <td><strong>Expertise</strong></td>
+        <td>Формальные credentials и квалификация</td>
+        <td>CFA, CFP, CPA, Series III, лицензии NFA/FINRA</td>
+      </tr>
+      <tr>
+        <td><strong>Authoritativeness</strong></td>
+        <td>Признание индустрией: цитирования, упоминания</td>
+        <td>Цитаты в Bloomberg, Forbes, WSJ. Спикер на конференциях</td>
+      </tr>
+      <tr>
+        <td><strong>Trustworthiness</strong></td>
+        <td>Самая важная (по Google). Точность, прозрачность, sourcing</td>
+        <td>Ссылки на регуляторные реестры, дата обновления, disclosure</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card green">
+    <h4>Что изменилось в 2025-2026</h4>
+    <ul>
+      <li>E-E-A-T теперь применяется ко <strong>ВСЕМ</strong> типам контента, не только YMYL</li>
+      <li>Author identity напрямую влияет на page-level authority (март 2026)</li>
+      <li>Google сопоставляет авторов через Knowledge Graph (патенты Agent Rank, Patent 62165966)</li>
+      <li>Structured author pages с credentials = измеримый рост ранжирования</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 3: LinkedIn -->
+<section id="linkedin">
+  <h2 class="section-title">LinkedIn как trust-сигнал для Google <span class="badge">LinkedIn</span></h2>
+
+  <h3>Факты</h3>
+  <table>
+    <thead>
+      <tr><th>Сигнал</th><th>Статус</th><th>Доказательства</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>LinkedIn ссылки = dofollow?</td>
+        <td><span class="tag tag-red">Нет</span></td>
+        <td>Все ссылки с LinkedIn = nofollow. Не передают link equity</td>
+      </tr>
+      <tr>
+        <td>Google индексирует LinkedIn?</td>
+        <td><span class="tag tag-green">Да</span></td>
+        <td>Публичные профили, статьи, company pages в индексе</td>
+      </tr>
+      <tr>
+        <td>LinkedIn = entity corroboration?</td>
+        <td><span class="tag tag-green">Да</span></td>
+        <td>sameAs в Schema -> Knowledge Graph entity</td>
+      </tr>
+      <tr>
+        <td>LinkedIn профили в Knowledge Panel?</td>
+        <td><span class="tag tag-green">Да</span></td>
+        <td>Один из ключевых источников для Person entities</td>
+      </tr>
+      <tr>
+        <td>LinkedIn #1 в AI Search для профессий?</td>
+        <td><span class="tag tag-green">Да</span></td>
+        <td>11% AI-ответов ссылаются на LinkedIn. #2 домен в целом</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>LinkedIn в AI Search (2026)</h3>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value">#1</div>
+      <div class="label">Самый цитируемый домен для проф. запросов</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">14.3%</div>
+      <div class="label">Доля цитирования в ChatGPT Search</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">34.9%</div>
+      <div class="label">LinkedIn articles vs profiles в AI цитатах</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">-60%</div>
+      <div class="label">Падение non-brand трафика LinkedIn</div>
+    </div>
+  </div>
+
+  <div class="card highlight">
+    <h4>Главный инсайт</h4>
+    <p>LinkedIn не передаёт ссылочный вес напрямую, но является <strong>одним из главных источников для entity corroboration в Knowledge Graph</strong>. Опубликованные LinkedIn-статьи (500-2000 слов) теперь составляют 34.9% всех AI-цитат LinkedIn. Эксперт с сильным LinkedIn-профилем = сильный entity-сигнал для Google.</p>
+  </div>
+</section>
+
+<!-- SECTION 4: Schema -->
+<section id="schema">
+  <h2 class="section-title">Schema.org + sameAs механика <span class="badge">Technical</span></h2>
+
+  <h3>Как работает цепочка</h3>
+  <div class="flow-diagram">
+    <div class="flow-box fb-blue">LinkedIn Profile<br><small>sameAs</small></div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box fb-purple">Schema.org Person<br><small>Author Entity</small></div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box fb-orange">Knowledge Graph<br><small>Entity ID</small></div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box fb-gold">E-E-A-T Boost<br><small>YMYL Ranking</small></div>
+  </div>
+
+  <h3>Эталонный JSON-LD для финансового автора</h3>
+  <div class="schema-block">
+<pre>{
+  <span class="key">"@context"</span>: <span class="str">"https://schema.org"</span>,
+  <span class="key">"@type"</span>: <span class="type">"ProfilePage"</span>,
+  <span class="key">"mainEntity"</span>: {
+    <span class="key">"@type"</span>: <span class="type">"Person"</span>,
+    <span class="key">"name"</span>: <span class="str">"Expert Name"</span>,
+    <span class="key">"jobTitle"</span>: <span class="str">"Certified Financial Planner"</span>,
+    <span class="key">"sameAs"</span>: [
+      <span class="str">"https://linkedin.com/in/expert"</span>,
+      <span class="str">"https://twitter.com/expert"</span>,
+      <span class="str">"https://expert-website.com"</span>
+    ],
+    <span class="key">"hasCredential"</span>: [{
+      <span class="key">"@type"</span>: <span class="type">"EducationalOccupationalCredential"</span>,
+      <span class="key">"name"</span>: <span class="str">"CFA"</span>,
+      <span class="key">"sameAs"</span>: <span class="str">"https://cfainstitute.org/..."</span>
+    }],
+    <span class="key">"alumniOf"</span>: {<span class="key">"@type"</span>: <span class="type">"EducationalOrganization"</span>, <span class="key">"name"</span>: <span class="str">"Cornell University"</span>},
+    <span class="key">"knowsAbout"</span>: [<span class="str">"Forex"</span>, <span class="str">"Investment"</span>, <span class="str">"Personal Finance"</span>],
+    <span class="key">"worksFor"</span>: {<span class="key">"@type"</span>: <span class="type">"Organization"</span>, <span class="key">"name"</span>: <span class="str">"Company"</span>}
+  }
+}</pre>
+  </div>
+
+  <h3>Обязательные свойства Person для YMYL</h3>
+  <table>
+    <thead>
+      <tr><th>Свойство</th><th>Зачем</th><th>Пример</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>sameAs</code></td><td>Связь с LinkedIn, Wikipedia, Wikidata</td><td>LinkedIn URL первым</td></tr>
+      <tr><td><code>hasCredential</code></td><td>Верифицируемые лицензии</td><td>CFA, CFP, Series III + ссылка на реестр</td></tr>
+      <tr><td><code>alumniOf</code></td><td>Образование</td><td>Университет</td></tr>
+      <tr><td><code>knowsAbout</code></td><td>Темы экспертизы</td><td>["Forex", "Risk Management"]</td></tr>
+      <tr><td><code>jobTitle</code></td><td>Должность</td><td>"Global Director of Research"</td></tr>
+      <tr><td><code>worksFor</code></td><td>Организация</td><td>Компания + sameAs на LinkedIn company</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SECTION 5: Hypothesis -->
+<section id="hypothesis">
+  <h2 class="section-title">Гипотеза: LinkedIn эксперт + сайт = trust <span class="badge">Verdict</span></h2>
+
+  <div class="verdict-box">
+    <h3>Вердикт: ПОДТВЕРЖДАЕТСЯ (косвенно)</h3>
+    <p>Прямой каузальной связи "LinkedIn profile = ranking boost" нет. Но механизм работает через цепочку: <strong>Schema.org sameAs -> Knowledge Graph Entity -> E-E-A-T сигнал -> ранжирование</strong>. Доказательства сильные и множественные.</p>
+  </div>
+
+  <h3>Доказательства ЗА</h3>
+  <div class="card green">
+    <ul>
+      <li><strong>SEMrush 2024:</strong> страницы с сильными E-E-A-T сигналами имеют 30% шанс попасть в top-3</li>
+      <li><strong>Ranking Generals:</strong> Schema for Authors = 15% higher visibility</li>
+      <li><strong>sameAs на LinkedIn</strong> = "одни из сильнейших trust signals в ProfilePage markup"</li>
+      <li><strong>Google Patent 62165966 (2022):</strong> анализ связей между авторами, контентом и стилем</li>
+      <li><strong>Кейс:</strong> реалтор-агентство +100% organic traffic, +200% impressions после semantic schema</li>
+      <li><strong>Тройной сигнал:</strong> structured data + relational signals + behavioral = Entity ID в Knowledge Graph</li>
+    </ul>
+  </div>
+
+  <h3>Как это работает технически</h3>
+  <div class="flow-diagram">
+    <div class="flow-box fb-blue">LinkedIn Expert<br><small>Активный профиль, статьи</small></div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box fb-purple">Website Author Page<br><small>Person Schema + sameAs</small></div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box fb-orange">Article Schema<br><small>author + reviewedBy</small></div>
+    <span class="flow-arrow">&rarr;</span>
+    <div class="flow-box fb-green">Google Trust<br><small>E-E-A-T + YMYL</small></div>
+  </div>
+
+  <h3>Оговорки</h3>
+  <ul>
+    <li>Schema markup сам по себе НЕ прямой ranking factor (Google подтверждает)</li>
+    <li>Работает через усиление E-E-A-T сигналов, которые уже влияют на ранжирование</li>
+    <li>Нужна полная цепочка: LinkedIn + author page + JSON-LD + quality content</li>
+    <li>Максимальный эффект в YMYL (finance, health, legal)</li>
+  </ul>
+</section>
+
+<!-- SECTION 6: Finance Vertical -->
+<section id="finance">
+  <h2 class="section-title">Финансовая вертикаль: модели и деньги <span class="badge">$$</span></h2>
+
+  <h3>CPA/CPL ставки</h3>
+  <table>
+    <thead>
+      <tr><th>Продукт</th><th>Ставка</th><th>Модель</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Credit card (средняя)</td><td><strong>$47</strong></td><td>CPA</td></tr>
+      <tr><td>Bank of America CC</td><td><strong>$120</strong></td><td>CPA</td></tr>
+      <tr><td>American Express</td><td><strong>$200</strong></td><td>CPA per approval</td></tr>
+      <tr><td>Barclays</td><td><strong>$250-300</strong></td><td>CPL</td></tr>
+      <tr><td>Personal Capital</td><td><strong>~$250</strong></td><td>Per funded account</td></tr>
+      <tr><td>LendingTree (mortgage)</td><td><strong>$85</strong></td><td>CPL</td></tr>
+      <tr><td>Zillow (mortgage)</td><td><strong>$75-150</strong></td><td>CPL</td></tr>
+      <tr><td>Credible (loans)</td><td><strong>$100+</strong></td><td>Per funded loan</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Как зарабатывают крупные издатели</h3>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value">$84M</div>
+      <div class="label">NerdWallet traffic value/мес</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">$192M</div>
+      <div class="label">NerdWallet Q2 2025 revenue</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">86%</div>
+      <div class="label">Трафик NerdWallet из organic</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">$15B+</div>
+      <div class="label">US affiliate ad spend к 2028</div>
+    </div>
+  </div>
+
+  <h3>Модели работы с экспертами</h3>
+  <table>
+    <thead>
+      <tr><th>Модель</th><th>Кто использует</th><th>Как работает</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Invite-only Review Board</strong></td>
+        <td>Bankrate, NerdWallet</td>
+        <td>Панель из 30+ экспертов (CFP, CFA, CPA). Проверяют контент на точность. Badge "Expert verified"</td>
+      </tr>
+      <tr>
+        <td><strong>Expert Marketplace</strong></td>
+        <td>Featured.com</td>
+        <td>Эксперты платят $49-99/мес за право быть процитированными. Издатели получают контент бесплатно</td>
+      </tr>
+      <tr>
+        <td><strong>Freelance + Credentials</strong></td>
+        <td>Forbes Advisor, Investopedia</td>
+        <td>Нанимают фрилансеров с финансовыми лицензиями. $0.50-1.00/слово</td>
+      </tr>
+      <tr>
+        <td><strong>Staff + External Review</strong></td>
+        <td>ForexBrokers.com, Bankrate</td>
+        <td>Штатные авторы пишут, внешние эксперты рецензируют</td>
+      </tr>
+      <tr>
+        <td><strong>Advisor Insights</strong></td>
+        <td>Investopedia</td>
+        <td>Бесплатная платформа: советники пишут thought leadership в обмен на exposure</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Компенсация авторов</h3>
+  <table>
+    <thead>
+      <tr><th>Площадка</th><th>Ставка</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Motley Fool (freelance)</td><td><strong>$140/статья</strong> (20+ шт/мес)</td></tr>
+      <tr><td>NerdWallet (full-time)</td><td><strong>~$66K/год</strong></td></tr>
+      <tr><td>Finance freelancers (средний)</td><td><strong>$73K/год</strong></td></tr>
+      <tr><td>Top finance freelancers</td><td><strong>$300/час</strong></td></tr>
+      <tr><td>Finance niche per-word</td><td><strong>$0.50-1.00+/слово</strong></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SECTION 7: Platforms -->
+<section id="platforms">
+  <h2 class="section-title">Платформы подбора экспертов <span class="badge">Tools</span></h2>
+
+  <table>
+    <thead>
+      <tr><th>Платформа</th><th>Статус</th><th>Специфика</th><th>Цена</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Featured.com</strong></td>
+        <td><span class="tag tag-green">Active</span></td>
+        <td>Сеть: Fortune, Fast Company, Yahoo. Купили HARO</td>
+        <td>$49-99/мес (эксперты платят)</td>
+      </tr>
+      <tr>
+        <td><strong>HARO 2.0</strong></td>
+        <td><span class="tag tag-green">Relaunch Apr 2025</span></td>
+        <td>3 email-дайджеста/день, бесплатный, ad-supported</td>
+        <td>Бесплатно</td>
+      </tr>
+      <tr>
+        <td><strong>Qwoted</strong></td>
+        <td><span class="tag tag-green">Growing</span></td>
+        <td>130K+ верифицированных экспертов. Лучший для бизнес/финансов</td>
+        <td>Бесплатно для экспертов</td>
+      </tr>
+      <tr>
+        <td><strong>FPA MediaSource</strong></td>
+        <td><span class="tag tag-blue">Niche</span></td>
+        <td>Только для CFP членов FPA. ~10K запросов от журналистов</td>
+        <td>Членство FPA</td>
+      </tr>
+      <tr>
+        <td><strong>Investopedia Advisor Insights</strong></td>
+        <td><span class="tag tag-green">Active</span></td>
+        <td>Бесплатная thought leadership для финансовых советников</td>
+        <td>Бесплатно</td>
+      </tr>
+      <tr>
+        <td><strong>Connectively (ex-HARO)</strong></td>
+        <td><span class="tag tag-red">Closed Dec 2024</span></td>
+        <td>Заменён HARO 2.0</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Специализированные агентства (Finance Content)</h3>
+  <ul>
+    <li><strong>Mint Studios</strong> -- финансовые услуги и fintech, customer acquisition через контент</li>
+    <li><strong>Optimist</strong> -- fintech/financial services, контент через subject matter experts</li>
+    <li><strong>CSTMR</strong> -- fintech & financial marketing agency</li>
+    <li><strong>Wentworth Financial Communications</strong> -- content marketing для financial services</li>
+  </ul>
+</section>
+
+<!-- SECTION 8: ForexBrokers.com -->
+<section id="forexbrokers">
+  <div class="forexbrokers-section">
+    <h2 class="section-title" style="border-color: var(--purple);">ForexBrokers.com -- кейс-стади <span class="badge" style="background: var(--purple);">Deep Dive</span></h2>
+
+    <p style="font-size: 17px;">ForexBrokers.com -- эталонная реализация стратегии "LinkedIn Expert + Website + Schema = Google Trust". Рассмотрим по элементам.</p>
+
+    <h3>Ключевые метрики</h3>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="value">9M+</div>
+        <div class="label">Посетителей с 2016</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">220K+</div>
+        <div class="label">Слов исследований</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">60+</div>
+        <div class="label">Обзоров брокеров</div>
+      </div>
+      <div class="stat-card">
+        <div class="value">30+</div>
+        <div class="label">Страновых гайдов</div>
+      </div>
+    </div>
+
+    <h3>1. Структура авторских страниц</h3>
+    <div class="card">
+      <p>URL: <code>/about/{first-name}-{last-name}</code></p>
+      <p>Каждая страница содержит:</p>
+      <ul>
+        <li><strong>Professional headshot</strong> + должность</li>
+        <li><strong>LinkedIn и Twitter иконки</strong> -- кликабельные, рядом с именем</li>
+        <li><strong>Развёрнутая биография</strong> (300-500 слов): лет опыта, лицензии, ссылки на реестры (NFA BASIC), медиа-появления</li>
+        <li><strong>Список всех статей автора</strong> -- пагинированный (у ведущего автора 12+ страниц)</li>
+        <li><strong>Anti-scam предупреждение</strong> для ключевых авторов</li>
+      </ul>
+    </div>
+
+    <h3>2. Команда экспертов</h3>
+    <table>
+      <thead>
+        <tr><th>Имя</th><th>Роль</th><th>Credentials</th><th>LinkedIn</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Steven Hatzakis</strong></td>
+          <td>Global Director of Research, Partner</td>
+          <td>Series III, CTA (NFA), Cornell University, 25+ лет, 1000+ статей, Bloomberg/WSJ</td>
+          <td><span class="tag tag-green">linkedin.com/in/shatzakis/</span></td>
+        </tr>
+        <tr>
+          <td><strong>Blain Reinkensmeyer</strong></td>
+          <td>Cofounder, Managing Partner</td>
+          <td>Основатель Reink Media Group (2009)</td>
+          <td><span class="tag tag-green">Есть</span></td>
+        </tr>
+        <tr>
+          <td><strong>Joey Shadeck</strong></td>
+          <td>Content Strategist & SEO Analyst</td>
+          <td>Finance + Marketing (Oakland University), ~10 лет</td>
+          <td><span class="tag tag-green">linkedin.com/in/josephshadeck/</span></td>
+        </tr>
+        <tr>
+          <td><strong>John Bringans</strong></td>
+          <td>Managing Editor</td>
+          <td>SFSU, ~10 лет editorial</td>
+          <td><span class="tag tag-green">linkedin.com/in/johnbringans/</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3. Schema.org разметка (максимальный уровень)</h3>
+    <div class="card highlight">
+      <h4>ProfilePage (авторские страницы)</h4>
+      <ul>
+        <li><code>@type: ProfilePage</code> + <code>mainEntity: Person</code></li>
+        <li><code>sameAs</code> = [LinkedIn, personal site, Twitter]</li>
+        <li><code>hasCredential</code> с ссылками на регуляторные реестры (FINRA, NFA)</li>
+        <li><code>alumniOf</code>, <code>knowsAbout</code>, <code>worksFor</code>, <code>memberOf</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Article + Review (контент)</h4>
+      <ul>
+        <li><code>@graph</code> с тремя типами: <code>Review</code> + <code>Article</code> + <code>FAQPage</code></li>
+        <li>Multiple authors в <code>author[]</code> (Written + Edited + Fact-checked)</li>
+        <li><code>reviewRating</code>, <code>positiveNotes</code>, <code>negativeNotes</code></li>
+        <li><code>citation</code> со ссылками на первоисточники (годовые отчёты брокеров)</li>
+      </ul>
+    </div>
+
+    <h3>4. Трёхуровневая система байлайнов</h3>
+    <div class="flow-diagram">
+      <div class="flow-box fb-blue">Written by<br><small>Steven Hatzakis</small></div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box fb-purple">Edited by<br><small>John Bringans</small></div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box fb-green">Fact-checked by<br><small>Joey Shadeck</small></div>
+    </div>
+    <p>Каждое имя кликабельно -- ведёт на авторскую страницу с полной биографией и LinkedIn.</p>
+
+    <h3>5. Экосистема доверия (6 страниц)</h3>
+    <table>
+      <thead>
+        <tr><th>Страница</th><th>Что содержит</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>/why-trust-us</strong></td><td>5 столпов: Unbiased, Experienced, Accurate, Independent, Accountable</td></tr>
+        <tr><td><strong>/how-we-test</strong></td><td>Детальная методология, весовые коэффициенты категорий</td></tr>
+        <tr><td><strong>/trust-score</strong></td><td>Проприетарный алгоритм (1-99), 110+ регуляторов, 5 тиров</td></tr>
+        <tr><td><strong>/how-we-make-money</strong></td><td>Прозрачность монетизации: affiliate не влияет на рейтинги</td></tr>
+        <tr><td><strong>/meet-the-team</strong></td><td>Все 10 членов команды с фото</td></tr>
+        <tr><td><strong>/about</strong></td><td>История, B Corp сертификация, Reink Media Group</td></tr>
+      </tbody>
+    </table>
+
+    <h3>6. Уникальные фишки</h3>
+    <ul>
+      <li><strong>Certified B Corporation</strong> -- независимая сертификация (B Lab)</li>
+      <li><strong>BBB Accredited Business</strong></li>
+      <li><strong>Annual Awards</strong> -- собственная премия, которую брокеры цитируют на своих сайтах (= обратные ссылки от IG, CMC Markets, Saxo Bank)</li>
+      <li><strong>Trust Score</strong> -- проприетарный алгоритм, партнёрство с Visual Capitalist для инфографики</li>
+      <li><strong>Error rate < 0.001%</strong> -- заявленная точность данных</li>
+      <li><strong>1000+ часов тестирования/год</strong></li>
+    </ul>
+
+    <div class="verdict-box" style="border-color: var(--purple);">
+      <h3 style="color: var(--purple);">Формула ForexBrokers.com</h3>
+      <p><strong>1 ключевой эксперт</strong> (Steven, Series III + Cornell + 25 лет + Bloomberg/WSJ) + <strong>Person Schema с hasCredential + sameAs LinkedIn</strong> + <strong>трёхуровневый байлайн</strong> (Written/Edited/Fact-checked) + <strong>6 Trust-страниц</strong> + <strong>Annual Awards = обратные ссылки от брокеров</strong></p>
+      <p style="margin-top: 12px;">Это создаёт замкнутый цикл: контент привлекает трафик -> Awards привлекают брокеров -> брокеры дают backlinks -> backlinks усиливают authority -> authority улучшает ранжирование.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: Parasite SEO -->
+<section id="parasite">
+  <h2 class="section-title">Parasite SEO: что карает Google <span class="badge">Warning</span></h2>
+
+  <h3>Наказанные издатели (2024-2025)</h3>
+  <table>
+    <thead>
+      <tr><th>Издатель</th><th>Секция</th><th>Падение видимости</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Time</td><td>Affiliate section</td><td><span class="tag tag-red">-97%</span></td></tr>
+      <tr><td>Wall Street Journal</td><td>WSJ Buy Side</td><td><span class="tag tag-red">-77%</span></td></tr>
+      <tr><td>CNN</td><td>CNN Underscored</td><td><span class="tag tag-red">-63%</span></td></tr>
+      <tr><td>Forbes</td><td>Forbes Advisor</td><td><span class="tag tag-red">-43%</span></td></tr>
+      <tr><td>USA Today</td><td>Reviewed</td><td><span class="tag tag-red">Penalized</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="card green">
+    <h4>Что это значит для стратегии</h4>
+    <p>Google чётко разделяет:</p>
+    <ul>
+      <li><span class="tag tag-red">BAD</span> Аренда domain authority третьим сторонам для SEO-манипуляции</li>
+      <li><span class="tag tag-green">GOOD</span> Подлинные экспертные контрибьюции с editorial oversight и верифицируемыми credentials</li>
+    </ul>
+    <p>Ключевой дифференциатор: <strong>editorial involvement + expert verification</strong>. Сайты с настоящими review boards (модель Bankrate/ForexBrokers) защищены.</p>
+  </div>
+</section>
+
+<!-- SECTION 10: Playbook -->
+<section id="playbook">
+  <h2 class="section-title">Playbook: пошаговая стратегия <span class="badge">Action</span></h2>
+
+  <h3>Этап 1: Инфраструктура экспертности</h3>
+  <div class="card">
+    <ol>
+      <li>Рекрутировать 3-5 экспертов с credentials (CFP, CFA, CPA или аналоги в нише)</li>
+      <li>Каждому -- dedicated author page на сайте (<code>/about/expert-name</code>)</li>
+      <li>Person Schema с <code>sameAs</code> (LinkedIn первым), <code>hasCredential</code>, <code>alumniOf</code>, <code>knowsAbout</code></li>
+      <li>Эксперты должны иметь активные LinkedIn-профили (статьи 500-2000 слов)</li>
+    </ol>
+  </div>
+
+  <h3>Этап 2: Контент-модель</h3>
+  <div class="card">
+    <ol>
+      <li>Штатные авторы/фрилансеры пишут контент</li>
+      <li>Эксперты рецензируют (badge "Reviewed by [Name], CFP")</li>
+      <li>Экспертные цитаты вплетены в текст (не отдельные roundup-посты)</li>
+      <li>Article Schema: <code>author[]</code> + <code>reviewedBy</code> + <code>citation</code></li>
+      <li>Трёхуровневый байлайн: Written by / Edited by / Fact-checked by</li>
+    </ol>
+  </div>
+
+  <h3>Этап 3: Trust-экосистема</h3>
+  <div class="card">
+    <ol>
+      <li><strong>/why-trust-us</strong> -- объяснение процесса и принципов</li>
+      <li><strong>/how-we-test</strong> -- методология с весовыми коэффициентами</li>
+      <li><strong>/meet-the-team</strong> -- все эксперты с фото и credentials</li>
+      <li><strong>/how-we-make-money</strong> -- прозрачность монетизации</li>
+      <li>Раскрываемый блок "Why you can trust us" на каждой статье</li>
+    </ol>
+  </div>
+
+  <h3>Этап 4: Подбор экспертов</h3>
+  <div class="card">
+    <ol>
+      <li><strong>Qwoted</strong> -- лучший для finance, 130K+ экспертов, бесплатно</li>
+      <li><strong>Featured.com / HARO 2.0</strong> -- масштабный sourcing цитат</li>
+      <li><strong>LinkedIn прямой outreach</strong> -- CFP/CFA в нужной нише</li>
+      <li><strong>Компенсация:</strong> exposure + backlinks (многие эксперты работают бесплатно за ссылку на свою практику)</li>
+    </ol>
+  </div>
+
+  <h3>Этап 5: Revenue-модель</h3>
+  <div class="card">
+    <ol>
+      <li><strong>Affiliate</strong> -- CPA от продуктов ($47-300 за конверсию в finance)</li>
+      <li><strong>Lead generation</strong> -- CPL от финансовых компаний ($75-150 за лид)</li>
+      <li><strong>Awards/Ratings</strong> -- создать собственную премию (модель ForexBrokers) -> компании ставят бейджи на свои сайты -> бесплатные backlinks</li>
+      <li><strong>Expert content marketplace</strong> -- emerging модель: платформа соединяющая экспертов с издателями</li>
+    </ol>
+  </div>
+
+  <h3>KPI для отслеживания</h3>
+  <table>
+    <thead>
+      <tr><th>Метрика</th><th>Что измерять</th><th>Цель</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Knowledge Panel</td><td>Появление панели для авторов</td><td>Хотя бы 1 автор в KG</td></tr>
+      <tr><td>SERP позиции</td><td>Целевые YMYL-запросы</td><td>Top-10 за 6 мес</td></tr>
+      <tr><td>Schema validation</td><td>Rich results в Google</td><td>100% валидные</td></tr>
+      <tr><td>Author entity</td><td>Google цитирует автора в AI Overview</td><td>Появление в AI ответах</td></tr>
+      <tr><td>Backlinks от Awards</td><td>Компании ссылаются на рейтинги</td><td>10+ backlinks/квартал</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+
+<footer>
+  Проект Егора | Исследование 30 марта 2026 | 100+ источников | GitHub: TimmyZinin/egor-project
+</footer>
+
+</body>
+</html>
