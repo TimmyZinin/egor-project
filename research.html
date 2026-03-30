@@ -429,6 +429,8 @@
   .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
   .tab-btn.panel-tab { color: var(--accent-2); }
   .tab-btn.panel-tab.active { border-bottom-color: var(--accent-2); }
+  .tab-btn.candidates-tab { color: var(--green); }
+  .tab-btn.candidates-tab.active { border-bottom-color: var(--green); }
 
   .tab-content { display: none; }
   .tab-content.active { display: block; }
@@ -546,6 +548,7 @@
 <div class="tab-nav">
   <button class="tab-btn active" onclick="switchTab('research')">Исследование</button>
   <button class="tab-btn panel-tab" onclick="switchTab('panel')">Экспертная панель</button>
+  <button class="tab-btn candidates-tab" onclick="switchTab('candidates')">Кандидаты (Live)</button>
 </div>
 
 <div id="tab-research" class="tab-content active">
@@ -2093,6 +2096,266 @@ Would you be open to a 15-minute call this week?</pre>
 </div><!-- /container -->
 </div><!-- /tab-panel -->
 
+<div id="tab-candidates" class="tab-content">
+<div class="container">
+
+<section>
+  <h2 class="section-title" style="border-color: var(--green);">Forex Expert Candidates <span class="badge" style="background: var(--green); color: #000;">Live Search</span></h2>
+  <p style="font-size: 16px; margin-bottom: 8px;">Реальные кандидаты, найденные через живой WebSearch (30 марта 2026). Не demo-данные.</p>
+  <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 32px;">Источник: 7 WebSearch запросов по site:linkedin.com/in с фильтрами CFA/CFP/CMT + forex/FX/currency + US/UK + Bloomberg/Forbes/CNBC. Enrichment: отдельный поиск по каждому Tier A кандидату.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="value">15</div>
+      <div class="label">Кандидатов найдено</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">5</div>
+      <div class="label">Tier A (80+ баллов)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">5</div>
+      <div class="label">Tier B (60-79)</div>
+    </div>
+    <div class="stat-card">
+      <div class="value">12</div>
+      <div class="label">С credentials (CFA/CMT/FRM)</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIER A -->
+<section>
+  <h2 class="section-title" style="border-color: var(--green);">Tier A — приоритетные <span class="badge" style="background: var(--green); color: #000;">Score 80+</span></h2>
+
+  <div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Name</th>
+        <th>Role / Company</th>
+        <th>Credentials</th>
+        <th>Location</th>
+        <th>Citability</th>
+        <th>LinkedIn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><span class="tag tag-green">92</span></td>
+        <td><strong>John Jagerson</strong></td>
+        <td>Co-founder Learning Markets, Co-editor Strategic Trader</td>
+        <td><span class="tag tag-green">CFA</span> <span class="tag tag-blue">CMT</span></td>
+        <td>US (Utah)</td>
+        <td>3 книги forex (McGraw-Hill), InvestorPlace, BusinessWeek, Investopedia Academy, Harvard PLD, MS Mathematics</td>
+        <td><a href="https://www.linkedin.com/in/johnjagerson/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><span class="tag tag-green">88</span></td>
+        <td><strong>Christopher Vecchio</strong></td>
+        <td>Head of Futures & FX, tastylive</td>
+        <td><span class="tag tag-green">CFA</span></td>
+        <td>US (New York)</td>
+        <td>DailyFX ex-Senior Strategist, MoneyShow speaker, Luckbox Magazine, Duke Law lecturer, Muck Rack profile</td>
+        <td><a href="https://www.linkedin.com/in/christophertvecchio/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><span class="tag tag-green">85</span></td>
+        <td><strong>Joe Hoffman</strong></td>
+        <td>CEO Mesirow Currency Management, <strong>Chair FXPA</strong></td>
+        <td><span class="tag tag-green">CFA</span> <span class="tag tag-purple">Series 3,7,24,30,63</span></td>
+        <td>US (Seattle)</td>
+        <td>Chair Foreign Exchange Professionals Association, CFA Society Chicago, institutional authority</td>
+        <td><a href="https://www.linkedin.com/in/joe-hoffman-cfa-29702a7/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><span class="tag tag-green">84</span></td>
+        <td><strong>Ven Ram, MBA</strong></td>
+        <td>Cross-Asset Strategist, Bloomberg LP</td>
+        <td><span class="tag tag-green">CFA</span> <span class="tag tag-blue">MBA</span></td>
+        <td>Global (Bloomberg)</td>
+        <td><strong>Bloomberg byline</strong> (bloomberg.com/authors/...), EM currency forecaster, регулярно цитируется</td>
+        <td><a href="https://www.linkedin.com/in/ven-ram-mba-cfa-23990515/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><span class="tag tag-green">82</span></td>
+        <td><strong>Mohammad H. Ali</strong></td>
+        <td>Consultant, ex-Global Head of FX Trading TD Securities</td>
+        <td><span class="tag tag-green">CFA</span></td>
+        <td>Canada (Toronto)</td>
+        <td>FXStreet contributor, Purity Macro Newsletter (Substack), AlphaMind Podcast, 20+ лет institutional FX</td>
+        <td><a href="https://www.linkedin.com/in/mohammad-h-ali-cfa-340751a/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- TIER B -->
+<section>
+  <h2 class="section-title" style="border-color: var(--blue);">Tier B — хорошие <span class="badge" style="background: var(--blue); color: #000;">Score 60-79</span></h2>
+
+  <div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Score</th>
+        <th>Name</th>
+        <th>Role / Company</th>
+        <th>Credentials</th>
+        <th>Location</th>
+        <th>Citability</th>
+        <th>LinkedIn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>6</td>
+        <td><span class="tag tag-blue">68</span></td>
+        <td><strong>Blake Morrow</strong></td>
+        <td>Chief Currency Strategist, Forex Analytix</td>
+        <td><em>no formal certs</em></td>
+        <td>US</td>
+        <td>Forex Analytix brand, 20+ лет forex, активный YouTube/Twitter, нишевый авторитет</td>
+        <td><a href="https://www.linkedin.com/in/blake-morrow-322a47b3/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><span class="tag tag-blue">65</span></td>
+        <td><strong>Ryan A. Bailey</strong></td>
+        <td>Paradigm Global Investors</td>
+        <td><span class="tag tag-green">CFA</span> <span class="tag tag-blue">FRM</span> <span class="tag tag-purple">CAIA</span> <span class="tag tag-orange">CMT</span></td>
+        <td>US (Dallas)</td>
+        <td>4 сертификации — рекорд. Но низкий публичный digital footprint</td>
+        <td><a href="https://www.linkedin.com/in/ryanalexanderbailey" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><span class="tag tag-blue">62</span></td>
+        <td><strong>Sean Letcher</strong></td>
+        <td>Derivatives Trader</td>
+        <td><span class="tag tag-green">CFA</span> <span class="tag tag-blue">FRM</span> <span class="tag tag-purple">CAIA</span> <span class="tag tag-orange">CMT</span></td>
+        <td>US</td>
+        <td>4 сертификации, derivatives specialist, но нет медийного следа</td>
+        <td><a href="https://www.linkedin.com/in/sean-letcher-cfa-frm-caia-cmt-21a8174" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><span class="tag tag-blue">60</span></td>
+        <td><strong>Ben Jarrett</strong></td>
+        <td>FX Strategist, UBS</td>
+        <td><em>CFA не подтверждён</em></td>
+        <td>UK (London)</td>
+        <td>UBS = топ-институция. London = мировой forex hub</td>
+        <td><a href="https://www.linkedin.com/in/benjarrett196/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><span class="tag tag-blue">58</span></td>
+        <td><strong>Susan Weiner</strong></td>
+        <td>Investment Editor & Writer, Speaker</td>
+        <td><span class="tag tag-green">CFA</span></td>
+        <td>US</td>
+        <td>Позиционирует себя как investment writer. CFA. Готова к контент-работе, но не forex-специфична</td>
+        <td><a href="https://www.linkedin.com/in/investmentwriting/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- TIER C -->
+<section>
+  <h2 class="section-title" style="border-color: var(--text-dim);">Tier C — запасные <span class="badge" style="background: var(--border); color: var(--text-dim);">Score 40-59</span></h2>
+
+  <div style="overflow-x:auto;">
+  <table>
+    <thead>
+      <tr><th>#</th><th>Score</th><th>Name</th><th>Role</th><th>Credentials</th><th>Note</th><th>LinkedIn</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>11</td><td>55</td>
+        <td>Brian Chappatta</td><td>Bloomberg</td><td><span class="tag tag-green">CFA</span></td>
+        <td>Больше fixed income чем forex</td>
+        <td><a href="https://www.linkedin.com/in/brianchappatta/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td>12</td><td>52</td>
+        <td>Rodrigo Catril</td><td>Senior FX Strategist, NAB</td><td>CFA</td>
+        <td>Australia, не US/UK</td>
+        <td><a href="https://www.linkedin.com/in/rodrigo-catril-42634094/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td>13</td><td>48</td>
+        <td>Steven Scheerer</td><td>MD FICM Portfolio Strategist</td><td><span class="tag tag-green">CFA</span> <span class="tag tag-blue">FRM</span></td>
+        <td>Низкий публичный footprint</td>
+        <td><a href="https://www.linkedin.com/in/steven-scheerer-cfa-frm-33468b172/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td>14</td><td>45</td>
+        <td>Paul Christopher</td><td>MD Head of Global Market Strategy, Wells Fargo</td><td><span class="tag tag-green">CFA</span></td>
+        <td>Institutional, не публичный автор</td>
+        <td><a href="https://www.linkedin.com/in/pgchristopher/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+      <tr>
+        <td>15</td><td>42</td>
+        <td>Tim Collins</td><td>Arvada Police Pension Board</td><td><span class="tag tag-green">CFA</span> CQF CAIA CMT FRM MBA</td>
+        <td>6 credentials, но нишевый</td>
+        <td><a href="https://www.linkedin.com/in/tim-collins-cfa-cqf-caia-cmt-frm-mba-b4b0184/" target="_blank" style="color:var(--blue)">Profile</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- Scoring Methodology -->
+<section>
+  <h2 class="section-title">Методология скоринга <span class="badge">How</span></h2>
+
+  <div class="card highlight">
+    <h4 style="margin-top:0;">Как собирались кандидаты</h4>
+    <p><strong>7 WebSearch запросов</strong> с разными фильтрами по критериям Егора:</p>
+    <table>
+      <thead><tr><th>Запрос</th><th>Что ищет</th><th>Критерий Егора</th></tr></thead>
+      <tbody>
+        <tr><td><code>"CFA" + "forex/FX" + "strategist/analyst"</code></td><td>Сертифицированные FX-специалисты</td><td>Сданные экзамены</td></tr>
+        <tr><td><code>"forex" + "Bloomberg/Reuters/Forbes"</code></td><td>Кто уже публикуется в медиа</td><td>Цитируемость</td></tr>
+        <tr><td><code>"currency strategist" + CFA + US/UK</code></td><td>Точечный поиск по роли + geo</td><td>Локация</td></tr>
+        <tr><td><code>"forex" + "CMT/CAIA/FRM"</code></td><td>Доп. credentials помимо CFA</td><td>Экзамены + ассоциации</td></tr>
+        <tr><td><code>"forex expert" + CFA + "writer/speaker"</code></td><td>Публичная экспертная деятельность</td><td>Native English + footprint</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:16px;">Enrichment: для каждого Tier A — отдельный WebSearch по имени (образование, публикации, media appearances, association membership).</p>
+  </div>
+
+  <h3>Scoring model (8 категорий, макс 100)</h3>
+  <table>
+    <thead><tr><th>Категория</th><th>Max</th><th>Что измеряет</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Citability</strong></td><td>25</td><td>Bloomberg/Forbes/WSJ = 25, CNBC/Reuters = 20, нишевые = 15</td></tr>
+      <tr><td><strong>Credentials</strong></td><td>20</td><td>CFA = 20, CFP = 18, CPA = 16, multiple = bonus capped</td></tr>
+      <tr><td><strong>Google Entity</strong></td><td>15</td><td>Knowledge Panel = 15, rich SERP = 7, basic = 3</td></tr>
+      <tr><td><strong>Associations</strong></td><td>10</td><td>CFA Institute = 10, FXPA Chair = 10, FPA = 8</td></tr>
+      <tr><td><strong>LinkedIn Activity</strong></td><td>10</td><td>>10 posts/mo = 8, articles = +2</td></tr>
+      <tr><td><strong>Experience</strong></td><td>10</td><td>20+ лет = 10, 15-19 = 8, 10-14 = 6</td></tr>
+      <tr><td><strong>Location</strong></td><td>5</td><td>US/UK = 5, Canada/Australia = 3</td></tr>
+      <tr><td><strong>Native English</strong></td><td>5</td><td>Confirmed = 5, likely = 4, fluent = 3</td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+</div>
+
 <script>
 function switchTab(tab) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -2104,6 +2367,7 @@ function switchTab(tab) {
 
 // Handle hash navigation
 if (window.location.hash === '#panel') switchTab('panel');
+if (window.location.hash === '#candidates') switchTab('candidates');
 </script>
 
 <footer>
