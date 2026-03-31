@@ -431,6 +431,8 @@
   .tab-btn.panel-tab.active { border-bottom-color: var(--accent-2); }
   .tab-btn.candidates-tab { color: var(--green); }
   .tab-btn.candidates-tab.active { border-bottom-color: var(--green); }
+  .tab-btn.rb-tab { color: #e879f9; }
+  .tab-btn.rb-tab.active { border-bottom-color: #e879f9; color: #e879f9; }
 
   .tab-content { display: none; }
   .tab-content.active { display: block; }
@@ -550,6 +552,7 @@
   <button class="tab-btn panel-tab" onclick="switchTab('panel')">Экспертная панель</button>
   <button class="tab-btn candidates-tab" onclick="switchTab('candidates')">Кандидаты (Live)</button>
   <button class="tab-btn" onclick="switchTab('experts-v1')" style="color: #f59e0b;">Эксперты v1.test</button>
+  <button class="tab-btn rb-tab" onclick="switchTab('rated-brokers')">Rated Brokers</button>
 </div>
 
 <div id="tab-research" class="tab-content active">
@@ -2672,6 +2675,471 @@ Would you be open to a 15-minute call this week?</pre>
 </div>
 </div>
 
+<!-- ========== TAB: RATED BROKERS ========== -->
+<div id="tab-rated-brokers" class="tab-content">
+<div class="container">
+
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">Rated Brokers — Архитектура проекта</h2>
+  <p style="color: var(--text-dim); margin-bottom: 24px;">Полный анализ конкурентов, Anti-AI стратегия, архитектура двух скиллов и модель взаимодействия Тим &harr; Егор. Дата: 31 марта 2026.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px;">
+    <div style="background: var(--surface); padding: 24px; border-radius: 12px; border-left: 4px solid var(--accent);">
+      <div style="font-size: 32px; font-weight: 900; color: var(--accent);">10</div>
+      <div style="color: var(--text-dim); font-size: 13px;">экспертов (цель)</div>
+    </div>
+    <div style="background: var(--surface); padding: 24px; border-radius: 12px; border-left: 4px solid var(--green);">
+      <div style="font-size: 32px; font-weight: 900; color: var(--green);">10K</div>
+      <div style="color: var(--text-dim); font-size: 13px;">статей (цель)</div>
+    </div>
+    <div style="background: var(--surface); padding: 24px; border-radius: 12px; border-left: 4px solid var(--blue);">
+      <div style="font-size: 32px; font-weight: 900; color: var(--blue);">100+</div>
+      <div style="color: var(--text-dim); font-size: 13px;">ревью брокеров</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 ЭТАПА -->
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">3 этапа проекта</h2>
+
+  <div style="display: grid; gap: 20px; margin-bottom: 40px;">
+    <div style="background: var(--surface); padding: 28px; border-radius: 12px; border: 1px solid var(--border);">
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; color: #000;">1</div>
+        <h3 style="font-size: 20px; font-weight: 800;">Поиск экспертов</h3>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <h4 style="color: var(--accent-2); font-size: 14px; margin-bottom: 8px;">Критерии</h4>
+          <ul style="list-style: none; font-size: 14px; line-height: 2;">
+            <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">&bull;</span> Цитируемость (публикации в Tier1/Tier2 медиа)</li>
+            <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">&bull;</span> Сертификации (CFA, CFP, CMT, CAIA, Series 7/63/65/66)</li>
+            <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">&bull;</span> Членство в ассоциациях (CFA Institute, FINRA, FCA)</li>
+            <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">&bull;</span> Университет (top-100 finance programs)</li>
+            <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">&bull;</span> Native English</li>
+            <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--accent);">&bull;</span> Локация: US, UK (+?)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: var(--accent-2); font-size: 14px; margin-bottom: 8px;">Pipeline</h4>
+          <div style="font-size: 14px; line-height: 2.2;">
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">01</span> Скан интернета (WebSearch + LinkedIn)</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">02</span> Скоринг (100 баллов, 8 категорий)</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">03</span> Первый контакт (персонализированный outreach)</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">04</span> Оффер</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">05</span> Коммит</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--surface); padding: 28px; border-radius: 12px; border: 1px solid var(--border);">
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; color: #000;">2</div>
+        <h3 style="font-size: 20px; font-weight: 800;">Написание контента</h3>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <h4 style="color: var(--accent-2); font-size: 14px; margin-bottom: 8px;">Pipeline генерации</h4>
+          <div style="font-size: 14px; line-height: 2.2;">
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">01</span> Определение стиля эксперта (5-10 публикаций)</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">02</span> Калибровка AI под голос эксперта</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">03</span> Генерация контента с уникальными вставками</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">04</span> Anti-AI проверка (Ahrefs + Google)</div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--text-dim); font-family: 'JetBrains Mono'; font-size: 12px;">05</span> Написание текстов</div>
+          </div>
+        </div>
+        <div>
+          <h4 style="color: var(--accent-2); font-size: 14px; margin-bottom: 8px;">Проверки</h4>
+          <div style="background: var(--surface-2); padding: 16px; border-radius: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <span style="color: var(--green); font-size: 18px;">&#9745;</span>
+              <span style="font-size: 14px;"><strong>Ahrefs:</strong> Anti AI generated</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--green); font-size: 18px;">&#9745;</span>
+              <span style="font-size: 14px;"><strong>Google:</strong> Anti AI generated</span>
+            </div>
+          </div>
+          <p style="font-size: 13px; color: var(--text-dim); margin-top: 12px;">AI detection &lt; 20% &rarr; PASS<br>Детекторы ловят статистические паттерны. Защита = реальный экспертный опыт + уникальные данные.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--surface); padding: 28px; border-radius: 12px; border: 1px solid var(--border);">
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; color: #000;">3</div>
+        <h3 style="font-size: 20px; font-weight: 800;">Approve + Publish</h3>
+      </div>
+      <p style="font-size: 14px; line-height: 1.8;">Эксперт получает текст на ревью &rarr; вносит правки / утверждает &rarr; публикация на Rated Brokers. Dual byline: <span style="color: var(--accent);">Written by [Expert]</span> + <span style="color: var(--blue);">Reviewed by [Editor]</span>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- КОНКУРЕНТЫ -->
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">Анализ конкурентов</h2>
+
+  <div style="overflow-x: auto;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border);">
+          <th style="text-align: left; padding: 12px; color: var(--accent-2);">Паттерн</th>
+          <th style="text-align: center; padding: 12px; color: var(--text-dim);">ForexBrokers</th>
+          <th style="text-align: center; padding: 12px; color: var(--text-dim);">BestBrokers</th>
+          <th style="text-align: center; padding: 12px; color: var(--text-dim);">BrokerChooser</th>
+          <th style="text-align: center; padding: 12px; color: var(--text-dim);">Investopedia</th>
+          <th style="text-align: center; padding: 12px; color: var(--text-dim);">TradersUnion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Профили авторов</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Rich</td>
+          <td style="text-align: center; padding: 12px; color: var(--text-dim);">About only</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Yes</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Rich</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Rich</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Credentials/Лицензии</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">CTA лицензия</td>
+          <td style="text-align: center; padding: 12px; color: var(--text-dim);">Minimal</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Bloomberg, Citi</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Awards, boards</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">ex-Forbes</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">"Reviewed by" byline</td>
+          <td style="text-align: center; padding: 12px; color: var(--red);">Нет</td>
+          <td style="text-align: center; padding: 12px; color: var(--red);">Нет</td>
+          <td style="text-align: center; padding: 12px; color: var(--red);">Нет</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Да</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Да</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">"Fact-checked by"</td>
+          <td style="text-align: center; padding: 12px; color: var(--red);">Нет</td>
+          <td style="text-align: center; padding: 12px; color: var(--red);">Нет</td>
+          <td style="text-align: center; padding: 12px; color: var(--red);">Нет</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Да</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Да</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Методология</td>
+          <td style="text-align: center; padding: 12px;">Trust Score 1-99<br><span style="color: var(--text-dim);">130+ переменных</span></td>
+          <td style="text-align: center; padding: 12px; color: var(--text-dim);">Proprietary</td>
+          <td style="text-align: center; padding: 12px;">1200+ data points<br><span style="color: var(--text-dim);">90 часов/ревью</span></td>
+          <td style="text-align: center; padding: 12px;">92 критерия<br><span style="color: var(--text-dim);">36K+ статей</span></td>
+          <td style="text-align: center; padding: 12px;">100+ критериев<br><span style="color: var(--text-dim);">30+ языков</span></td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Real-money тестирование</td>
+          <td style="text-align: center; padding: 12px; color: var(--text-dim);">Implied</td>
+          <td style="text-align: center; padding: 12px; color: var(--text-dim);">Implied</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Explicit</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Explicit</td>
+          <td style="text-align: center; padding: 12px; color: var(--green);">Secret testing</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px; font-weight: 600;">Объём контента</td>
+          <td style="text-align: center; padding: 12px;">60+ ревью<br><span style="color: var(--text-dim);">220K слов</span></td>
+          <td style="text-align: center; padding: 12px;">~100+ гайдов</td>
+          <td style="text-align: center; padding: 12px;">100+ ревью<br><span style="color: var(--text-dim);">43K scam DB</span></td>
+          <td style="text-align: center; padding: 12px; color: var(--accent);">36K+ статей<br><span style="color: var(--text-dim);">44M читателей/мес</span></td>
+          <td style="text-align: center; padding: 12px;">Large<br><span style="color: var(--text-dim);">30+ языков</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="background: var(--surface); padding: 20px; border-radius: 12px; margin-top: 24px; border-left: 4px solid var(--accent-2);">
+    <h4 style="color: var(--accent-2); margin-bottom: 8px;">Золотой стандарт: Investopedia</h4>
+    <p style="font-size: 14px; color: var(--text-dim);">Тройной byline (Written by + Reviewed by + Fact-checked by). 36K+ статей, 44M читателей/мес. Financial Review Board (100+ лет суммарного опыта). Каждый автор с полной страницей профиля + LinkedIn. Отдельная команда фактчекинга.</p>
+  </div>
+</section>
+
+<!-- ANTI-AI СТРАТЕГИЯ -->
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">Anti-AI стратегия</h2>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+    <div style="background: var(--surface); padding: 24px; border-radius: 12px;">
+      <h4 style="color: var(--green); margin-bottom: 12px;">Что РАБОТАЕТ</h4>
+      <ul style="list-style: none; font-size: 14px; line-height: 2;">
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--green);">+</span> Экспертный голос + личные истории</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--green);">+</span> Оригинальные данные/исследования</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--green);">+</span> Вариативность длины предложений (burstiness)</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--green);">+</span> Авторская позиция и мнение</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--green);">+</span> Конкретика вместо обобщений</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--green);">+</span> Гибридный подход (AI-черновик + ручная переработка)</li>
+      </ul>
+    </div>
+    <div style="background: var(--surface); padding: 24px; border-radius: 12px;">
+      <h4 style="color: var(--red); margin-bottom: 12px;">Что НЕ работает (snake oil)</h4>
+      <ul style="list-style: none; font-size: 14px; line-height: 2;">
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--red);">&times;</span> "Humanizer" сервисы (перефразировщики)</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--red);">&times;</span> Замена синонимов / перестановка слов</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--red);">&times;</span> Прогон через несколько моделей</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--red);">&times;</span> Добавление случайных опечаток</li>
+        <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--red);">&times;</span> Undetectable AI, BypassGPT и подобные</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div style="background: var(--surface); padding: 20px; border-radius: 12px; border-left: 4px solid var(--blue);">
+      <h4 style="color: var(--blue); margin-bottom: 8px;">Ahrefs AI Detector</h4>
+      <p style="font-size: 13px; color: var(--text-dim);">Встроен в Site Explorer (Page Inspect > AI Detector). Определяет модель (GPT/Claude/Llama), подсвечивает фрагменты. 13/18 в тестах &mdash; один из лучших. По данным Ahrefs, 74.2% нового контента в вебе &mdash; AI.</p>
+    </div>
+    <div style="background: var(--surface); padding: 20px; border-radius: 12px; border-left: 4px solid var(--accent-2);">
+      <h4 style="color: var(--accent-2); margin-bottom: 8px;">Позиция Google (2025-2026)</h4>
+      <p style="font-size: 13px; color: var(--text-dim);">НЕ наказывает за сам факт AI. Наказывает за "scaled content abuse" (массовый спам). Ключ &mdash; E-E-A-T: Experience, Expertise, Authoritativeness, Trustworthiness. Контент должен быть "people-first".</p>
+    </div>
+  </div>
+</section>
+
+<!-- СКОРИНГ ЭКСПЕРТОВ -->
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">Скоринг экспертов (100 баллов)</h2>
+
+  <div style="overflow-x: auto;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border);">
+          <th style="text-align: left; padding: 12px; color: var(--accent-2);">Категория</th>
+          <th style="text-align: center; padding: 12px; color: var(--text-dim);">Макс. баллов</th>
+          <th style="text-align: left; padding: 12px; color: var(--text-dim);">Детали</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Цитируемость</td>
+          <td style="text-align: center; padding: 12px; color: var(--accent);">25</td>
+          <td style="padding: 12px; color: var(--text-dim);">Tier1 (Bloomberg, WSJ, FT) = 25 | Tier2 (CNBC, MarketWatch) = 15 | Tier3 = 5</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Сертификации</td>
+          <td style="text-align: center; padding: 12px; color: var(--accent);">20</td>
+          <td style="padding: 12px; color: var(--text-dim);">CFA = 20 | CFP = 15 | CMT, CAIA = 10 | Series 7/63/65/66 = 5-10</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Ассоциации</td>
+          <td style="text-align: center; padding: 12px; color: var(--accent);">15</td>
+          <td style="padding: 12px; color: var(--text-dim);">CFA Institute, FINRA, FCA, ASIC, NFA</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Existing publications</td>
+          <td style="text-align: center; padding: 12px; color: var(--accent);">15</td>
+          <td style="padding: 12px; color: var(--text-dim);">Активный блог/колонка = 15 | Нерегулярные = 5</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px; font-weight: 600;">Университет</td>
+          <td style="text-align: center; padding: 12px; color: var(--accent);">10</td>
+          <td style="padding: 12px; color: var(--text-dim);">Top-20 = 10 | Top-50 = 7 | Top-100 = 5</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px; font-weight: 600;">Location US/UK</td>
+          <td style="text-align: center; padding: 12px; color: var(--accent);">15</td>
+          <td style="padding: 12px; color: var(--text-dim);">US = 15 | UK = 12 | Другие англ. страны = 8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px;">
+    <div style="background: var(--surface); padding: 16px; border-radius: 8px; text-align: center; border-top: 3px solid var(--green);">
+      <div style="font-size: 13px; font-weight: 700; color: var(--green);">Tier A</div>
+      <div style="font-size: 24px; font-weight: 900;">80+</div>
+      <div style="font-size: 12px; color: var(--text-dim);">Приоритет #1</div>
+    </div>
+    <div style="background: var(--surface); padding: 16px; border-radius: 8px; text-align: center; border-top: 3px solid var(--blue);">
+      <div style="font-size: 13px; font-weight: 700; color: var(--blue);">Tier B</div>
+      <div style="font-size: 24px; font-weight: 900;">60-79</div>
+      <div style="font-size: 12px; color: var(--text-dim);">Хороший кандидат</div>
+    </div>
+    <div style="background: var(--surface); padding: 16px; border-radius: 8px; text-align: center; border-top: 3px solid var(--accent-2);">
+      <div style="font-size: 13px; font-weight: 700; color: var(--accent-2);">Tier C</div>
+      <div style="font-size: 24px; font-weight: 900;">40-59</div>
+      <div style="font-size: 12px; color: var(--text-dim);">Рассмотреть</div>
+    </div>
+    <div style="background: var(--surface); padding: 16px; border-radius: 8px; text-align: center; border-top: 3px solid var(--text-dim);">
+      <div style="font-size: 13px; font-weight: 700; color: var(--text-dim);">Tier D</div>
+      <div style="font-size: 24px; font-weight: 900;">&lt;40</div>
+      <div style="font-size: 12px; color: var(--text-dim);">Пропустить</div>
+    </div>
+  </div>
+</section>
+
+<!-- АРХИТЕКТУРА: 2 СКИЛЛА -->
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">Архитектура: 2 скилла</h2>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+    <div style="background: var(--surface); padding: 28px; border-radius: 12px; border: 1px solid #e879f9;">
+      <h3 style="color: #e879f9; margin-bottom: 16px; font-size: 18px;">/rb-expert-scout</h3>
+      <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 16px;">Поиск, скоринг и рекрутинг финансовых экспертов</p>
+      <div style="font-family: 'JetBrains Mono'; font-size: 12px; background: var(--surface-2); padding: 16px; border-radius: 8px; line-height: 2;">
+        <span style="color: var(--accent);">SCAN</span> &rarr; WebSearch + LinkedIn + Ahrefs<br>
+        <span style="color: var(--accent-2);">SCORE</span> &rarr; 100-балльная система (8 категорий)<br>
+        <span style="color: var(--green);">PROFILE</span> &rarr; JSON-карточка эксперта<br>
+        <span style="color: var(--blue);">OUTREACH</span> &rarr; Персонализированный оффер<br>
+        <span style="color: #e879f9;">TRACK</span> &rarr; Статус в shared repo
+      </div>
+      <div style="margin-top: 16px; font-size: 13px; color: var(--text-dim);">
+        <strong>Output:</strong> experts/profiles/*.json + pipeline.json<br>
+        <strong>Статусы:</strong> prospected &rarr; contacted &rarr; negotiating &rarr; committed &rarr; active
+      </div>
+    </div>
+
+    <div style="background: var(--surface); padding: 28px; border-radius: 12px; border: 1px solid var(--green);">
+      <h3 style="color: var(--green); margin-bottom: 16px; font-size: 18px;">/rb-content-gen</h3>
+      <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 16px;">Генерация статей в стиле эксперта + Anti-AI проверка</p>
+      <div style="font-family: 'JetBrains Mono'; font-size: 12px; background: var(--surface-2); padding: 16px; border-radius: 8px; line-height: 2;">
+        <span style="color: var(--accent);">CALIBRATE</span> &rarr; Анализ 5-10 публикаций эксперта<br>
+        <span style="color: var(--accent-2);">GENERATE</span> &rarr; Статья + style_profile + anti-ai<br>
+        <span style="color: var(--green);">CHECK</span> &rarr; Ahrefs AI Detector + фактчек<br>
+        <span style="color: var(--blue);">APPROVE</span> &rarr; Эксперт ревьюит через shared repo<br>
+        <span style="color: #e879f9;">PUBLISH</span> &rarr; CMS / WordPress
+      </div>
+      <div style="margin-top: 16px; font-size: 13px; color: var(--text-dim);">
+        <strong>Output:</strong> content/drafts/*.md &rarr; content/approved/*.md<br>
+        <strong>Проверки:</strong> AI detection &lt; 20%, фактчекинг, style match
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- МОДЕЛЬ ВЗАИМОДЕЙСТВИЯ -->
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">Модель взаимодействия Тим &harr; Егор</h2>
+
+  <div style="background: var(--surface); padding: 28px; border-radius: 12px; margin-bottom: 24px;">
+    <h4 style="color: var(--accent-2); margin-bottom: 16px;">Source of truth: GitHub repo <span style="font-family: 'JetBrains Mono'; color: var(--accent);">TimmyZinin/rated-brokers</span> (private)</h4>
+    <div style="font-family: 'JetBrains Mono'; font-size: 12px; background: var(--surface-2); padding: 20px; border-radius: 8px; line-height: 1.8;">
+      <span style="color: var(--text-dim);">rated-brokers/</span><br>
+      &nbsp;&nbsp;<span style="color: var(--accent-2);">docs/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;workflow-guide.md &nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Гайд для Егора</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;expert-criteria.md &nbsp;&nbsp;<span style="color: var(--text-dim);"># Критерии поиска</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;content-standards.md <span style="color: var(--text-dim);"># Стандарты (anti-AI, E-E-A-T)</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;competitor-analysis.md<span style="color: var(--text-dim);"># Анализ конкурентов</span><br>
+      &nbsp;&nbsp;<span style="color: var(--accent-2);">experts/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;pipeline.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Воронка экспертов</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;profiles/*.json &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Карточки экспертов</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;style-profiles/*.json<span style="color: var(--text-dim);"># Калибровка стилей</span><br>
+      &nbsp;&nbsp;<span style="color: var(--accent-2);">content/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;queue.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Очередь генерации</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;drafts/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># AI-черновики</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;review/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># На ревью у эксперта</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;approved/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Утверждённые</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;published/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Опубликованные</span><br>
+      &nbsp;&nbsp;<span style="color: var(--accent-2);">templates/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;broker-review.md &nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Шаблон ревью</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;comparison.md &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Шаблон сравнения</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;guide.md &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Шаблон гайда</span><br>
+      &nbsp;&nbsp;<span style="color: var(--accent-2);">scripts/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;generate.py &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># CLI генерации</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;check-ai.py &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: var(--text-dim);"># Anti-AI проверка</span>
+    </div>
+  </div>
+
+  <div style="overflow-x: auto;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+      <thead>
+        <tr style="border-bottom: 2px solid var(--border);">
+          <th style="text-align: left; padding: 12px; color: var(--accent-2);">Задача</th>
+          <th style="text-align: center; padding: 12px; color: var(--accent);">Тим (Claude Code)</th>
+          <th style="text-align: center; padding: 12px; color: var(--blue);">Егор</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px;">Поиск экспертов</td>
+          <td style="text-align: center; padding: 12px;"><span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--accent);">/rb-expert-scout</span> &mdash; скан</td>
+          <td style="text-align: center; padding: 12px;">Верификация + первый контакт</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px;">Оффер/Переговоры</td>
+          <td style="text-align: center; padding: 12px;">Генерация оффера</td>
+          <td style="text-align: center; padding: 12px;">Ведение переговоров</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px;">Калибровка стиля</td>
+          <td style="text-align: center; padding: 12px;">Автоанализ публикаций</td>
+          <td style="text-align: center; padding: 12px;">Утверждение style profile</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px;">Генерация контента</td>
+          <td style="text-align: center; padding: 12px;"><span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--green);">/rb-content-gen</span> &mdash; массовая</td>
+          <td style="text-align: center; padding: 12px;">QA выборочных статей</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px;">Anti-AI проверка</td>
+          <td style="text-align: center; padding: 12px;">Автоматическая (Ahrefs + checks)</td>
+          <td style="text-align: center; padding: 12px;">Финальная ручная проверка</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 12px;">Approve</td>
+          <td style="text-align: center; padding: 12px;">&mdash;</td>
+          <td style="text-align: center; padding: 12px;">Координация с экспертами</td>
+        </tr>
+        <tr>
+          <td style="padding: 12px;">Публикация</td>
+          <td style="text-align: center; padding: 12px;">Автоматическая (API/CMS)</td>
+          <td style="text-align: center; padding: 12px;">Мониторинг, SEO</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- AHREFS ИНТЕГРАЦИЯ -->
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">Ahrefs интеграция</h2>
+
+  <div style="background: var(--surface); padding: 24px; border-radius: 12px; border-left: 4px solid var(--blue);">
+    <p style="font-size: 14px; margin-bottom: 12px;">Ahrefs MCP сервер подключён к Claude Code (<span style="font-family: 'JetBrains Mono'; font-size: 12px; color: var(--blue);">mcp__claude_ai_Ahrefs__authenticate</span>). Возможности:</p>
+    <ul style="list-style: none; font-size: 14px; line-height: 2;">
+      <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--blue);">&bull;</span> Мониторинг конкурентов (контент, ключевые слова, ссылки)</li>
+      <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--blue);">&bull;</span> AI Content Detection на сгенерированных статьях</li>
+      <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--blue);">&bull;</span> Анализ ссылочного профиля конкурентов</li>
+      <li style="padding-left: 16px; position: relative;"><span style="position: absolute; left: 0; color: var(--blue);">&bull;</span> Keyword research для тематик статей</li>
+    </ul>
+  </div>
+</section>
+
+<!-- NEXT STEPS -->
+<section class="section">
+  <h2 class="section-title" style="border-color: #e879f9;">Next steps</h2>
+
+  <div style="display: grid; gap: 12px;">
+    <div style="background: var(--surface); padding: 16px 20px; border-radius: 8px; display: flex; align-items: center; gap: 16px;">
+      <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #000; flex-shrink: 0;">1</div>
+      <div style="font-size: 14px;">Создать repo <span style="font-family: 'JetBrains Mono'; color: var(--accent);">TimmyZinin/rated-brokers</span> (private)</div>
+    </div>
+    <div style="background: var(--surface); padding: 16px 20px; border-radius: 8px; display: flex; align-items: center; gap: 16px;">
+      <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #000; flex-shrink: 0;">2</div>
+      <div style="font-size: 14px;">Написать два скилла: <span style="color: #e879f9;">/rb-expert-scout</span> и <span style="color: var(--green);">/rb-content-gen</span></div>
+    </div>
+    <div style="background: var(--surface); padding: 16px 20px; border-radius: 8px; display: flex; align-items: center; gap: 16px;">
+      <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #000; flex-shrink: 0;">3</div>
+      <div style="font-size: 14px;">Написать workflow-guide.md для Егора</div>
+    </div>
+    <div style="background: var(--surface); padding: 16px 20px; border-radius: 8px; display: flex; align-items: center; gap: 16px;">
+      <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #000; flex-shrink: 0;">4</div>
+      <div style="font-size: 14px;">Активировать Ahrefs MCP и протестировать AI detection</div>
+    </div>
+    <div style="background: var(--surface); padding: 16px 20px; border-radius: 8px; display: flex; align-items: center; gap: 16px;">
+      <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #000; flex-shrink: 0;">5</div>
+      <div style="font-size: 14px;">Калибровка: 1 эксперт &rarr; 1 статья &rarr; проверка anti-AI &rarr; итерация</div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div>
+
 <script>
 function switchTab(tab) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -2685,10 +3153,11 @@ function switchTab(tab) {
 if (window.location.hash === '#panel') switchTab('panel');
 if (window.location.hash === '#candidates') switchTab('candidates');
 if (window.location.hash === '#experts-v1') switchTab('experts-v1');
+if (window.location.hash === '#rated-brokers') switchTab('rated-brokers');
 </script>
 
 <footer>
-  Проект Егора | Исследование 30 марта 2026 | 150+ источников | 15 секций | GitHub: TimmyZinin/egor-project
+  Проект Егора | Исследование 30-31 марта 2026 | 150+ источников | 5 табов | GitHub: TimmyZinin/egor-project
 </footer>
 
 </body>
