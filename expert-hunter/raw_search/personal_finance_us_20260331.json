@@ -1,0 +1,20 @@
+{
+  "query": "site:linkedin.com/in \"CFP\" \"personal finance\" (\"author\" OR \"writer\") (\"NerdWallet\" OR \"Bankrate\" OR \"Forbes\") United States",
+  "timestamp": "2026-03-31T10:15:00Z",
+  "niche": "personal_finance",
+  "geo": "US",
+  "tool": "WebSearch (Claude Code built-in)",
+  "result_count": 10,
+  "raw_results": [
+    {"title": "Liz Weston, CFP® - Personal finance columnist", "url": "https://www.linkedin.com/in/lizweston/", "snippet": "Liz Weston, CFP - Los Angeles Weston Studios LLC"},
+    {"title": "Sean Pyles, CFP® - Senior podcast producer at NerdWallet", "url": "https://www.linkedin.com/in/seanloranpyles/", "snippet": "Sean Pyles, CFP - Senior podcast producer NerdWallet Portland"},
+    {"title": "Hal M. Bundrick, CFP - Senior Writer - Yahoo Finance | LinkedIn", "url": "https://www.linkedin.com/in/halmbundrick/", "snippet": "Hal M. Bundrick, CFP - Senior Writer Yahoo Finance previously NerdWallet"},
+    {"title": "Andrea Coombes, CFP® - Personal Finance Editor, Writer ...", "url": "https://www.linkedin.com/in/acoombes/", "snippet": "Andrea Coombes, CFP - Personal Finance Editor Writer MarketWatch experience"},
+    {"title": "Kelly Anne Smith - Lead Editor, Growth Projects at Forbes ...", "url": "https://www.linkedin.com/in/kelly-anne-smith/", "snippet": "Kelly Anne Smith - Lead Editor Forbes reported for Bankrate"},
+    {"title": "Linda Bell - Senior Writer & Home Lending Expert, Certified ...", "url": "https://www.linkedin.com/in/lindanbell/", "snippet": "Linda Bell - Senior Writer Home Lending Expert Bankrate New York"},
+    {"title": "Dan Johnson, CFP® - Birchcreek Wealth Management | LinkedIn", "url": "https://www.linkedin.com/in/danjohnsonbirchcreek/", "snippet": "Dan Johnson, CFP - Birchcreek Wealth Management"},
+    {"title": "Chris Hutchison - Portland, Oregon, United States", "url": "https://www.linkedin.com/in/chrisjhutch/", "snippet": "Chris Hutchison - Portland Oregon"},
+    {"title": "Emma Muhvich, CFP® - CERTIFIED FINANCIAL ... | LinkedIn", "url": "https://www.linkedin.com/in/emma-muhvich", "snippet": "Emma Muhvich, CFP - Certified Financial Planner"},
+    {"title": "Susannah Snider, CFP® - U.S. News & World Report | LinkedIn", "url": "https://www.linkedin.com/in/susannah-snider-cfp%C2%AE-53699817/", "snippet": "Susannah Snider, CFP - U.S. News World Report"}
+  ]
+}

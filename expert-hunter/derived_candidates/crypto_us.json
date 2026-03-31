@@ -1,0 +1,261 @@
+[
+  {
+    "name": "Edward Engel",
+    "linkedin_url": "https://www.linkedin.com/in/edward-engel/",
+    "primary_role": "Edward Engel, CFA - Compass Point Research crypto assets blockchain technology s",
+    "company": "",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "CFA",
+    "credentials_verified_or_signal": "CFA in snippet; media=none",
+    "evidence_links": "https://www.linkedin.com/in/edward-engel/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [
+        "CFA"
+      ],
+      "google_entity": "basic_serp",
+      "location": "US",
+      "native_english": "likely_native",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4",
+      "associations": "CFA_Institute"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 0,
+    "raw_source_title": "Edward Engel, CFA - Compass Point Research & Trading, LLC | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/edward-engel/"
+  },
+  {
+    "name": "Kevin Bell",
+    "linkedin_url": "https://www.linkedin.com/in/kevin2bell/",
+    "primary_role": "Kevin Bell, CFA - Cadena Bitcoin",
+    "company": "Cadena Bitcoin",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "CFA",
+    "credentials_verified_or_signal": "CFA in snippet; media=none",
+    "evidence_links": "https://www.linkedin.com/in/kevin2bell/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [
+        "CFA"
+      ],
+      "google_entity": "none",
+      "location": "US",
+      "native_english": "likely_native",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4",
+      "associations": "CFA_Institute"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 1,
+    "raw_source_title": "Kevin Bell, CFA - Cadena Bitcoin | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/kevin2bell/"
+  },
+  {
+    "name": "Zann Kwan",
+    "linkedin_url": "https://www.linkedin.com/in/zannkwan/",
+    "primary_role": "Zann Kwan, CFA - digital assets management doctoral researcher",
+    "company": "",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "CFA",
+    "credentials_verified_or_signal": "CFA in snippet; media=none",
+    "evidence_links": "https://www.linkedin.com/in/zannkwan/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [
+        "CFA"
+      ],
+      "google_entity": "none",
+      "location": "US",
+      "native_english": "likely_native",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4",
+      "associations": "CFA_Institute"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 2,
+    "raw_source_title": "Zann Kwan, CFA - Bitcoin Exchange Pte Ltd | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/zannkwan/"
+  },
+  {
+    "name": "Alex Witt",
+    "linkedin_url": "https://www.linkedin.com/in/alexwitt/",
+    "primary_role": "Alex Witt, CFA - blockchain-enabled payment applications Verda Ventures",
+    "company": "",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "CFA",
+    "credentials_verified_or_signal": "CFA in snippet; media=none",
+    "evidence_links": "https://www.linkedin.com/in/alexwitt/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [
+        "CFA"
+      ],
+      "google_entity": "none",
+      "location": "US",
+      "native_english": "likely_native",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4",
+      "associations": "CFA_Institute"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 3,
+    "raw_source_title": "Alex Witt, CFA - General Partner at Verda Ventures",
+    "raw_source_url": "https://www.linkedin.com/in/alexwitt/"
+  },
+  {
+    "name": "Nik Bhatia",
+    "linkedin_url": "https://www.linkedin.com/in/nik-bhatia-cfa-cmt-b549b858/",
+    "primary_role": "Nik Bhatia, CFA, CMT - digital assets CFTC crypto guidance regulatory matters Th",
+    "company": "",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "CFA, CMT",
+    "credentials_verified_or_signal": "CFA, CMT in snippet; media=none",
+    "evidence_links": "https://www.linkedin.com/in/nik-bhatia-cfa-cmt-b549b858/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [
+        "CFA",
+        "CMT"
+      ],
+      "google_entity": "basic_serp",
+      "location": "US",
+      "native_english": "likely_native",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4",
+      "associations": "CFA_Institute"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 4,
+    "raw_source_title": "Nik Bhatia, CFA, CMT - The Bitcoin Layer | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/nik-bhatia-cfa-cmt-b549b858/"
+  },
+  {
+    "name": "Dmitry Volyntsev",
+    "linkedin_url": "https://www.linkedin.com/in/dmitry-volyntsev/",
+    "primary_role": "Dmitry Volyntsev - Data Analyst Blockchain Researcher ValueVerse MIPT Graduate",
+    "company": "Data Analyst Blockchain Researcher ValueVerse MIPT",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "",
+    "credentials_verified_or_signal": "media=none",
+    "evidence_links": "https://www.linkedin.com/in/dmitry-volyntsev/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [],
+      "google_entity": "none",
+      "location": "US",
+      "native_english": "unclear",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 5,
+    "raw_source_title": "Dmitry Volyntsev - Data Analyst & Blockchain Researcher in ValueVerse | MIPT Graduate | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/dmitry-volyntsev/"
+  },
+  {
+    "name": "Lee Reiners",
+    "linkedin_url": "https://www.linkedin.com/in/leereiners/",
+    "primary_role": "Lee Reiners, CFA - authored reports on crypto policy SEC Crypto Task Force meeti",
+    "company": "",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "CFA",
+    "credentials_verified_or_signal": "CFA in snippet; media=none",
+    "evidence_links": "https://www.linkedin.com/in/leereiners/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [
+        "CFA"
+      ],
+      "google_entity": "none",
+      "location": "US",
+      "native_english": "likely_native",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4",
+      "associations": "CFA_Institute"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 6,
+    "raw_source_title": "Lee Reiners, CFA - Duke Financial Economics Center | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/leereiners/"
+  },
+  {
+    "name": "Christopher Tepedino",
+    "linkedin_url": "https://www.linkedin.com/in/chrisptepedino/",
+    "primary_role": "Christopher Tepedino - Writer Journalist covering blockchain Web3",
+    "company": "",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "",
+    "credentials_verified_or_signal": "media=none",
+    "evidence_links": "https://www.linkedin.com/in/chrisptepedino/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [],
+      "google_entity": "none",
+      "location": "US",
+      "native_english": "unclear",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 7,
+    "raw_source_title": "Christopher Tepedino - Writer | Journalist | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/chrisptepedino/"
+  },
+  {
+    "name": "Emily Landon",
+    "linkedin_url": "https://www.linkedin.com/in/thecryptorecruiter",
+    "primary_role": "Emily Landon - The Crypto Recruiters",
+    "company": "The Crypto Recruiters",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "",
+    "credentials_verified_or_signal": "media=none",
+    "evidence_links": "https://www.linkedin.com/in/thecryptorecruiter",
+    "scoring": {
+      "citability": "none",
+      "credentials": [],
+      "google_entity": "none",
+      "location": "US",
+      "native_english": "unclear",
+      "experience_years": "5_9",
+      "linkedin_activity": "1_to_4"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 8,
+    "raw_source_title": "Emily Landon - The Crypto Recruiters | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/thecryptorecruiter"
+  },
+  {
+    "name": "Cryptoassessor",
+    "linkedin_url": "https://www.linkedin.com/in/cryptoassessor/",
+    "primary_role": "Chris C. - Research Due Diligence Lead The Birb Nest",
+    "company": "Research Due Diligence Lead The Birb Nest",
+    "location": "US",
+    "niche_tags": "crypto",
+    "credentials_claimed": "",
+    "credentials_verified_or_signal": "media=none",
+    "evidence_links": "https://www.linkedin.com/in/cryptoassessor/",
+    "scoring": {
+      "citability": "none",
+      "credentials": [],
+      "google_entity": "none",
+      "location": "US",
+      "native_english": "unclear",
+      "experience_years": "15_19",
+      "linkedin_activity": "1_to_4"
+    },
+    "raw_source_file": "crypto_us_20260331.json",
+    "raw_source_index": 9,
+    "raw_source_title": "Chris C. - Research & Due Diligence Lead - The Birb Nest | LinkedIn",
+    "raw_source_url": "https://www.linkedin.com/in/cryptoassessor/"
+  }
+]

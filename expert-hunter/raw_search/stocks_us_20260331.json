@@ -1,0 +1,20 @@
+{
+  "query": "site:linkedin.com/in \"CFA\" \"equity\" OR \"stock\" (\"analyst\" OR \"portfolio manager\") (\"author\" OR \"contributor\") United States",
+  "timestamp": "2026-03-31T10:15:00Z",
+  "niche": "stocks",
+  "geo": "US",
+  "tool": "WebSearch (Claude Code built-in)",
+  "result_count": 10,
+  "raw_results": [
+    {"title": "Christopher Shea, CFA - Senior Portfolio Manager - UBS ASSET MANAGEMENT AMERICAS INC | LinkedIn", "url": "https://www.linkedin.com/in/christopher-shea-cfa-419002b/", "snippet": "Christopher Shea, CFA - Co-manager of several US equity strategies at UBS, author of portfolio performance attribution commentaries"},
+    {"title": "Michael P. Stack, CFA - Senior Equity Portfolio Manager, Investment Thought Leader, Relationship Manager | LinkedIn", "url": "https://www.linkedin.com/in/michael-p-stack-cfa/", "snippet": "Michael P. Stack, CFA - Senior Equity PM who authored institutional caliber quarterly market review and outlook newsletter"},
+    {"title": "Jason Mann, CFA - Senior Vice President & Senior Portfolio Advisor at Northern Trust | LinkedIn", "url": "https://www.linkedin.com/in/jason-mann-cfa/", "snippet": "Jason Mann, CFA - Senior Vice President Senior Portfolio Advisor at Northern Trust"},
+    {"title": "Roberta Zeno, CFA - Equity Research | Technology Investing", "url": "https://www.linkedin.com/in/roberta-zeno-cfa/", "snippet": "Roberta Zeno, CFA - Equity Research Technology Investing"},
+    {"title": "Christopher K. Merker, Ph.D., CFA - Executive Director - Fund Governance Analytics, LLC | LinkedIn", "url": "https://www.linkedin.com/in/christopher-k-merker-ph-d-cfa-b122981/", "snippet": "Christopher K. Merker, Ph.D., CFA - Director portfolio manager Baird Private Asset Management co-author The Trustee Governance Guide book"},
+    {"title": "Felipe Quaassdorff, CFA - Walkner Condon Financial Advisors | LinkedIn", "url": "https://www.linkedin.com/in/fquaassdorff-cfa/", "snippet": "Felipe Quaassdorff, CFA - co-authored paper investigating risk-arb spread presented at Midwest Finance Association"},
+    {"title": "Stephen Mitchell - Portfolio Manager", "url": "https://www.linkedin.com/in/stephen-mitchell-8601a384/", "snippet": "Stephen Mitchell - Portfolio Manager"},
+    {"title": "Christopher Lane, CPA - Senior Equity Trader - Russell Investments | LinkedIn", "url": "https://www.linkedin.com/in/christopher-lane-cpa-4b81041b/", "snippet": "Christopher Lane, CPA - Senior Equity Trader Russell Investments"},
+    {"title": "Christopher Hooker, CFA - Sr. Portfolio Analyst - Amundi US | LinkedIn", "url": "https://www.linkedin.com/in/christopher-hooker-cfa-bbb1956/", "snippet": "Christopher Hooker, CFA - Sr. Portfolio Analyst Amundi US"},
+    {"title": "Reuben Scherzer - Senior Equity Analyst - TimesSquare Capital Management, LLC | LinkedIn", "url": "https://www.linkedin.com/in/reubenscherzer/", "snippet": "Reuben Scherzer - Senior Equity Analyst TimesSquare Capital Management"}
+  ]
+}

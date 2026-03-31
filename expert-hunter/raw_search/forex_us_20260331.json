@@ -1,0 +1,20 @@
+{
+  "query": "site:linkedin.com/in \"CFA\" \"forex\" OR \"FX\" OR \"currency\" (\"strategist\" OR \"analyst\") United States",
+  "timestamp": "2026-03-31T10:15:00Z",
+  "niche": "forex",
+  "geo": "US",
+  "tool": "WebSearch (Claude Code built-in)",
+  "result_count": 10,
+  "raw_results": [
+    {"title": "Christopher Vecchio, CFA - Head of Futures & FX", "url": "https://www.linkedin.com/in/christophertvecchio/", "snippet": "Christopher Vecchio, CFA - Head of Futures & FX, thorough understanding of the FX markets"},
+    {"title": "John Jagerson, CFA, CMT - Learning Markets, LLC & Rock Pile, LLC | LinkedIn", "url": "https://www.linkedin.com/in/johnjagerson/", "snippet": "John Jagerson, CFA, CMT with expertise in forex"},
+    {"title": "Joe Hoffman, CFA - Chief Executive Officer, Currency ...", "url": "https://www.linkedin.com/in/joe-hoffman-cfa-29702a7/", "snippet": "Joe Hoffman, CFA, based in Seattle with connections to Foreign Exchange Professionals Association FXPA"},
+    {"title": "Paul Christopher, CFA - Managing Director - Head of Global Market Strategy at Wells Fargo Investment Institute | LinkedIn", "url": "https://www.linkedin.com/in/pgchristopher/", "snippet": "Paul Christopher, CFA - Managing Director Head of Global Market Strategy at Wells Fargo, investment strategist portfolio manager in global financial and commodity futures FX forwards"},
+    {"title": "Richard Krivo - FX Trader and Mentor | LinkedIn", "url": "https://www.linkedin.com/in/richard-krivo-2abb9189/", "snippet": "Richard Krivo - FX Trader and Mentor"},
+    {"title": "Jeff Schorer - Executive Director, FX Trading at Wells Fargo | LinkedIn", "url": "https://www.linkedin.com/in/jeff-schorer-20567310b/", "snippet": "Jeff Schorer - Executive Director, FX Trading at Wells Fargo"},
+    {"title": "Tiger Berry - Forex Trader | Fundamental, Sentimental, and Technical Analyst | LinkedIn", "url": "https://www.linkedin.com/in/tigerberry/", "snippet": "Tiger Berry - Forex Trader Fundamental Sentimental and Technical Analyst"},
+    {"title": "Mohammad H. Ali, CFA - Capital Markets Consulting| FX, Derivatives & Swaps| Former Head of Forex Trading | LinkedIn", "url": "https://www.linkedin.com/in/mohammad-h-ali-cfa-340751a/", "snippet": "Mohammad H. Ali, CFA - Capital Markets Consulting FX Derivatives Swaps Former Head of Forex Trading 20+ years"},
+    {"title": "Rene Cueto, CFA - Macro LATAM FX Trading | LinkedIn", "url": "https://www.linkedin.com/in/rene-cueto-cfa/", "snippet": "Rene Cueto, CFA - Macro LATAM FX Trading based in New York"},
+    {"title": "Charlotte S. Parnell - QUALITY TRUST MARKETS | LinkedIn", "url": "https://www.linkedin.com/in/charlotte-s-parnell-30bab75a/", "snippet": "Charlotte S. Parnell - QUALITY TRUST MARKETS"}
+  ]
+}

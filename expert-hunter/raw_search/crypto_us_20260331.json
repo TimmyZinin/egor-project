@@ -1,0 +1,20 @@
+{
+  "query": "site:linkedin.com/in \"crypto\" OR \"blockchain\" \"CFA\" (\"analyst\" OR \"researcher\") (\"author\" OR \"contributor\") United States",
+  "timestamp": "2026-03-31T10:15:00Z",
+  "niche": "crypto",
+  "geo": "US",
+  "tool": "WebSearch (Claude Code built-in)",
+  "result_count": 10,
+  "raw_results": [
+    {"title": "Edward Engel, CFA - Compass Point Research & Trading, LLC | LinkedIn", "url": "https://www.linkedin.com/in/edward-engel/", "snippet": "Edward Engel, CFA - Compass Point Research crypto assets blockchain technology self-custody advocacy"},
+    {"title": "Kevin Bell, CFA - Cadena Bitcoin | LinkedIn", "url": "https://www.linkedin.com/in/kevin2bell/", "snippet": "Kevin Bell, CFA - Cadena Bitcoin"},
+    {"title": "Zann Kwan, CFA - Bitcoin Exchange Pte Ltd | LinkedIn", "url": "https://www.linkedin.com/in/zannkwan/", "snippet": "Zann Kwan, CFA - digital assets management doctoral researcher"},
+    {"title": "Alex Witt, CFA - General Partner at Verda Ventures", "url": "https://www.linkedin.com/in/alexwitt/", "snippet": "Alex Witt, CFA - blockchain-enabled payment applications Verda Ventures"},
+    {"title": "Nik Bhatia, CFA, CMT - The Bitcoin Layer | LinkedIn", "url": "https://www.linkedin.com/in/nik-bhatia-cfa-cmt-b549b858/", "snippet": "Nik Bhatia, CFA, CMT - digital assets CFTC crypto guidance regulatory matters The Bitcoin Layer"},
+    {"title": "Dmitry Volyntsev - Data Analyst & Blockchain Researcher in ValueVerse | MIPT Graduate | LinkedIn", "url": "https://www.linkedin.com/in/dmitry-volyntsev/", "snippet": "Dmitry Volyntsev - Data Analyst Blockchain Researcher ValueVerse MIPT Graduate"},
+    {"title": "Lee Reiners, CFA - Duke Financial Economics Center | LinkedIn", "url": "https://www.linkedin.com/in/leereiners/", "snippet": "Lee Reiners, CFA - authored reports on crypto policy SEC Crypto Task Force meetings Duke"},
+    {"title": "Christopher Tepedino - Writer | Journalist | LinkedIn", "url": "https://www.linkedin.com/in/chrisptepedino/", "snippet": "Christopher Tepedino - Writer Journalist covering blockchain Web3"},
+    {"title": "Emily Landon - The Crypto Recruiters | LinkedIn", "url": "https://www.linkedin.com/in/thecryptorecruiter", "snippet": "Emily Landon - The Crypto Recruiters"},
+    {"title": "Chris C. - Research & Due Diligence Lead - The Birb Nest | LinkedIn", "url": "https://www.linkedin.com/in/cryptoassessor/", "snippet": "Chris C. - Research Due Diligence Lead The Birb Nest"}
+  ]
+}
