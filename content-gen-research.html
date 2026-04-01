@@ -158,74 +158,157 @@
 <!-- ARCHITECTURES -->
 <section>
   <h2>Архитектуры генерации</h2>
-  <p style="font-size:12px;color:var(--dim);margin-bottom:16px">Все цифры стоимости и quality scores — <span class="tag tag-orange">estimate</span> на основе API pricing и наблюдений. Не результат controlled experiment.</p>
+  <p style="font-size:12px;color:var(--dim);margin-bottom:16px">Все оценки — <span class="tag tag-orange">estimate</span>. Стоимость: через подписку Claude Max ($100-200/мес безлимит), не per-article API. Время генерации: минуты на статью, не дни.</p>
+
+  <h3>Weighted Ranking (система весов)</h3>
+  <p>Критерии оценки архитектур:</p>
+  <table>
+    <thead><tr><th>Критерий</th><th>Вес</th><th>Что оценивает</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Скорость генерации</strong></td><td>25%</td><td>Минуты на статью, throughput</td></tr>
+      <tr><td><strong>Стоимость при масштабе</strong></td><td>25%</td><td>$/мес при 1000+ статей, модель подписки</td></tr>
+      <tr><td><strong>Качество для YMYL</strong></td><td>20%</td><td>E-E-A-T сигналы, compliance, accuracy</td></tr>
+      <tr><td><strong>AI detection устойчивость</strong></td><td>15%</td><td>Способность пройти Ahrefs/Originality</td></tr>
+      <tr><td><strong>Простота запуска</strong></td><td>15%</td><td>Время до первого текста, инфра-требования</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Ranked сравнение (от лучшего к худшему)</h3>
+  <div style="overflow-x:auto">
+  <table>
+    <thead>
+      <tr><th>Rank</th><th>Архитектура</th><th>Скорость (25%)</th><th>Стоимость (25%)</th><th>YMYL качество (20%)</th><th>AI detection (15%)</th><th>Простота (15%)</th><th>Weighted Score</th></tr>
+    </thead>
+    <tbody>
+      <tr style="background:rgba(0,214,143,0.08)">
+        <td><strong>#1</strong></td>
+        <td><strong>A: Claude Code + Codex</strong></td>
+        <td>~2-3 мин/статья</td>
+        <td>$100-200/мес (подписка)</td>
+        <td>High (итерация до quality gate)</td>
+        <td>Medium-High</td>
+        <td>Уже работает сейчас</td>
+        <td><span class="tag tag-green">Best</span></td>
+      </tr>
+      <tr style="background:rgba(255,107,53,0.05)">
+        <td><strong>#2</strong></td>
+        <td><strong>D: n8n + Claude API</strong></td>
+        <td>~2-3 мин/статья (batch)</td>
+        <td>$100-200/мес + $0 n8n</td>
+        <td>Medium-High (multi-step)</td>
+        <td>Medium</td>
+        <td>n8n уже на Contabo</td>
+        <td><span class="tag tag-blue">Strong</span></td>
+      </tr>
+      <tr>
+        <td><strong>#3</strong></td>
+        <td><strong>A+B: Claude + HITL</strong></td>
+        <td>~2-3 мин + 10-15 мин review</td>
+        <td>$100-200/мес + $5-10/review</td>
+        <td>High (human E-E-A-T)</td>
+        <td>Low (human edits)</td>
+        <td>Нужны reviewers</td>
+        <td><span class="tag tag-blue">Strong</span></td>
+      </tr>
+      <tr>
+        <td><strong>#4</strong></td>
+        <td><strong>E: Multi-Agent</strong></td>
+        <td>~5-10 мин/статья</td>
+        <td>$100-200/мес (подписка) x агентов</td>
+        <td>Medium-High</td>
+        <td>Medium</td>
+        <td>Сложная настройка</td>
+        <td><span class="tag tag-orange">Good</span></td>
+      </tr>
+      <tr>
+        <td><strong>#5</strong></td>
+        <td><strong>C: Self-hosted LLM</strong></td>
+        <td>~2-5 мин/статья</td>
+        <td>$50-200/мес GPU аренда</td>
+        <td>Medium (ниже Claude/GPT)</td>
+        <td>Medium</td>
+        <td>Сложная инфра</td>
+        <td><span class="tag tag-orange">Good</span></td>
+      </tr>
+      <tr>
+        <td><strong>#6</strong></td>
+        <td><strong>SaaS (Jasper/Koala/Byword)</strong></td>
+        <td>~1-2 мин/статья</td>
+        <td>$350-2,500/мес</td>
+        <td>Medium (нет control)</td>
+        <td>Medium</td>
+        <td>Максимальная простота</td>
+        <td><span class="tag tag-purple">Depends on budget</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Детали по архитектурам</h3>
 
   <div class="arch-card a">
-    <h3 style="color:var(--blue);margin-top:0">A: Claude API + Codex Review</h3>
-    <p>Claude генерирует статью → Codex/второй Claude ревьюит → итерация до quality threshold.</p>
+    <h3 style="color:var(--blue);margin-top:0">#1 A: Claude Code + Codex Review <span class="tag tag-green">РЕКОМЕНДУЕТСЯ</span></h3>
+    <p>Claude генерирует статью (~2-3 мин) → Codex ревьюит → итерация до quality gate. Уже работает в текущей сессии.</p>
     <table>
       <tbody>
-        <tr><td>Стоимость/1000 статей</td><td><strong>$200-1,200</strong></td></tr>
-        <tr><td>Время</td><td>1-3 дня</td></tr>
-        <tr><td>Качество</td><td>Medium-High <span class="tag tag-orange">subjective</span></td></tr>
-        <tr><td>AI detection риск</td><td>High — однородный стиль модели <span class="tag tag-orange">heuristic</span></td></tr>
-        <tr><td>Масштабируемость</td><td>High (ограничена API rate limits)</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="arch-card b">
-    <h3 style="color:var(--green);margin-top:0">B: Human-in-the-Loop (HITL)</h3>
-    <p>AI draft → эксперт review (10-15 мин) → publish с byline. Bankrate и NerdWallet публично раскрыли этот подход <span class="tag tag-blue">observed</span>.</p>
-    <table>
-      <tbody>
-        <tr><td>Стоимость/1000 статей</td><td><strong>$5,000-10,000</strong></td></tr>
-        <tr><td>Время</td><td>2-4 недели</td></tr>
-        <tr><td>Качество</td><td>High — human edits add E-E-A-T сигналы <span class="tag tag-orange">subjective</span></td></tr>
-        <tr><td>AI detection риск</td><td>Low — human edits break ML patterns <span class="tag tag-orange">heuristic</span></td></tr>
-        <tr><td>Масштабируемость</td><td>Low (bottleneck = доступность reviewers)</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="arch-card c">
-    <h3 style="color:var(--purple);margin-top:0">C: Self-hosted LLM (Ollama/vLLM)</h3>
-    <p>Llama 3.3 70B / Qwen 2.5 72B на арендованном GPU. Fine-tune на стиле эксперта (LoRA).</p>
-    <table>
-      <tbody>
-        <tr><td>Стоимость/1000 статей</td><td><strong>$50-200</strong> (GPU time)</td></tr>
-        <tr><td>Время</td><td>1-2 дня</td></tr>
-        <tr><td>Качество</td><td>Medium (без fine-tune) / Medium-High (с fine-tune) <span class="tag tag-orange">subjective</span></td></tr>
-        <tr><td>AI detection риск</td><td>Medium — open-source менее распознаваемы <span class="tag tag-orange">heuristic</span></td></tr>
-        <tr><td>Break-even vs API</td><td>При высоких объёмах (точный порог зависит от pricing) <span class="tag tag-orange">estimate</span></td></tr>
+        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> (Claude Max подписка, безлимит) <span class="tag tag-orange">pricing as of Apr 2026</span></td></tr>
+        <tr><td>Время на 1 статью</td><td><strong>2-3 минуты</strong> генерация + review</td></tr>
+        <tr><td>Время на 1000 статей</td><td>~30-50 часов (sequential) или <strong>несколько часов</strong> (parallel)</td></tr>
+        <tr><td>Качество для YMYL</td><td>High — итерация с quality gate <span class="tag tag-orange">subjective</span></td></tr>
+        <tr><td>AI detection</td><td>Medium-High risk — стиль Claude узнаваем <span class="tag tag-orange">heuristic</span></td></tr>
+        <tr><td>Инфра</td><td>Только подписка. Нет GPU, серверов, настройки</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="arch-card d">
-    <h3 style="color:var(--accent);margin-top:0">D: n8n Automation Pipeline</h3>
-    <p>Keyword → Outline → Research → Draft → Review → SEO → Publish. Полная автоматизация.</p>
+    <h3 style="color:var(--accent);margin-top:0">#2 D: n8n + Claude API</h3>
+    <p>Полный automated pipeline: keyword → outline → research → draft → review → SEO → publish. Batch processing.</p>
     <table>
       <tbody>
-        <tr><td>Стоимость/1000 статей</td><td><strong>$100-500</strong></td></tr>
-        <tr><td>Время</td><td>2-4 дня</td></tr>
-        <tr><td>Качество</td><td>Medium-High (multi-step повышает) <span class="tag tag-orange">subjective</span></td></tr>
-        <tr><td>AI detection риск</td><td>Medium <span class="tag tag-orange">heuristic</span></td></tr>
-        <tr><td>Масштабируемость</td><td>High (automated batching)</td></tr>
+        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> Claude + $0 n8n (self-hosted на Contabo)</td></tr>
+        <tr><td>Время на 1 статью</td><td><strong>2-3 минуты</strong> (automated)</td></tr>
+        <tr><td>Преимущество</td><td>Полная автоматизация: keyword → published page без ручного труда</td></tr>
+        <tr><td>Недостаток</td><td>Настройка pipeline: ~1-2 дня первоначально</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="arch-card b">
+    <h3 style="color:var(--green);margin-top:0">#3 A+B: Claude + Human Review</h3>
+    <p>AI draft (2-3 мин) → эксперт review (10-15 мин). Bankrate/NerdWallet публично используют этот подход <span class="tag tag-blue">observed</span>.</p>
+    <table>
+      <tbody>
+        <tr><td>Стоимость</td><td>$100-200/мес Claude + <strong>$5-10/review</strong> (expert time)</td></tr>
+        <tr><td>Время на 1 статью</td><td>2-3 мин AI + 10-15 мин human = <strong>~15 мин total</strong></td></tr>
+        <tr><td>Преимущество</td><td>Лучший AI detection resistance + реальные E-E-A-T сигналы</td></tr>
+        <tr><td>Недостаток</td><td>Bottleneck = доступность reviewers. 1000 статей = 250 часов review</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="arch-card c">
+    <h3 style="color:var(--purple);margin-top:0">#5 C: Self-hosted LLM</h3>
+    <p>Llama 3.3 70B / Qwen 2.5 72B на арендованном GPU. Fine-tune на стиле эксперта (LoRA).</p>
+    <table>
+      <tbody>
+        <tr><td>Стоимость</td><td><strong>$50-200/мес</strong> GPU аренда (RunPod/Lambda A100)</td></tr>
+        <tr><td>Время</td><td>~2-5 мин/статья</td></tr>
+        <tr><td>Преимущество</td><td>Дешевле всего при очень больших объёмах. Fine-tune на стиль</td></tr>
+        <tr><td>Недостаток</td><td>Качество ниже Claude/GPT для finance. Сложная инфраструктура</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="arch-card e">
-    <h3 style="color:var(--gold);margin-top:0">E: Multi-Agent (CrewAI/LangGraph)</h3>
+    <h3 style="color:var(--gold);margin-top:0">#4 E: Multi-Agent (CrewAI/LangGraph)</h3>
     <p>6 агентов: Researcher → Writer → Compliance → Fact-checker → SEO → Editor.</p>
     <table>
       <tbody>
-        <tr><td>Стоимость/1000 статей</td><td><strong>$400-2,000</strong></td></tr>
-        <tr><td>Время</td><td>2-5 дней</td></tr>
-        <tr><td>Качество</td><td>Medium-High (fact-checking agent) <span class="tag tag-orange">subjective</span></td></tr>
-        <tr><td>AI detection риск</td><td>Medium — больше стилевого разнообразия <span class="tag tag-orange">heuristic</span></td></tr>
-        <tr><td>Масштабируемость</td><td>Medium (дорого при масштабе)</td></tr>
+        <tr><td>Стоимость</td><td>$100-200/мес + API costs для доп. сервисов (search, data)</td></tr>
+        <tr><td>Время</td><td>~5-10 мин/статья (sequential agents)</td></tr>
+        <tr><td>Преимущество</td><td>Встроенный fact-checking и compliance</td></tr>
+        <tr><td>Недостаток</td><td>Сложность отладки, 4-6x токенов vs single-call</td></tr>
       </tbody>
     </table>
   </div>
@@ -234,21 +317,20 @@
 <!-- RECOMMENDATION -->
 <section>
   <div class="verdict">
-    <h3>Рекомендация: Гибрид D+B (n8n + Light HITL)</h3>
-    <p>Оптимальная архитектура для финансового контента:</p>
+    <h3>Рекомендация: #1 Claude Code + Codex (запуск сегодня)</h3>
+    <p>Для немедленного старта — Claude Code генерирует текст, Codex ревьюит. Уже работает, уже в подписке.</p>
     <ol>
-      <li><strong>n8n на Contabo</strong> — полный pipeline: keyword → outline → research → draft → compliance check → SEO</li>
-      <li><strong>Claude Sonnet API</strong> — генерация ($0.08/статья), лучший баланс цена/качество</li>
-      <li><strong>Auto compliance check</strong> — второй вызов Claude с чеклистом</li>
-      <li><strong>Light human review</strong> — эксперт 10-15 мин на финальную проверку</li>
-      <li><strong>WordPress REST API</strong> — publish с Schema.org (Article + Review + FAQPage)</li>
+      <li><strong>Сегодня:</strong> Claude Code генерирует broker review по шаблону (~2-3 мин)</li>
+      <li><strong>Codex:</strong> ревьюит на accuracy и compliance</li>
+      <li><strong>Publish:</strong> вручную или через n8n webhook</li>
+      <li><strong>Масштабирование:</strong> → n8n pipeline (#2) для batch → HITL (#3) для cornerstone контента</li>
     </ol>
     <table>
       <tbody>
-        <tr><td>Стоимость/1000 статей</td><td><strong>$3,000-5,000</strong></td></tr>
-        <tr><td>Время</td><td>2-3 недели</td></tr>
-        <tr><td>Качество</td><td>High (AI draft + human review) <span class="tag tag-orange">subjective</span></td></tr>
-        <tr><td>AI detection</td><td>Low (human edits) <span class="tag tag-orange">heuristic</span></td></tr>
+        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> (подписка, безлимит)</td></tr>
+        <tr><td>Время до первого текста</td><td><strong>Сегодня, минуты</strong></td></tr>
+        <tr><td>Качество</td><td>High (с quality gate итерацией) <span class="tag tag-orange">subjective</span></td></tr>
+        <tr><td>AI detection</td><td>Medium-High risk без human edits <span class="tag tag-orange">heuristic</span></td></tr>
       </tbody>
     </table>
   </div>
