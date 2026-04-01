@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Generation Research — Проект Егора</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root { --bg:#0a0a0f; --surface:#12121a; --surface-2:#1a1a26; --border:#2a2a3a; --text:#e8e8f0; --dim:#8888a0; --accent:#ff6b35; --gold:#ffd700; --green:#00d68f; --red:#ff4757; --blue:#4ecdc4; --purple:#a855f7; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px}
+  .hero{padding:60px 40px;background:linear-gradient(135deg,#12121a,#0a1628);border-bottom:1px solid var(--border)}
+  .hero h1{font-size:36px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .sub{font-size:16px;color:var(--dim);margin-top:12px}
+  .container{max-width:1200px;margin:0 auto;padding:40px}
+  section{margin-bottom:56px}
+  h2{font-size:24px;font-weight:800;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+  h3{font-size:18px;font-weight:700;margin:24px 0 12px;color:var(--gold)}
+  h4{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--blue)}
+  p{margin-bottom:14px}
+  table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:13px}
+  thead th{text-align:left;padding:10px 12px;background:var(--surface-2);color:var(--accent);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid var(--border)}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--border)}
+  tbody tr:hover{background:rgba(255,107,53,0.03)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px}
+  .card.highlight{border-color:var(--accent);background:linear-gradient(135deg,var(--surface),rgba(255,107,53,0.05))}
+  .card.green{border-color:var(--green)}
+  .card.red{border-color:var(--red)}
+  .tag{display:inline-block;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:600;text-transform:uppercase}
+  .tag-green{background:rgba(0,214,143,0.15);color:var(--green)}
+  .tag-red{background:rgba(255,71,87,0.15);color:var(--red)}
+  .tag-blue{background:rgba(78,205,196,0.15);color:var(--blue)}
+  .tag-orange{background:rgba(255,107,53,0.15);color:var(--accent)}
+  .tag-purple{background:rgba(168,85,247,0.15);color:var(--purple)}
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:20px 0}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center}
+  .stat-card .value{font-size:28px;font-weight:900;color:var(--accent);font-family:'JetBrains Mono',monospace}
+  .stat-card .label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+  .verdict{background:linear-gradient(135deg,rgba(0,214,143,0.1),rgba(255,215,0,0.05));border:2px solid var(--green);border-radius:16px;padding:32px;margin:32px 0}
+  .verdict h3{color:var(--green);margin-top:0}
+  .arch-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+  .arch-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+  .arch-card.a::before{background:var(--blue)}
+  .arch-card.b::before{background:var(--green)}
+  .arch-card.c::before{background:var(--purple)}
+  .arch-card.d::before{background:var(--accent)}
+  .arch-card.e::before{background:var(--gold)}
+  .arch-card.f::before{background:var(--red)}
+  ul,ol{margin:8px 0 16px 20px}
+  li{margin-bottom:6px}
+  strong{color:#fff}
+  code{background:var(--surface-2);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+  footer{text-align:center;padding:40px;color:var(--dim);font-size:13px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Content Generation: Исследование и Архитектуры</h1>
+  <div class="sub">Проект Егора | Как генерировать финансовый контент для SEO/GEO/LLMO | 4 исследования, 100+ источников</div>
+</div>
+
+<div class="container">
+
+<!-- KEY NUMBERS -->
+<section>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="value">$0.08</div><div class="label">За статью (Claude Sonnet)</div></div>
+    <div class="stat-card"><div class="value">87%</div><div class="label">YMYL-сайтов без E-E-A-T потеряли позиции</div></div>
+    <div class="stat-card"><div class="value">+527%</div><div class="label">Рост AI-referred sessions YoY</div></div>
+    <div class="stat-card"><div class="value">3.2x</div><div class="label">Чаще цитируется структурированный контент</div></div>
+    <div class="stat-card"><div class="value">4-5K</div><div class="label">Слов — конкурентный обзор брокера</div></div>
+  </div>
+</section>
+
+<!-- GOOGLE & AI CONTENT -->
+<section>
+  <h2>Google и AI-контент в 2026</h2>
+
+  <div class="card highlight">
+    <h4>Главный вывод</h4>
+    <p>Google <strong>НЕ наказывает AI-контент</strong> как таковой. Наказывает: mass-produced без экспертизы, без E-E-A-T, без человеческого review. Bankrate открыто использует AI + human expert review и ранжируется.</p>
+  </div>
+
+  <h3>Helpful Content System</h3>
+  <ul>
+    <li>С марта 2024 интегрирована в core ranking (не отдельный апдейт)</li>
+    <li>Information Gain Score — оценивает уникальную ценность страницы vs конкуренты</li>
+    <li>Оценка на уровне <strong>всего сайта</strong> — плохой контент тянет вниз всё</li>
+    <li>С июня 2025 — manual actions (полное удаление) за scaled content abuse</li>
+  </ul>
+
+  <h3>GEO/LLMO (Generative Engine Optimization)</h3>
+  <table>
+    <thead><tr><th>Метрика</th><th>Значение</th></tr></thead>
+    <tbody>
+      <tr><td>AI-referred sessions рост</td><td><strong>+527% YoY</strong></td></tr>
+      <tr><td>Потребители, использующие AI-search</td><td><strong>50%</strong> (McKinsey, окт 2025)</td></tr>
+      <tr><td>Падение CTR из-за AI Overviews</td><td><strong>-61%</strong></td></tr>
+      <tr><td>Структурированный контент цитируется чаще</td><td><strong>3.2x</strong> vs keyword-only</td></tr>
+      <tr><td>Факт каждые N слов для AI citation</td><td><strong>150-200 слов</strong></td></tr>
+      <tr><td>Контент свежести для ChatGPT citations</td><td><strong>76.4%</strong> из обновлённого за 30 дней</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Ahrefs AI Detection</h3>
+  <ul>
+    <li>Accuracy: <strong>80-85%</strong>, false positives: 0-8%</li>
+    <li>Bulk detection через Site Audit (Pro plan, 1K pages/crawl)</li>
+    <li>Обходится существенной человеческой редактурой</li>
+    <li>Отдельного API endpoint для AI detection нет</li>
+  </ul>
+</section>
+
+<!-- SaaS TOOLS -->
+<section>
+  <h2>SaaS-инструменты для контента</h2>
+
+  <div style="overflow-x:auto">
+  <table>
+    <thead>
+      <tr><th>Инструмент</th><th>Цена</th><th>Объём</th><th>Finance quality</th><th>Лучше всего для</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Jasper</strong></td><td>$69/мес (безлимит слов)</td><td>Unlimited</td><td><span class="tag tag-green">Best for YMYL</span></td><td>Compliance-heavy finance контент</td>
+      </tr>
+      <tr>
+        <td><strong>Koala.sh</strong></td><td>$350/мес (1M слов)</td><td>До 10M слов/мес</td><td><span class="tag tag-orange">Moderate</span></td><td>Bulk affiliate контент</td>
+      </tr>
+      <tr>
+        <td><strong>Byword.ai</strong></td><td>$2.50-5/статья</td><td>Unlimited plan $2,499</td><td><span class="tag tag-blue">Good</span></td><td>Programmatic SEO батчами</td>
+      </tr>
+      <tr>
+        <td><strong>SEOmatic</strong></td><td>$399-899/мес</td><td>5K-20K+ страниц/мес</td><td><span class="tag tag-blue">Good</span></td><td>Template-driven bulk страницы</td>
+      </tr>
+      <tr>
+        <td><strong>Frase</strong></td><td>$49-299/мес</td><td>10-100 статей/мес</td><td><span class="tag tag-blue">Good</span></td><td>SERP research + генерация</td>
+      </tr>
+      <tr>
+        <td><strong>Surfer SEO</strong></td><td>$99-219/мес + $29/статья</td><td>5-20 AI статей/мес</td><td><span class="tag tag-orange">Moderate</span></td><td>SEO-оптимизация (не генерация)</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ARCHITECTURES -->
+<section>
+  <h2>Архитектуры генерации</h2>
+
+  <div class="arch-card a">
+    <h3 style="color:var(--blue);margin-top:0">A: Claude API + Codex Review</h3>
+    <p>Claude генерирует статью → Codex/второй Claude ревьюит → итерация до quality threshold.</p>
+    <table>
+      <tbody>
+        <tr><td>Стоимость/1000 статей</td><td><strong>$200-1,200</strong></td></tr>
+        <tr><td>Время</td><td>1-3 дня</td></tr>
+        <tr><td>Качество</td><td>7-8/10</td></tr>
+        <tr><td>AI detection риск</td><td><span class="tag tag-red">Высокий</span></td></tr>
+        <tr><td>Масштабируемость</td><td>9/10</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="arch-card b">
+    <h3 style="color:var(--green);margin-top:0">B: Human-in-the-Loop (HITL)</h3>
+    <p>AI draft → эксперт review (10-15 мин) → publish с byline. Industry standard NerdWallet/Bankrate.</p>
+    <table>
+      <tbody>
+        <tr><td>Стоимость/1000 статей</td><td><strong>$5,000-10,000</strong></td></tr>
+        <tr><td>Время</td><td>2-4 недели</td></tr>
+        <tr><td>Качество</td><td>8-9/10</td></tr>
+        <tr><td>AI detection риск</td><td><span class="tag tag-green">Низкий</span></td></tr>
+        <tr><td>Масштабируемость</td><td>4/10 (bottleneck = люди)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="arch-card c">
+    <h3 style="color:var(--purple);margin-top:0">C: Self-hosted LLM (Ollama/vLLM)</h3>
+    <p>Llama 3.3 70B / Qwen 2.5 72B на арендованном GPU. Fine-tune на стиле эксперта (LoRA).</p>
+    <table>
+      <tbody>
+        <tr><td>Стоимость/1000 статей</td><td><strong>$50-200</strong> (GPU time)</td></tr>
+        <tr><td>Время</td><td>1-2 дня</td></tr>
+        <tr><td>Качество</td><td>5-7/10 (без fine-tune) / 6.5-7.5 (с fine-tune)</td></tr>
+        <tr><td>AI detection риск</td><td><span class="tag tag-blue">Средний</span></td></tr>
+        <tr><td>Break-even vs API</td><td>>2M токенов/день</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="arch-card d">
+    <h3 style="color:var(--accent);margin-top:0">D: n8n Automation Pipeline</h3>
+    <p>Keyword → Outline → Research → Draft → Review → SEO → Publish. Полная автоматизация.</p>
+    <table>
+      <tbody>
+        <tr><td>Стоимость/1000 статей</td><td><strong>$100-500</strong></td></tr>
+        <tr><td>Время</td><td>2-4 дня</td></tr>
+        <tr><td>Качество</td><td>7-8/10</td></tr>
+        <tr><td>AI detection риск</td><td><span class="tag tag-blue">Средний</span></td></tr>
+        <tr><td>Масштабируемость</td><td>9/10</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="arch-card e">
+    <h3 style="color:var(--gold);margin-top:0">E: Multi-Agent (CrewAI/LangGraph)</h3>
+    <p>6 агентов: Researcher → Writer → Compliance → Fact-checker → SEO → Editor.</p>
+    <table>
+      <tbody>
+        <tr><td>Стоимость/1000 статей</td><td><strong>$400-2,000</strong></td></tr>
+        <tr><td>Время</td><td>2-5 дней</td></tr>
+        <tr><td>Качество</td><td>8-8.5/10</td></tr>
+        <tr><td>AI detection риск</td><td><span class="tag tag-blue">Средний</span></td></tr>
+        <tr><td>Масштабируемость</td><td>7/10</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- RECOMMENDATION -->
+<section>
+  <div class="verdict">
+    <h3>Рекомендация: Гибрид D+B (n8n + Light HITL)</h3>
+    <p>Оптимальная архитектура для финансового контента:</p>
+    <ol>
+      <li><strong>n8n на Contabo</strong> — полный pipeline: keyword → outline → research → draft → compliance check → SEO</li>
+      <li><strong>Claude Sonnet API</strong> — генерация ($0.08/статья), лучший баланс цена/качество</li>
+      <li><strong>Auto compliance check</strong> — второй вызов Claude с чеклистом</li>
+      <li><strong>Light human review</strong> — эксперт 10-15 мин на финальную проверку</li>
+      <li><strong>WordPress REST API</strong> — publish с Schema.org (Article + Review + FAQPage)</li>
+    </ol>
+    <table>
+      <tbody>
+        <tr><td>Стоимость/1000 статей</td><td><strong>$3,000-5,000</strong></td></tr>
+        <tr><td>Время</td><td>2-3 недели</td></tr>
+        <tr><td>Качество</td><td><strong>8.5/10</strong></td></tr>
+        <tr><td>AI detection</td><td><span class="tag tag-green">Низкий</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- BROKER REVIEW TEMPLATE -->
+<section>
+  <h2>Шаблон обзора брокера</h2>
+
+  <h3>Обязательные секции (из анализа ForexBrokers.com, BrokerChooser, Investopedia)</h3>
+  <table>
+    <thead><tr><th>#</th><th>Секция</th><th>Автоматизируемо?</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Editorial Verdict + Overall Score</td><td><span class="tag tag-red">Эксперт</span></td></tr>
+      <tr><td>2</td><td>Pros & Cons (Schema positiveNotes/negativeNotes)</td><td><span class="tag tag-orange">AI + review</span></td></tr>
+      <tr><td>3</td><td>Fees Breakdown + Comparison Table (3 брокера)</td><td><span class="tag tag-green">Автоматизируемо</span></td></tr>
+      <tr><td>4</td><td>Safety/Regulation (лицензии по тирам)</td><td><span class="tag tag-green">Автоматизируемо</span></td></tr>
+      <tr><td>5</td><td>Trading Platforms + Mobile App</td><td><span class="tag tag-orange">AI + review</span></td></tr>
+      <tr><td>6</td><td>Product Selection</td><td><span class="tag tag-green">Автоматизируемо</span></td></tr>
+      <tr><td>7</td><td>Competitor Comparison</td><td><span class="tag tag-green">Автоматизируемо</span></td></tr>
+      <tr><td>8</td><td>FAQ (с FAQPage schema)</td><td><span class="tag tag-orange">AI + review</span></td></tr>
+      <tr><td>9</td><td>Methodology Disclosure</td><td><span class="tag tag-green">Template</span></td></tr>
+      <tr><td>10</td><td>Expert Quote + Photo + Credentials (E-E-A-T сигнал, не обязательный ranking factor)</td><td><span class="tag tag-red">Эксперт</span></td></tr>
+    </tbody>
+  </table>
+
+  <h3>Минимальный объём для SEO</h3>
+  <ul>
+    <li>Менее 2,500 слов — низкие шансы конкурировать по коммерческим keywords (наблюдение, не правило)</li>
+    <li><strong>4,000-5,000 слов</strong> — типичный объём у конкурентов (ForexBrokers, BrokerChooser)</li>
+    <li>6,000-10,000 слов — наблюдается у top-ranked обзоров (BrokerChooser). NerdWallet ранжируется и с меньшим объёмом</li>
+  </ul>
+
+  <h3>Schema.org (обязательный минимум)</h3>
+  <ul>
+    <li><code>Review</code> + <code>Product</code> + <code>Article</code> в @graph</li>
+    <li><code>positiveNotes</code> / <code>negativeNotes</code> как ItemList</li>
+    <li><code>FAQPage</code> для FAQ секции (Google ограничил rich results для FAQ в 2023, но schema всё ещё используется топ-сайтами)</li>
+    <li><code>BreadcrumbList</code></li>
+    <li><code>Person</code> с sameAs на LinkedIn для авторов</li>
+  </ul>
+</section>
+
+<!-- EXPERT VOICE -->
+<section>
+  <h2>Клонирование стиля эксперта</h2>
+
+  <table>
+    <thead><tr><th>Метод</th><th>Качество</th><th>Стоимость</th><th>Когда использовать</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Few-shot prompting</strong></td>
+        <td>~75% voice match</td>
+        <td>$0 (API tokens)</td>
+        <td>Быстрый старт, MVP</td>
+      </tr>
+      <tr>
+        <td><strong>RAG + style examples</strong></td>
+        <td>~80% voice match</td>
+        <td>$0-50 (vector DB)</td>
+        <td>Когда нужна domain accuracy + голос</td>
+      </tr>
+      <tr>
+        <td><strong>QLoRA fine-tune (70B)</strong></td>
+        <td>~90% voice match</td>
+        <td>$50-100 per run</td>
+        <td>Лучший результат, нужно 200+ примеров</td>
+      </tr>
+      <tr>
+        <td><strong>Jasper Brand Voice</strong></td>
+        <td>~70% voice match</td>
+        <td>$69/мес</td>
+        <td>Быстро, без инфраструктуры</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- WHAT WORKS IN FINANCE -->
+<section>
+  <h2>Что работает в финансах (кейсы)</h2>
+
+  <div class="card green">
+    <h4>Bankrate — УСПЕХ</h4>
+    <p>Открыто раскрыли AI-assisted content. AI draft + human expert edit + "AI-assisted" маркировка. Продолжают ранжироваться по конкурентным keywords.</p>
+  </div>
+
+  <div class="card red">
+    <h4>HubSpot — ПРОВАЛ</h4>
+    <p>Organic traffic упал на 70-80% (13.5M → 7M visits). Generic high-volume content strategy без expertise сигналов.</p>
+  </div>
+
+  <div class="card highlight">
+    <h4>Формула успеха</h4>
+    <p><strong>50-100 качественных AI+human статей = +30-80% трафика.</strong><br>
+    1000+ unedited AI статей = -40-90% трафика.</p>
+    <p>Ключ: AI как инструмент черновика + человеческая экспертиза + E-E-A-T сигналы.</p>
+  </div>
+</section>
+
+<!-- OPEN SOURCE -->
+<section>
+  <h2>Open-source инструменты</h2>
+
+  <table>
+    <thead><tr><th>Репо</th><th>Описание</th><th>Подход</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://github.com/TheCraigHewitt/seomachine">seomachine</a></td><td>Claude Code workspace для long-form SEO</td><td>Claude Code native</td></tr>
+      <tr><td><a href="https://github.com/crewAIInc/crewAI-examples">crewAI-examples</a></td><td>Content Creator Flow (blogs, LinkedIn, reports)</td><td>Multi-agent</td></tr>
+      <tr><td><a href="https://github.com/chanupadeshan/LLM-Powered-Multi-Agent-Blog-Generator">Multi-Agent Blog Generator</a></td><td>7 агентов: research, writing, SEO, QA</td><td>CrewAI + GPT</td></tr>
+      <tr><td><a href="https://github.com/brightdata/seo-article-generator">seo-article-generator</a></td><td>Bright Data MCP + AI generation</td><td>Scraping + AI</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Finance-specific generators:</strong> не найдено ни одного. Это gap в рынке.</p>
+</section>
+
+<!-- SELF-HOSTED -->
+<section>
+  <h2>Self-hosted LLM</h2>
+
+  <table>
+    <thead><tr><th>Модель</th><th>Параметры</th><th>VRAM</th><th>Качество finance</th><th>GPU (минимум)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Qwen 3 235B (MoE)</strong></td><td>235B (22B active)</td><td>~48GB Q4</td><td>8/10</td><td>1x A100 80GB</td></tr>
+      <tr><td><strong>Qwen 2.5 72B</strong></td><td>72B</td><td>~40GB Q4</td><td>7.5/10</td><td>1x A100 80GB</td></tr>
+      <tr><td><strong>Llama 3.3 70B</strong></td><td>70B</td><td>~40GB Q4</td><td>7/10</td><td>1x A100 80GB</td></tr>
+    </tbody>
+  </table>
+
+  <h3>GPU аренда</h3>
+  <table>
+    <thead><tr><th>Провайдер</th><th>A100 80GB $/час</th></tr></thead>
+    <tbody>
+      <tr><td>Thunder Compute</td><td><strong>$0.78</strong></td></tr>
+      <tr><td>Jarvislabs</td><td>$1.49</td></tr>
+      <tr><td>RunPod</td><td>$1.74</td></tr>
+      <tr><td>Lambda</td><td>$2.06</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Break-even:</strong> Self-hosted выгоднее API при >2M токенов/день (~100+ статей/день).</p>
+</section>
+
+</div>
+
+<footer>
+  Проект Егора | Content Generation Research | 1 апреля 2026 | 4 исследования, 100+ источников
+</footer>
+
+</body>
+</html>

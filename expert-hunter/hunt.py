@@ -101,7 +101,7 @@ def extract_name(text: str, url: str) -> str:
     return parts if len(parts) < 50 else handle
 
 
-def enrich_candidate(name: str, url: str, snippet: str, niche: str, geo: str) -> dict:
+def enrich_candidate(name: str, url: str, snippet: str, niche: str, geo: str, title: str = "") -> dict:
     text = f"{name} {snippet}"
 
     creds = [c for c, p in CREDENTIAL_PATTERNS.items() if re.search(p, text, re.IGNORECASE)]
@@ -125,13 +125,18 @@ def enrich_candidate(name: str, url: str, snippet: str, niche: str, geo: str) ->
             experience = "15_19"; break
 
     company = ""
-    # Only extract company from "at Company" pattern — most reliable
+    # Try "at Company" in snippet (most reliable)
     cm = re.search(r'\bat\s+([A-Z][A-Za-z\s&.]+?)(?:\s*[,|]|\s*$)', snippet)
     if cm:
         candidate_company = cm.group(1).strip()[:50]
-        # Reject if it looks like a location (2 words or less, no uppercase mid-word)
-        if len(candidate_company.split()) >= 2 or any(c.isupper() for c in candidate_company[1:]):
+        # Reject if single word and all lowercase after first char (likely location)
+        if len(candidate_company.split()) >= 2:
             company = candidate_company
+    elif title:
+        # Fallback: "Name - Company | LinkedIn" pattern in title (not snippet)
+        cm2 = re.search(r'-\s+([A-Z][A-Za-z\s&.]+?)\s*\|\s*LinkedIn', title)
+        if cm2:
+            company = cm2.group(1).strip()[:50]
 
     entity = "none"
     if len(text) > 100 and creds:
@@ -255,7 +260,7 @@ def hunt(niche: str, geo: str, test_fixture: str = None) -> list[ExpertCandidate
                 # Enrich from THIS result's title ONLY — no shared summary contamination
                 per_result_snippet = entry.get("snippet", title)
                 name = extract_name(title, url)
-                enriched = enrich_candidate(name, url, per_result_snippet, niche, geo)
+                enriched = enrich_candidate(name, url, per_result_snippet, niche, geo, title=title)
                 # Trace: link back to raw artifact with result index
                 enriched["raw_source_file"] = os.path.basename(raw_file)
                 enriched["raw_source_index"] = idx
@@ -341,14 +346,16 @@ def main():
     all_candidates = []
     base = os.path.dirname(os.path.abspath(__file__))
     for niche in niches:
-        fixture = args.fixture
-        if fixture and not os.path.exists(fixture):
-            # Try niche-specific fixture in fixtures/ directory
-            niche_fixture = os.path.join(base, "fixtures", f"{niche}_{args.geo.lower()}.json")
-            if os.path.exists(niche_fixture):
-                fixture = niche_fixture
+        fixture = None
+        if args.fixture:
+            if os.path.isfile(args.fixture):
+                # Explicit fixture file given — use for all niches
+                fixture = args.fixture
             else:
-                fixture = None  # no fixture for this niche, use production path
+                # Try niche-specific fixture in fixtures/ directory
+                niche_fixture = os.path.join(base, "fixtures", f"{niche}_{args.geo.lower()}.json")
+                if os.path.exists(niche_fixture):
+                    fixture = niche_fixture
         result = hunt(niche, args.geo, fixture)
         all_candidates.extend(result)
 
