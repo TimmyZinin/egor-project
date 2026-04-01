@@ -61,6 +61,7 @@
   <h1>Content Generation: Исследование и Архитектуры</h1>
   <div class="sub">Проект Егора | Как генерировать финансовый контент для SEO/GEO/LLMO</div>
   <p style="font-size:12px;color:var(--dim);margin-top:12px">Маркировка: <span class="tag tag-green">verified</span> = подтверждено из первоисточника | <span class="tag tag-blue">observed</span> = наблюдение из анализа конкурентов | <span class="tag tag-orange">estimate</span> = расчёт/оценка | <span class="tag tag-purple">third-party</span> = данные из отраслевых отчётов</p>
+  <p style="font-size:12px;color:var(--dim);margin-top:4px"><strong>Disclaimer:</strong> Этот документ — strategic research brief, не source-audited factual report. Архитектурные сравнения, quality assessments, pricing и risk оценки основаны на расчётах и industry observations. Не является investment или legal advice.</p>
 </div>
 
 <div class="container">
@@ -292,25 +293,25 @@
     <tbody>
       <tr>
         <td><strong>Few-shot prompting</strong></td>
-        <td>~75% voice match</td>
+        <td>Basic voice match <span class="tag tag-orange">subjective</span></td>
         <td>$0 (API tokens)</td>
         <td>Быстрый старт, MVP</td>
       </tr>
       <tr>
         <td><strong>RAG + style examples</strong></td>
-        <td>~80% voice match</td>
+        <td>Better voice match <span class="tag tag-orange">subjective</span></td>
         <td>$0-50 (vector DB)</td>
         <td>Когда нужна domain accuracy + голос</td>
       </tr>
       <tr>
         <td><strong>QLoRA fine-tune (70B)</strong></td>
-        <td>~90% voice match</td>
+        <td>Best voice match <span class="tag tag-orange">subjective</span></td>
         <td>$50-100 per run</td>
         <td>Лучший результат, нужно 200+ примеров</td>
       </tr>
       <tr>
         <td><strong>Jasper Brand Voice</strong></td>
-        <td>~70% voice match</td>
+        <td>Basic voice match <span class="tag tag-orange">subjective</span></td>
         <td>$69/мес</td>
         <td>Быстро, без инфраструктуры</td>
       </tr>
@@ -362,9 +363,9 @@
   <table>
     <thead><tr><th>Модель</th><th>Параметры</th><th>VRAM</th><th>Качество finance</th><th>GPU (минимум)</th></tr></thead>
     <tbody>
-      <tr><td><strong>Qwen 3 235B (MoE)</strong></td><td>235B (22B active)</td><td>~48GB Q4</td><td>8/10</td><td>1x A100 80GB</td></tr>
-      <tr><td><strong>Qwen 2.5 72B</strong></td><td>72B</td><td>~40GB Q4</td><td>7.5/10</td><td>1x A100 80GB</td></tr>
-      <tr><td><strong>Llama 3.3 70B</strong></td><td>70B</td><td>~40GB Q4</td><td>7/10</td><td>1x A100 80GB</td></tr>
+      <tr><td><strong>Qwen 3 235B (MoE)</strong></td><td>235B (22B active)</td><td>~48GB Q4</td><td>Best open-weight for reasoning <span class="tag tag-orange">subjective</span></td><td>1x A100 80GB</td></tr>
+      <tr><td><strong>Qwen 2.5 72B</strong></td><td>72B</td><td>~40GB Q4</td><td>Strong creative writing <span class="tag tag-orange">subjective</span></td><td>1x A100 80GB</td></tr>
+      <tr><td><strong>Llama 3.3 70B</strong></td><td>70B</td><td>~40GB Q4</td><td>Clean formatting, less babysitting <span class="tag tag-orange">subjective</span></td><td>1x A100 80GB</td></tr>
     </tbody>
   </table>
 
