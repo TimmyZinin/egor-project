@@ -81,7 +81,7 @@
 
   <div class="card highlight">
     <h4>Главный вывод</h4>
-    <p>Google <strong>НЕ наказывает AI-контент</strong> как таковой. Наказывает: mass-produced без экспертизы, без E-E-A-T, без человеческого review. Bankrate открыто использует AI + human expert review и ранжируется.</p>
+    <p>Google официально заявляет что <strong>не наказывает AI-контент per se</strong> (источник: <a href="https://developers.google.com/search/blog/2023/02/google-search-and-ai-content">Google Search Central, Feb 2023</a>). Наказывает: mass-produced low-quality контент через "scaled content abuse" policy (источник: <a href="https://blog.google/products/search/google-search-update-march-2024/">Google March 2024 Update</a>). Bankrate публично раскрыл использование AI-assisted контента и продолжает ранжироваться (наблюдение, не гарантия).</p>
   </div>
 
   <h3>Helpful Content System</h3>
@@ -275,11 +275,11 @@
 
   <h3>Schema.org (обязательный минимум)</h3>
   <ul>
-    <li><code>Review</code> + <code>Product</code> + <code>Article</code> в @graph</li>
-    <li><code>positiveNotes</code> / <code>negativeNotes</code> как ItemList</li>
-    <li><code>FAQPage</code> для FAQ секции (Google ограничил rich results для FAQ в 2023, но schema всё ещё используется топ-сайтами)</li>
+    <li><code>Review</code> + <code>Product</code> + <code>Article</code> в @graph (наблюдается у ForexBrokers.com)</li>
+    <li><code>positiveNotes</code> / <code>negativeNotes</code> как ItemList (наблюдается у ForexBrokers.com)</li>
+    <li><code>FAQPage</code> — Google ограничил rich results для FAQ в 2023 (<a href="https://developers.google.com/search/docs/appearance/structured-data/faqpage">источник</a>), rich snippets теперь в основном для gov/health. Но ForexBrokers/BrokerChooser всё ещё используют</li>
     <li><code>BreadcrumbList</code></li>
-    <li><code>Person</code> с sameAs на LinkedIn для авторов</li>
+    <li><code>Person</code> с sameAs на LinkedIn — используется ForexBrokers.com для author attribution (E-E-A-T сигнал, не доказанный ranking factor)</li>
   </ul>
 </section>
 
@@ -333,10 +333,9 @@
   </div>
 
   <div class="card highlight">
-    <h4>Формула успеха</h4>
-    <p><strong>50-100 качественных AI+human статей = +30-80% трафика.</strong><br>
-    1000+ unedited AI статей = -40-90% трафика.</p>
-    <p>Ключ: AI как инструмент черновика + человеческая экспертиза + E-E-A-T сигналы.</p>
+    <h4>Наблюдаемые паттерны (не гарантии)</h4>
+    <p>Google сам заявляет: E-E-A-T — это концепция Quality Rater Guidelines, <strong>не прямой ranking factor</strong> (<a href="https://developers.google.com/search/blog/2022/12/google-raters-guidelines-e-e-a-t">источник</a>). Но: сайты с expertise сигналами наблюдаемо ранжируются лучше в YMYL вертикалях.</p>
+    <p>Bankrate и NerdWallet используют AI-assisted drafts + human expert review — это текущий industry standard, не доказательство что это единственный рабочий подход.</p>
   </div>
 </section>
 
