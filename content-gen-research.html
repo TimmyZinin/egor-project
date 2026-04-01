@@ -158,7 +158,7 @@
 <!-- ARCHITECTURES -->
 <section>
   <h2>Архитектуры генерации</h2>
-  <p style="font-size:12px;color:var(--dim);margin-bottom:16px">Все оценки — <span class="tag tag-orange">estimate</span>. Стоимость: через подписку Claude Max ($100-200/мес безлимит), не per-article API. Время генерации: минуты на статью, не дни.</p>
+  <p style="font-size:12px;color:var(--dim);margin-bottom:16px">Все оценки — <span class="tag tag-orange">estimate</span>. Стоимость: через подписку Claude Max ($100-200/мес, <a href="https://support.claude.com/en/articles/11014257-about-claude-s-max-plan-usage">есть usage limits</a>). Время генерации: минуты на статью (зависит от prompt, retries, review loop).</p>
 
   <h3>Weighted Ranking (система весов)</h3>
   <p>Критерии оценки архитектур:</p>
@@ -184,7 +184,7 @@
         <td><strong>#1</strong></td>
         <td><strong>A: Claude Code + Codex</strong></td>
         <td>~2-3 мин/статья</td>
-        <td>$100-200/мес (подписка)</td>
+        <td>$100-200/мес (Claude Max)</td>
         <td>High (итерация до quality gate)</td>
         <td>Medium-High</td>
         <td>Уже работает сейчас</td>
@@ -194,7 +194,7 @@
         <td><strong>#2</strong></td>
         <td><strong>D: n8n + Claude API</strong></td>
         <td>~2-3 мин/статья (batch)</td>
-        <td>$100-200/мес + $0 n8n</td>
+        <td>$100-200/мес + n8n CE (free sw)</td>
         <td>Medium-High (multi-step)</td>
         <td>Medium</td>
         <td>n8n уже на Contabo</td>
@@ -214,7 +214,7 @@
         <td><strong>#4</strong></td>
         <td><strong>E: Multi-Agent</strong></td>
         <td>~5-10 мин/статья</td>
-        <td>$100-200/мес (подписка) x агентов</td>
+        <td>$100-200/мес (Claude Max) x агентов</td>
         <td>Medium-High</td>
         <td>Medium</td>
         <td>Сложная настройка</td>
@@ -251,7 +251,7 @@
     <p>Claude генерирует статью (~2-3 мин) → Codex ревьюит → итерация до quality gate. Уже работает в текущей сессии.</p>
     <table>
       <tbody>
-        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> (Claude Max подписка, безлимит) <span class="tag tag-orange">pricing as of Apr 2026</span></td></tr>
+        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> (Claude Max, usage limits apply) <span class="tag tag-orange">pricing as of Apr 2026</span></td></tr>
         <tr><td>Время на 1 статью</td><td><strong>2-3 минуты</strong> генерация + review</td></tr>
         <tr><td>Время на 1000 статей</td><td>~30-50 часов (sequential) или <strong>несколько часов</strong> (parallel)</td></tr>
         <tr><td>Качество для YMYL</td><td>High — итерация с quality gate <span class="tag tag-orange">subjective</span></td></tr>
@@ -266,7 +266,7 @@
     <p>Полный automated pipeline: keyword → outline → research → draft → review → SEO → publish. Batch processing.</p>
     <table>
       <tbody>
-        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> Claude + $0 n8n (self-hosted на Contabo)</td></tr>
+        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> Claude + n8n Community Edition (free software, <a href="https://n8n.io/pricing">hosting not included</a>)</td></tr>
         <tr><td>Время на 1 статью</td><td><strong>2-3 минуты</strong> (automated)</td></tr>
         <tr><td>Преимущество</td><td>Полная автоматизация: keyword → published page без ручного труда</td></tr>
         <tr><td>Недостаток</td><td>Настройка pipeline: ~1-2 дня первоначально</td></tr>
@@ -327,7 +327,7 @@
     </ol>
     <table>
       <tbody>
-        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> (подписка, безлимит)</td></tr>
+        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> (Claude Max, usage limits apply)</td></tr>
         <tr><td>Время до первого текста</td><td><strong>Сегодня, минуты</strong></td></tr>
         <tr><td>Качество</td><td>High (с quality gate итерацией) <span class="tag tag-orange">subjective</span></td></tr>
         <tr><td>AI detection</td><td>Medium-High risk без human edits <span class="tag tag-orange">heuristic</span></td></tr>
