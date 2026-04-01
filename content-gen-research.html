@@ -69,8 +69,8 @@
 <section>
   <div class="stats-grid">
     <div class="stat-card"><div class="value">~$0.08</div><div class="label">За статью Claude Sonnet (расчёт)</div></div>
-    <div class="stat-card"><div class="value">+527%</div><div class="label">AI-referred sessions YoY (Previsible 2025)</div></div>
-    <div class="stat-card"><div class="value">-61%</div><div class="label">CTR из-за AI Overviews (Dataslayer)</div></div>
+    <div class="stat-card"><div class="value">3.26x</div><div class="label">ChatGPT referrals YoY (Previsible)</div></div>
+    <div class="stat-card"><div class="value">~70%</div><div class="label">Падение CTR с AI Overviews (Seer)</div></div>
     <div class="stat-card"><div class="value">4-5K</div><div class="label">Слов у конкурентов (наблюдение)</div></div>
   </div>
 </section>
@@ -87,30 +87,28 @@
   <h3>Helpful Content System</h3>
   <ul>
     <li>С марта 2024 интегрирована в core ranking (не отдельный апдейт)</li>
-    <li>Information Gain Score — оценивает уникальную ценность страницы vs конкуренты</li>
-    <li>Оценка на уровне <strong>всего сайта</strong> — плохой контент тянет вниз всё</li>
-    <li>С июня 2025 — manual actions (полное удаление) за scaled content abuse</li>
+    <li>Information Gain — концепция из Google patents/SEO research, <strong>не подтверждённый</strong> official ranking signal <span class="tag tag-orange">speculation</span></li>
+    <li>Ранжирование работает <strong>primarily на уровне страницы</strong>, site-wide сигналы могут влиять (<a href="https://developers.google.com/search/docs/appearance/ranking-systems-guide">Google Ranking Systems Guide</a>)</li>
+    <li>С марта 2024 — scaled content abuse spam policy + manual actions (<a href="https://developers.google.com/search/blog/2024/03/core-update-spam-policies">Google March 2024</a>)</li>
   </ul>
 
   <h3>GEO/LLMO (Generative Engine Optimization)</h3>
   <table>
     <thead><tr><th>Метрика</th><th>Значение</th></tr></thead>
     <tbody>
-      <tr><td>AI-referred sessions рост</td><td><strong>+527% YoY</strong></td></tr>
-      <tr><td>Потребители, использующие AI-search</td><td><strong>50%</strong> (McKinsey, окт 2025)</td></tr>
-      <tr><td>Падение CTR из-за AI Overviews</td><td><strong>-61%</strong></td></tr>
-      <tr><td>Структурированный контент цитируется чаще</td><td><strong>3.2x</strong> vs keyword-only</td></tr>
-      <tr><td>Факт каждые N слов для AI citation</td><td><strong>150-200 слов</strong></td></tr>
-      <tr><td>Контент свежести для ChatGPT citations</td><td><strong>76.4%</strong> из обновлённого за 30 дней</td></tr>
+      <tr><td>ChatGPT referrals рост</td><td><strong>3.26x YoY (+226%)</strong> <span class="tag tag-purple">Previsible 2025</span></td></tr>
+      <tr><td>Потребители, использующие AI-search</td><td><strong>~50%</strong> <span class="tag tag-purple">McKinsey</span></td></tr>
+      <tr><td>Падение organic CTR с AI Overviews</td><td><strong>~70%</strong> <span class="tag tag-purple">Seer Interactive</span></td></tr>
+      <tr><td>Рекомендация: факт/статистика каждые N слов</td><td>150-200 слов <span class="tag tag-orange">industry opinion</span></td></tr>
     </tbody>
   </table>
 
   <h3>Ahrefs AI Detection</h3>
   <ul>
-    <li>Accuracy: <strong>80-85%</strong>, false positives: 0-8%</li>
-    <li>Bulk detection через Site Audit (Pro plan, 1K pages/crawl)</li>
-    <li>Обходится существенной человеческой редактурой</li>
-    <li>Отдельного API endpoint для AI detection нет</li>
+    <li>Accuracy: <strong>точные цифры не подтверждены</strong> официально Ahrefs. Industry estimates ~80-85% <span class="tag tag-orange">estimate</span></li>
+    <li>Ahrefs обсуждает ограничения AI detection в <a href="https://ahrefs.com/blog/how-to-detect-ai-generated-content/">своём блоге</a></li>
+    <li>Человеческая редактура нарушает ML-паттерны (общий принцип AI detection)</li>
+    <li>Отдельного public API endpoint для AI detection не найдено</li>
   </ul>
 </section>
 
@@ -330,7 +328,7 @@
 
   <div class="card red">
     <h4>HubSpot — ПРОВАЛ</h4>
-    <p>Organic traffic упал ~48% (с ~13.5M до ~7M visits, Search Engine Land). Generic high-volume content strategy.</p>
+    <p>Organic traffic упал ~36% (с ~13.5M до ~8.6M visits, <a href="https://searchengineland.com/hubspot-seo-organic-traffic-drop-451096">Search Engine Land</a>). Generic high-volume content strategy.</p>
   </div>
 
   <div class="card highlight">
