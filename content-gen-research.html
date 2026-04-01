@@ -133,7 +133,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><strong>Jasper</strong></td><td>$69/мес/seat (Pro plan) <span class="tag tag-orange">check jasper.ai/pricing</span></td><td>Per-seat limits</td><td><span class="tag tag-green">Best for YMYL</span></td><td>Compliance-heavy finance контент</td>
+        <td><strong>Jasper</strong></td><td>$69/мес/seat (Pro plan) <span class="tag tag-orange">check jasper.ai/pricing</span></td><td>Per-seat limits</td><td><span class="tag tag-orange">Compliance features available</span> <span class="tag tag-orange">editorial</span></td><td>Compliance-heavy finance контент</td>
       </tr>
       <tr>
         <td><strong>Koala.sh</strong></td><td>$350/мес (1M слов)</td><td>До 10M слов/мес</td><td><span class="tag tag-orange">Moderate</span></td><td>Bulk affiliate контент</td>
@@ -142,7 +142,7 @@
         <td><strong>Byword.ai</strong></td><td>$2.50-5/статья</td><td>Self-Serve Unlimited $1,999/мес (<a href="https://learn.byword.ai/pricing/byword-unlimited">source</a>)</td><td><span class="tag tag-blue">Good</span></td><td>Programmatic SEO батчами</td>
       </tr>
       <tr>
-        <td><strong>SEOmatic</strong></td><td>$399-899/мес</td><td>5K-20K+ страниц/мес</td><td><span class="tag tag-blue">Good</span></td><td>Template-driven bulk страницы</td>
+        <td><strong>SEOmatic</strong></td><td><a href="https://seomatic.ai/pricing">See official pricing</a></td><td>Template-driven bulk</td><td><span class="tag tag-blue">Good</span></td><td>Template-driven bulk страницы</td>
       </tr>
       <tr>
         <td><strong>Frase</strong></td><td>$49-299/мес</td><td>10-100 статей/мес</td><td><span class="tag tag-blue">Good</span></td><td>SERP research + генерация</td>
@@ -158,7 +158,7 @@
 <!-- ARCHITECTURES -->
 <section>
   <h2>Архитектуры генерации</h2>
-  <p style="font-size:12px;color:var(--dim);margin-bottom:16px">Все оценки — <span class="tag tag-orange">estimate</span>. Стоимость: через подписку Claude Max ($100-200/мес, <a href="https://support.claude.com/en/articles/11014257-about-claude-s-max-plan-usage">есть usage limits</a>). Время генерации: минуты на статью (зависит от prompt, retries, review loop).</p>
+  <p style="font-size:12px;color:var(--dim);margin-bottom:16px">Все оценки — <span class="tag tag-orange">estimate</span>. Стоимость зависит от модели оплаты: Claude Max (подписка, usage limits) vs Anthropic API (per-token billing). Архитектуры с n8n/automation используют API billing, не подписку. Время генерации: estimates, зависят от prompt, retries, model load.</p>
 
   <h3>Weighted Ranking (система весов)</h3>
   <p>Критерии оценки архитектур:</p>
@@ -177,14 +177,14 @@
   <div style="overflow-x:auto">
   <table>
     <thead>
-      <tr><th>Rank</th><th>Архитектура</th><th>Скорость (25%)</th><th>Стоимость (25%)</th><th>YMYL качество (20%)</th><th>AI detection (15%)</th><th>Простота (15%)</th><th>Weighted Score</th></tr>
+      <tr><th>Rank</th><th>Архитектура</th><th>Скорость <span class="tag tag-orange">est.</span></th><th>Стоимость</th><th>YMYL качество <span class="tag tag-orange">editorial</span></th><th>AI detection <span class="tag tag-orange">heuristic</span></th><th>Простота</th><th>Editorial Assessment</th></tr>
     </thead>
     <tbody>
       <tr style="background:rgba(0,214,143,0.08)">
         <td><strong>#1</strong></td>
         <td><strong>A: Claude Code + Codex</strong></td>
-        <td>~2-3 мин/статья</td>
-        <td>$100-200/мес (Claude Max)</td>
+        <td>Minutes per article <span class="tag tag-orange">est.</span></td>
+        <td>Claude Max $100-200/мес (subscription, usage limits apply)</td>
         <td>High (итерация до quality gate)</td>
         <td>Medium-High</td>
         <td>Уже работает сейчас</td>
@@ -193,8 +193,8 @@
       <tr style="background:rgba(255,107,53,0.05)">
         <td><strong>#2</strong></td>
         <td><strong>D: n8n + Claude API</strong></td>
-        <td>~2-3 мин/статья (batch)</td>
-        <td>$100-200/мес + n8n CE (free sw)</td>
+        <td>Minutes per article <span class="tag tag-orange">est.</span></td>
+        <td>API-billed (per-token, depends on volume) + n8n CE (free sw, hosting separate)</td>
         <td>Medium-High (multi-step)</td>
         <td>Medium</td>
         <td>n8n уже на Contabo</td>
@@ -203,8 +203,8 @@
       <tr>
         <td><strong>#3</strong></td>
         <td><strong>A+B: Claude + HITL</strong></td>
-        <td>~2-3 мин + 10-15 мин review</td>
-        <td>$100-200/мес + $5-10/review</td>
+        <td>Minutes AI + 10-15 min human <span class="tag tag-orange">est.</span></td>
+        <td>Claude Max or API + $5-10/review (human cost)</td>
         <td>High (human E-E-A-T)</td>
         <td>Low (human edits)</td>
         <td>Нужны reviewers</td>
@@ -213,8 +213,8 @@
       <tr>
         <td><strong>#4</strong></td>
         <td><strong>E: Multi-Agent</strong></td>
-        <td>~5-10 мин/статья</td>
-        <td>$100-200/мес (Claude Max) x агентов</td>
+        <td>5-10 min/article <span class="tag tag-orange">est.</span></td>
+        <td>API-billed (multiple calls per article, scales with agents)</td>
         <td>Medium-High</td>
         <td>Medium</td>
         <td>Сложная настройка</td>
@@ -223,8 +223,8 @@
       <tr>
         <td><strong>#5</strong></td>
         <td><strong>C: Self-hosted LLM</strong></td>
-        <td>~2-5 мин/статья</td>
-        <td>$50-200/мес GPU аренда</td>
+        <td>Minutes per article <span class="tag tag-orange">est.</span></td>
+        <td>GPU rental $50-200/мес <span class="tag tag-orange">check current rates</span></td>
         <td>Medium (ниже Claude/GPT)</td>
         <td>Medium</td>
         <td>Сложная инфра</td>
@@ -233,47 +233,47 @@
       <tr>
         <td>#6</td>
         <td><strong>Jasper Pro</strong></td>
-        <td>~1-2 мин/статья</td>
+        <td>Minutes <span class="tag tag-orange">est.</span></td>
         <td>$69/мес/seat</td>
         <td>High (compliance features)</td>
         <td>Medium</td>
         <td>Максимальная простота</td>
-        <td><span class="tag tag-blue">Strong for compliance</span></td>
+        <td><span class="tag tag-orange">Has compliance features</span> <span class="tag tag-orange">editorial</span></td>
       </tr>
       <tr>
         <td>#7</td>
         <td><strong>Koala.sh Elite</strong></td>
-        <td>~1 мин/статья</td>
+        <td>Minutes <span class="tag tag-orange">est.</span></td>
         <td>$350/мес (1M слов)</td>
         <td>Medium (YMYL осторожно)</td>
         <td>Medium</td>
         <td>Очень простой</td>
-        <td><span class="tag tag-orange">Good for volume</span></td>
+        <td><span class="tag tag-orange">Volume-oriented</span> <span class="tag tag-orange">editorial</span></td>
       </tr>
       <tr>
         <td>#8</td>
         <td><strong>Byword.ai</strong></td>
-        <td>~1 мин/статья (batch)</td>
-        <td>$1,999/мес (unlimited)</td>
+        <td>Minutes (batch) <span class="tag tag-orange">est.</span></td>
+        <td>$1,999/мес (self-serve unlimited; may require own API key — check <a href="https://learn.byword.ai/pricing/byword-unlimited">docs</a>)</td>
         <td>Medium</td>
         <td>Medium</td>
         <td>CSV upload, batch</td>
-        <td><span class="tag tag-orange">Good for programmatic</span></td>
+        <td><span class="tag tag-orange">Programmatic focus</span> <span class="tag tag-orange">editorial</span></td>
       </tr>
       <tr>
         <td>#9</td>
         <td><strong>SEOmatic</strong></td>
         <td>Template-driven</td>
-        <td>$399-899/мес</td>
-        <td>Medium (template quality)</td>
-        <td>Low (template patterns)</td>
+        <td><a href="https://seomatic.ai/pricing">See pricing</a></td>
+        <td>Medium <span class="tag tag-orange">editorial</span></td>
+        <td>Template patterns <span class="tag tag-orange">heuristic</span></td>
         <td>Template builder</td>
-        <td><span class="tag tag-purple">For directory/comparison</span></td>
+        <td><span class="tag tag-orange">Directory/comparison focus</span> <span class="tag tag-orange">editorial</span></td>
       </tr>
       <tr>
         <td>#10</td>
         <td><strong>Frase</strong></td>
-        <td>~2-3 мин/статья</td>
+        <td>Minutes <span class="tag tag-orange">est.</span></td>
         <td>$49-299/мес</td>
         <td>Medium</td>
         <td>Medium</td>
@@ -288,15 +288,15 @@
 
   <div class="arch-card a">
     <h3 style="color:var(--blue);margin-top:0">#1 A: Claude Code + Codex Review <span class="tag tag-green">РЕКОМЕНДУЕТСЯ</span></h3>
-    <p>Claude генерирует статью (~2-3 мин) → Codex ревьюит → итерация до quality gate. Уже работает в текущей сессии.</p>
+    <p>Claude Code генерирует статью → Codex ревьюит → итерация до quality gate.</p>
     <table>
       <tbody>
-        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> (Claude Max, usage limits apply) <span class="tag tag-orange">pricing as of Apr 2026</span></td></tr>
-        <tr><td>Время на 1 статью</td><td><strong>2-3 минуты</strong> генерация + review</td></tr>
-        <tr><td>Время на 1000 статей</td><td>~30-50 часов (sequential) или <strong>несколько часов</strong> (parallel)</td></tr>
-        <tr><td>Качество для YMYL</td><td>High — итерация с quality gate <span class="tag tag-orange">subjective</span></td></tr>
-        <tr><td>AI detection</td><td>Medium-High risk — стиль Claude узнаваем <span class="tag tag-orange">heuristic</span></td></tr>
-        <tr><td>Инфра</td><td>Только подписка. Нет GPU, серверов, настройки</td></tr>
+        <tr><td>Стоимость</td><td>Claude Max $100-200/мес (subscription, <a href="https://support.claude.com/en/articles/11014257-about-claude-s-max-plan-usage">usage limits apply</a>) <span class="tag tag-orange">check current pricing</span></td></tr>
+        <tr><td>Время на 1 статью</td><td>Minutes (depends on prompt, retries, review loop) <span class="tag tag-orange">est.</span></td></tr>
+        <tr><td>Время на 1000 статей</td><td>Depends on usage limits and parallelism <span class="tag tag-orange">est.</span></td></tr>
+        <tr><td>Качество для YMYL</td><td>Iterative quality gate improves output <span class="tag tag-orange">editorial</span></td></tr>
+        <tr><td>AI detection</td><td>Claude style recognizable by detectors <span class="tag tag-orange">heuristic</span></td></tr>
+        <tr><td>Инфра</td><td>Subscription only. No GPU, no server setup</td></tr>
       </tbody>
     </table>
   </div>
@@ -306,8 +306,8 @@
     <p>Полный automated pipeline: keyword → outline → research → draft → review → SEO → publish. Batch processing.</p>
     <table>
       <tbody>
-        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> Claude + n8n Community Edition (free software, <a href="https://n8n.io/pricing">hosting not included</a>)</td></tr>
-        <tr><td>Время на 1 статью</td><td><strong>2-3 минуты</strong> (automated)</td></tr>
+        <tr><td>Стоимость</td><td>Anthropic API (per-token, depends on volume — not comparable to Claude Max subscription) + n8n CE (free software, <a href="https://n8n.io/pricing">hosting not included</a>)</td></tr>
+        <tr><td>Время на 1 статью</td><td>Minutes (automated batch) <span class="tag tag-orange">est.</span></td></tr>
         <tr><td>Преимущество</td><td>Полная автоматизация: keyword → published page без ручного труда</td></tr>
         <tr><td>Недостаток</td><td>Настройка pipeline: ~1-2 дня первоначально</td></tr>
       </tbody>
@@ -357,20 +357,21 @@
 <!-- RECOMMENDATION -->
 <section>
   <div class="verdict">
-    <h3>Рекомендация: #1 Claude Code + Codex (запуск сегодня)</h3>
-    <p>Для немедленного старта — Claude Code генерирует текст, Codex ревьюит. Уже работает, уже в подписке.</p>
+    <h3>Editorial recommendation: Claude Code + Codex for immediate start</h3>
+    <p><span class="tag tag-orange">editorial recommendation</span> This is not an externally validated verdict. It is our prioritization based on available options.</p>
     <ol>
-      <li><strong>Сегодня:</strong> Claude Code генерирует broker review по шаблону (~2-3 мин)</li>
-      <li><strong>Codex:</strong> ревьюит на accuracy и compliance</li>
-      <li><strong>Publish:</strong> вручную или через n8n webhook</li>
-      <li><strong>Масштабирование:</strong> → n8n pipeline (#2) для batch → HITL (#3) для cornerstone контента</li>
+      <li><strong>Immediate:</strong> Claude Code generates broker review draft (minutes, depends on prompt)</li>
+      <li><strong>Codex:</strong> reviews for accuracy and compliance</li>
+      <li><strong>Publish:</strong> manually or via n8n webhook</li>
+      <li><strong>Scale:</strong> → n8n pipeline for batch (API-billed) → HITL for cornerstone content</li>
     </ol>
     <table>
       <tbody>
-        <tr><td>Стоимость</td><td><strong>$100-200/мес</strong> (Claude Max, usage limits apply)</td></tr>
-        <tr><td>Время до первого текста</td><td><strong>Сегодня, минуты</strong></td></tr>
-        <tr><td>Качество</td><td>High (с quality gate итерацией) <span class="tag tag-orange">subjective</span></td></tr>
-        <tr><td>AI detection</td><td>Medium-High risk без human edits <span class="tag tag-orange">heuristic</span></td></tr>
+        <tr><td>Стоимость (Claude Code path)</td><td>Claude Max subscription ($100-200/мес, <a href="https://support.claude.com/en/articles/11014257-about-claude-s-max-plan-usage">usage limits</a>) <span class="tag tag-orange">check current</span></td></tr>
+        <tr><td>Стоимость (n8n path)</td><td>Anthropic API per-token billing (separate from Max) <span class="tag tag-orange">depends on volume</span></td></tr>
+        <tr><td>Время до первого текста</td><td>Minutes <span class="tag tag-orange">est.</span></td></tr>
+        <tr><td>Качество</td><td>Iterative quality gate <span class="tag tag-orange">editorial</span></td></tr>
+        <tr><td>AI detection</td><td>Claude style recognizable without human edits <span class="tag tag-orange">heuristic</span></td></tr>
       </tbody>
     </table>
   </div>
