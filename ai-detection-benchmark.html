@@ -109,7 +109,7 @@
 <section>
   <div class="stats-grid">
     <div class="stat-card"><div class="value">0.999</div><div class="label">Grammarly RAID score (#1) <span class="tag tag-purple">raid-bench.xyz</span></div></div>
-    <div class="stat-card"><div class="value">$0.15</div><div class="label">ZeroGPT за статью (4.5K слов) <span class="tag tag-green">verified</span></div></div>
+    <div class="stat-card"><div class="value">~$0.15</div><div class="label">ZeroGPT за статью (4.5K слов) <span class="tag tag-orange">rounded</span></div></div>
     <div class="stat-card"><div class="value">$0.675</div><div class="label">GPTZero за статью <span class="tag tag-green">verified</span></div></div>
     <div class="stat-card"><div class="value">6</div><div class="label">Архитектурных паттернов проанализировано</div></div>
   </div>
@@ -164,7 +164,7 @@
     <ul>
       <li><strong>API доступность:</strong> GPTZero API открыт для любого разработчика с $45/мес. Grammarly API доступен только Enterprise клиентам (custom pricing, sales call). Для стартапа/indie проекта Grammarly API недоступен</li>
       <li><strong>Output granularity:</strong> GPTZero возвращает 3-class classification (HUMAN/MIXED/AI) + confidence level + per-sentence scores + Relevant Sources API (fact-check). Grammarly — только общий процент, без подсветки предложений</li>
-      <li><strong>RAID vs real-world:</strong> На RAID benchmark Grammarly лидирует (0.999). Но в реальных тестах GPTZero от конкурентов: тот же ChatGPT-текст Grammarly оценил как "50% AI", тогда как GPTZero корректно определил AI <span class="tag tag-purple">gptzero.me test</span></li>
+      <li><strong>RAID vs real-world:</strong> На RAID benchmark Grammarly лидирует (0.999). Но в тесте, проведённом <strong>конкурентом</strong> GPTZero, тот же ChatGPT-текст Grammarly оценил как "50% AI", тогда как GPTZero дал более высокий AI score. <span class="tag tag-purple">competitor-sourced, not independent</span> Требуется независимая верификация.</li>
       <li><strong>Finance-specific:</strong> Relevant Sources API GPTZero может проверять factual claims — критично для YMYL/broker контента</li>
     </ul>
   </div>
@@ -175,10 +175,10 @@
     <thead><tr><th style="width:150px">Метрика</th><th>GPTZero</th><th>ZeroGPT</th><th>Grammarly</th></tr></thead>
     <tbody>
       <tr>
-        <td><strong>Accuracy</strong></td>
-        <td><div class="compare-bar"><div class="compare-fill bar-green" style="width:180px"></div> <span class="score-cell">99.3%</span></div></td>
-        <td><div class="compare-bar"><div class="compare-fill bar-orange" style="width:110px"></div> <span class="score-cell">~77%</span></div></td>
-        <td><div class="compare-bar"><div class="compare-fill bar-blue" style="width:170px"></div> <span class="score-cell">99.9%*</span></div></td>
+        <td><strong>Benchmark score</strong></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-green" style="width:180px"></div> <span class="score-cell">99.3% recall</span></div><div style="font-size:10px;color:var(--dim)">Chicago Booth (recall @ 0.1% FPR)</div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-orange" style="width:110px"></div> <span class="score-cell">~77%</span></div><div style="font-size:10px;color:var(--dim)">independent reviews (mixed metric)</div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-blue" style="width:170px"></div> <span class="score-cell">0.999 RAID</span></div><div style="font-size:10px;color:var(--dim)">RAID aggregate score (не accuracy %)</div></td>
       </tr>
       <tr>
         <td><strong>Cost / article</strong></td>
@@ -309,15 +309,15 @@
       <tr><td>Auth</td><td>Header <code>x-api-key</code></td><td>JWT Bearer token</td><td>OAuth 2.0 Bearer</td></tr>
       <tr><td>Docs</td><td>Stoplight (хорошие)</td><td>Swagger (средние)</td><td>developer.grammarly.com (Beta)</td></tr>
       <tr><td>SDK</td><td>Нет офиц. (PyPI v0.1.2 устаревший)</td><td>GitHub: JS + PHP примеры</td><td>Нет</td></tr>
-      <tr><td>Rate limit</td><td><strong>30,000 req/hr</strong> <span class="tag tag-green">documented</span></td><td>Не задокументирован</td><td>10 POST/sec, 50 GET/sec</td></tr>
+      <tr><td>Rate limit (quota, не SLA)</td><td><strong>30,000 req/hr</strong> <span class="tag tag-green">documented</span></td><td>Не задокументирован</td><td>10 POST/sec, 50 GET/sec</td></tr>
       <tr><td>Batch</td><td>50 файлов / request</td><td>40-150 файлов</td><td>1 файл / request</td></tr>
       <tr><td>File formats</td><td>.txt, .docx, .pdf</td><td>Текст (JSON)</td><td>.doc, .docx, .odt, .txt, .rtf</td></tr>
 
       <!-- Accuracy -->
       <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">Accuracy</td></tr>
-      <tr><td>RAID benchmark</td><td>0.984 (#9)</td><td>Not listed</td><td><strong>0.999 (#1)</strong></td></tr>
-      <tr><td>Academic validation</td><td>Chicago Booth 2026: <strong>99.3% recall @ 0.1% FPR</strong></td><td>Нет peer-reviewed</td><td>RAID (controlled dataset)</td></tr>
-      <tr><td>Real-world accuracy</td><td>~85-99% (depends on content)</td><td>70-85%</td><td>50-94% (highly variable)</td></tr>
+      <tr><td>RAID benchmark (aggregate score)</td><td>0.984 (#9)</td><td>Not listed</td><td><strong>0.999 (#1)</strong></td></tr>
+      <tr><td>Academic validation</td><td>Chicago Booth 2026: <strong>99.3% recall @ 0.1% FPR</strong> <span class="tag tag-orange">incomplete citation</span></td><td>Нет peer-reviewed</td><td>RAID (controlled dataset)</td></tr>
+      <tr><td>Real-world accuracy (independent tests)</td><td>~85-99% (depends on content)</td><td>70-85%</td><td>50-94% (highly variable)</td></tr>
       <tr><td>False positive rate</td><td>5-15% (real-world) / <1% (high-conf)</td><td>15-25%</td><td>~6%</td></tr>
       <tr><td>Mixed content</td><td>Better</td><td>Weak</td><td>Weak</td></tr>
       <tr><td>Humanized text</td><td>Drops after 3+ passes</td><td>Very weak</td><td>Misses ~22%</td></tr>
@@ -334,7 +334,7 @@
       <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">Pricing</td></tr>
       <tr><td>Free tier</td><td>Web only</td><td>15K chars web</td><td>Web tool</td></tr>
       <tr><td>Min API plan</td><td>$45/мес (300K слов)</td><td>Pay-as-you-go</td><td>Enterprise (custom)</td></tr>
-      <tr><td>Cost / article (4.5K слов)</td><td class="score-cell">$0.675</td><td class="score-cell" style="color:var(--green)">$0.15</td><td class="score-cell" style="color:var(--dim)">Unknown</td></tr>
+      <tr><td>Cost / article (4.5K слов)</td><td class="score-cell">~$0.675</td><td class="score-cell" style="color:var(--green)">~$0.15 <span class="tag tag-orange">rounded</span></td><td class="score-cell" style="color:var(--dim)">Unknown</td></tr>
       <tr><td>Cost / 10 articles</td><td>$45 (min plan)</td><td>$1.50</td><td>Custom</td></tr>
       <tr><td>Cost / 100 articles</td><td>$135 (1M plan)</td><td>$15</td><td>Custom</td></tr>
 
@@ -468,7 +468,7 @@
     <table>
       <tbody>
         <tr><td style="width:180px"><strong>Автоматизация</strong></td><td>Человек запускает один раз — pipeline делает остальное.</td></tr>
-        <tr><td><strong>Skill chaining</strong></td><td>Claude Code поддерживает skill chaining через Skill tool. <span class="tag tag-green">verified</span></td></tr>
+        <tr><td><strong>Skill chaining</strong></td><td>Claude Code поддерживает skill chaining через Skill tool. <span class="tag tag-purple">third-party</span></td></tr>
         <tr><td><strong>Ограничение</strong></td><td>Линейный — нет feedback loop. Если NEEDS_CHANGES, pipeline останавливается.</td></tr>
         <tr><td><strong>Сложность</strong></td><td><span class="tag tag-orange">Средняя</span> — нужен orchestrator skill.</td></tr>
       </tbody>
@@ -764,7 +764,7 @@
       <tr><td>Grammarly API</td><td><a href="https://developer.grammarly.com/ai-detection-api.html">developer.grammarly.com</a></td><td><span class="tag tag-green">verified</span></td></tr>
       <tr><td>Grammarly Plans</td><td><a href="https://www.grammarly.com/plans">grammarly.com/plans</a></td><td><span class="tag tag-green">verified</span></td></tr>
       <tr><td>Grammarly vs GPTZero</td><td><a href="https://gptzero.me/news/grammarly-ai-review/">gptzero.me/news/grammarly-ai-review</a></td><td><span class="tag tag-purple">third-party</span></td></tr>
-      <tr><td>Chicago Booth GPTZero Study</td><td>Academic benchmark, 2026</td><td><span class="tag tag-purple">third-party</span></td></tr>
+      <tr><td>Chicago Booth GPTZero Study</td><td>Academic benchmark, 2026. <strong>Incomplete citation:</strong> no URL, DOI, or author list found. Cited by GPTZero marketing; independent access not confirmed.</td><td><span class="tag tag-orange">incomplete citation</span></td></tr>
       <tr><td>Agentic Design Patterns</td><td><a href="https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system">Google Cloud Architecture</a></td><td><span class="tag tag-green">verified</span></td></tr>
       <tr><td>Reflection Pattern</td><td><a href="https://agentic-patterns.com/patterns/reflection/">agentic-patterns.com</a></td><td><span class="tag tag-purple">third-party</span></td></tr>
       <tr><td>Claude Code Skill Chaining</td><td><a href="https://www.mindstudio.ai/blog/claude-code-skill-collaboration-chaining-workflows">MindStudio Blog</a></td><td><span class="tag tag-purple">third-party</span></td></tr>

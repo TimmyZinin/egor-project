@@ -78,15 +78,15 @@ Grammarly (grammarly.com) — writing suite с AI detection как частью 
 - Perfect 1.000 на GPT-4, GPT-3, GPT-2, LLaMA-chat, MPT
 
 ### Independent Tests
-- GPTZero test: 100% AI текст → Grammarly оценил как "50% AI"
-- Непоследовательность: один текст → 0% → 35% → 90% в разные дни
-- False positive rate: ~6%
-- Raw AI detection: ~94% на straightforward AI content
-- Humanized content: пропускает ~22%
-- Mixed content: значительно слабее
+- GPTZero test (competitor-sourced, не независимый): 100% AI текст → Grammarly оценил как "50% AI" [COMPETITOR SOURCE]
+- Непоследовательность: один текст → 0% → 35% → 90% в разные дни [ANECDOTAL, multiple reviews]
+- False positive rate: ~6% [SINGLE SOURCE]
+- Raw AI detection: ~94% на straightforward AI content [SINGLE SOURCE]
+- Humanized content: пропускает ~22% [SINGLE SOURCE]
+- Mixed content: значительно слабее [MULTIPLE SOURCES]
 
 ### Вывод
-RAID benchmark и real-world accuracy расходятся. Grammarly лидирует в контролируемых тестах, но в real-world mixed content показывает непредсказуемые результаты.
+RAID benchmark и real-world тесты расходятся. Grammarly лидирует в контролируемых условиях (RAID). Независимые real-world тесты показывают непредсказуемость, но большинство из них основаны на анекдотических примерах или проведены конкурентами — необходима независимая верификация.
 
 ---
 
