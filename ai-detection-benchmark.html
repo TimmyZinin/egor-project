@@ -98,11 +98,12 @@
 <div class="toc">
   <h4 style="margin-top:0;margin-bottom:12px">Содержание</h4>
   <a href="#benchmark">1. Бенчмарк: GPTZero vs ZeroGPT vs Grammarly</a>
-  <a href="#grammarly">2. Grammarly AI Detection: полное исследование</a>
-  <a href="#comparison">3. Сводная таблица: 30+ параметров</a>
-  <a href="#architecture">4. Архитектура Writer + Checker: 6 паттернов</a>
-  <a href="#recommendation">5. Рекомендация: поэтапная стратегия</a>
-  <a href="#cost-model">6. Финансовая модель при масштабе</a>
+  <a href="#trustpilot">2. Trustpilot: рейтинги и отзывы</a>
+  <a href="#grammarly">3. Grammarly AI Detection: полное исследование</a>
+  <a href="#comparison">4. Сводная таблица: 30+ параметров</a>
+  <a href="#architecture">5. Архитектура Writer + Checker: 6 паттернов</a>
+  <a href="#recommendation">6. Рекомендация: поэтапная стратегия</a>
+  <a href="#cost-model">7. Финансовая модель при масштабе</a>
 </div>
 
 <!-- KEY NUMBERS -->
@@ -201,6 +202,167 @@
     </tbody>
   </table>
   <p style="font-size:11px;color:var(--dim)">* Grammarly 99.9% — результат RAID benchmark (контролируемый датасет). В real-world тестах accuracy значительно ниже. GPTZero 99.3% — Chicago Booth 2026 (academic study). ZeroGPT ~77% — среднее из independent reviews.</p>
+</section>
+
+<!-- ==================== TRUSTPILOT ==================== -->
+<section id="trustpilot">
+  <h2>Trustpilot: рейтинги и отзывы</h2>
+  <p style="font-size:12px;color:var(--dim)">Данные собраны 2 апреля 2026. Распределение по звёздам — оценка по первой странице отзывов, точные процентные разбивки по всем отзывам <span class="tag tag-orange">approximate</span>. Количество отзывов и TrustScore <span class="tag tag-green">verified</span> с trustpilot.com.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card" style="border-color:var(--red)">
+      <div class="value" style="color:var(--red)">1.3/5</div>
+      <div class="label">ZeroGPT &mdash; "Bad"</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:4px">105 отзывов | Профиль не заявлен</div>
+    </div>
+    <div class="stat-card" style="border-color:var(--accent)">
+      <div class="value" style="color:var(--accent)">2.5/5</div>
+      <div class="label">GPTZero &mdash; "Poor"</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:4px">122 отзыва | Профиль заявлен</div>
+    </div>
+    <div class="stat-card" style="border-color:var(--blue)">
+      <div class="value" style="color:var(--blue)">3.5/5</div>
+      <div class="label">Grammarly &mdash; "Average"</div>
+      <div style="font-size:11px;color:var(--dim);margin-top:4px">10,399 отзывов | Writing tool, не AI detector</div>
+    </div>
+  </div>
+
+  <div class="card red">
+    <h4 style="color:var(--red);margin-top:0">Ключевой вывод</h4>
+    <p>Оба специализированных AI-детектора (GPTZero и ZeroGPT) имеют <strong>крайне негативные рейтинги</strong> на Trustpilot. Доминирующая жалоба — <strong>false positives</strong>: человеческий текст помечается как AI. ZeroGPT (1.3/5) — особенно плохо, профиль даже не заявлен компанией. Grammarly (3.5/5) — принципиально другой продукт (writing assistant), большинство отзывов не связаны с AI detection.</p>
+  </div>
+
+  <h3>Подробное сравнение</h3>
+
+  <div style="overflow-x:auto">
+  <table>
+    <thead>
+      <tr><th style="width:160px">Параметр</th><th>GPTZero</th><th>ZeroGPT</th><th>Grammarly</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>TrustScore</strong></td>
+        <td class="score-cell" style="color:var(--accent)">2.5 / 5</td>
+        <td class="score-cell" style="color:var(--red)">1.3 / 5</td>
+        <td class="score-cell" style="color:var(--blue)">3.5 / 5</td>
+      </tr>
+      <tr>
+        <td><strong>Категория</strong></td>
+        <td>Poor</td>
+        <td>Bad</td>
+        <td>Average</td>
+      </tr>
+      <tr>
+        <td><strong>Кол-во отзывов</strong></td>
+        <td>122</td>
+        <td>105</td>
+        <td>10,399</td>
+      </tr>
+      <tr>
+        <td><strong>Профиль заявлен</strong></td>
+        <td><span class="tag tag-green">Да</span></td>
+        <td><span class="tag tag-red">Нет</span></td>
+        <td><span class="tag tag-green">Да (Paid)</span></td>
+      </tr>
+      <tr>
+        <td><strong>Распределение (оценка)</strong></td>
+        <td>~65-70% 1-star, ~25% 5-star <span class="tag tag-orange">approx</span></td>
+        <td>~85-90% 1-star, ~8% 5-star <span class="tag tag-orange">approx</span></td>
+        <td>Распределённое (17-25-7-17-16 на первой стр.) <span class="tag tag-orange">approx</span></td>
+      </tr>
+      <tr>
+        <td><strong>Основная функция</strong></td>
+        <td>AI Detection</td>
+        <td>AI Detection</td>
+        <td>Writing Assistant</td>
+      </tr>
+      <tr>
+        <td><strong>URL</strong></td>
+        <td><a href="https://www.trustpilot.com/review/gptzero.me">trustpilot.com</a></td>
+        <td><a href="https://www.trustpilot.com/review/zerogpt.com">trustpilot.com</a></td>
+        <td><a href="https://www.trustpilot.com/review/grammarly.com">trustpilot.com</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Жалобы и похвалы по темам</h3>
+
+  <div class="vs-grid">
+    <!-- GPTZero -->
+    <div class="card" style="border-color:var(--accent)">
+      <h4 style="color:var(--accent);margin-top:0">GPTZero (2.5/5)</h4>
+      <p style="font-size:12px;color:var(--red);font-weight:600">Жалобы:</p>
+      <ul style="font-size:12px">
+        <li><strong>False positives</strong> — тексты 10-летней давности, написанные до ChatGPT, помечены как AI</li>
+        <li><strong>Академический вред</strong> — студенты обвинены в плагиате по ошибочным результатам</li>
+        <li><strong>Непоследовательность</strong> — результаты меняются при повторных проверках</li>
+        <li><strong>Проблемы с отпиской</strong> — сложность отмены подписки</li>
+      </ul>
+      <p style="font-size:12px;color:var(--green);font-weight:600;margin-top:12px">Похвалы:</p>
+      <ul style="font-size:12px">
+        <li>Полезен для учителей (проверка работ)</li>
+        <li>Хороший free plan</li>
+        <li>Подробная статистика в платном плане</li>
+      </ul>
+    </div>
+
+    <!-- ZeroGPT -->
+    <div class="card" style="border-color:var(--red)">
+      <h4 style="color:var(--red);margin-top:0">ZeroGPT (1.3/5)</h4>
+      <p style="font-size:12px;color:var(--red);font-weight:600">Жалобы:</p>
+      <ul style="font-size:12px">
+        <li><strong>Экстремальные false positives</strong> — эссе на 100% помечены как AI</li>
+        <li><strong>False negatives</strong> — текст из ChatGPT показывает "0% AI"</li>
+        <li><strong>Непоследовательность</strong> — 27%, потом 75% за один текст</li>
+        <li><strong>Billing scam</strong> — годовая подписка вместо месячной</li>
+        <li><strong>Половина класса</strong> — ложные обвинения</li>
+      </ul>
+      <p style="font-size:12px;color:var(--green);font-weight:600;margin-top:12px">Похвалы:</p>
+      <ul style="font-size:12px">
+        <li>Простой интерфейс</li>
+        <li>Подсветка конкретных предложений</li>
+      </ul>
+    </div>
+
+    <!-- Grammarly -->
+    <div class="card" style="border-color:var(--blue)">
+      <h4 style="color:var(--blue);margin-top:0">Grammarly (3.5/5)</h4>
+      <p style="font-size:12px;color:var(--red);font-weight:600">Жалобы:</p>
+      <ul style="font-size:12px">
+        <li><strong>Billing-проблемы</strong> — доминирующая жалоба (не AI detection)</li>
+        <li><strong>Навязчивый UI</strong> — overlay блокирует текст</li>
+        <li><strong>Upselling</strong> — постоянные push в Premium</li>
+      </ul>
+      <p style="font-size:12px;color:var(--green);font-weight:600;margin-top:12px">Похвалы:</p>
+      <ul style="font-size:12px">
+        <li>Отличная проверка грамматики</li>
+        <li>Экономия времени</li>
+        <li>Универсальность (академия, бизнес)</li>
+      </ul>
+      <p style="font-size:11px;color:var(--dim);margin-top:8px">Большинство отзывов о writing assistant, не об AI detection</p>
+    </div>
+  </div>
+
+  <h3>Характерные цитаты из отзывов</h3>
+  <div class="card">
+    <p style="font-size:13px;font-style:italic;color:var(--dim);margin-bottom:8px">"I tested it by pasting a chapter from a novel I wrote before any launch of AI chat bots, and it flagged it as AI! This is ridiculous."</p>
+    <p style="font-size:11px;color:var(--accent)">— Christopher Burton, GPTZero, январь 2026</p>
+  </div>
+  <div class="card">
+    <p style="font-size:13px;font-style:italic;color:var(--dim);margin-bottom:8px">"Please, PLEASE just use any other site if you're a teacher reading this. Half the class fell victim to false claims while every other AI detector proved our work to be original."</p>
+    <p style="font-size:11px;color:var(--red)">— Jake, ZeroGPT, август 2025</p>
+  </div>
+  <div class="card">
+    <p style="font-size:13px;font-style:italic;color:var(--dim);margin-bottom:8px">"Fake checker. I copy and pasted an entire poem from ChatGPT and it said it was 0% ChatGPT."</p>
+    <p style="font-size:11px;color:var(--red)">— Kaiya Amin, ZeroGPT, июнь 2025</p>
+  </div>
+
+  <div class="card highlight">
+    <h4 style="margin-top:0">Что это значит для нашего проекта</h4>
+    <p>Trustpilot подтверждает findings из технического бенчмарка: <strong>ни один AI-детектор не является надёжным standalone gate.</strong> Все три сервиса имеют серьёзные проблемы с false positives. Стратегия "используем как сигнал, не как gatekeeper" — единственно разумная. AI detection score = advisory input для human review, не автоматическое reject/approve решение.</p>
+    <p style="margin-bottom:0">Рекомендация по Trustpilot: <strong>GPTZero (2.5/5) > ZeroGPT (1.3/5)</strong> по пользовательскому доверию, хотя оба плохие. Grammarly (3.5/5) нерелевантен — отзывы не об AI detection.</p>
+  </div>
 </section>
 
 <!-- ==================== GRAMMARLY ==================== -->
@@ -337,6 +499,13 @@
       <tr><td>Cost / article (4.5K слов)</td><td class="score-cell">~$0.675</td><td class="score-cell" style="color:var(--green)">~$0.15 <span class="tag tag-orange">rounded</span></td><td class="score-cell" style="color:var(--dim)">Unknown</td></tr>
       <tr><td>Cost / 10 articles</td><td>$45 (min plan)</td><td>$1.50</td><td>Custom</td></tr>
       <tr><td>Cost / 100 articles</td><td>$135 (1M plan)</td><td>$15</td><td>Custom</td></tr>
+
+      <!-- Trustpilot -->
+      <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">Trustpilot (апрель 2026)</td></tr>
+      <tr><td>TrustScore</td><td class="score-cell" style="color:var(--accent)">2.5/5 ("Poor")</td><td class="score-cell" style="color:var(--red)">1.3/5 ("Bad")</td><td class="score-cell" style="color:var(--blue)">3.5/5 ("Average")</td></tr>
+      <tr><td>Кол-во отзывов</td><td>122</td><td>105</td><td>10,399</td></tr>
+      <tr><td>Профиль заявлен</td><td><span class="tag tag-green">Да</span></td><td><span class="tag tag-red">Нет</span></td><td><span class="tag tag-green">Да (Paid)</span></td></tr>
+      <tr><td>Главная жалоба</td><td>False positives на человеческом тексте</td><td>False positives + false negatives + billing</td><td>Billing/подписки (не AI detection)</td></tr>
 
       <!-- Unique Features -->
       <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">Unique Features</td></tr>
@@ -776,7 +945,7 @@
 </div>
 
 <footer>
-  Проект Егора | AI Detection Benchmark + Skill Architecture | 2 апреля 2026 | 3 сервиса, 6 паттернов, 30+ параметров
+  Проект Егора | AI Detection Benchmark + Skill Architecture | 2 апреля 2026 | 3 сервиса, 6 паттернов, 30+ параметров, Trustpilot ratings
 </footer>
 
 </body>
