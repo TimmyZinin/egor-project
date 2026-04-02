@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Liz Weston CFP",
+    "linkedin_url": "https://www.linkedin.com/in/lizweston",
+    "raw_snippet": "CFP Certified Financial Planner, columnist NerdWallet personal finance, author multiple books contributor Reuters and Yahoo Finance, United States",
+    "niche": "personal_finance",
+    "scan_source": "google_search",
+    "scan_timestamp": "2026-03-30T15:30:00Z"
+  },
+  {
+    "name": "Hal M. Bundrick CFP",
+    "linkedin_url": "https://www.linkedin.com/in/halmbundrick",
+    "raw_snippet": "CFP Certified Financial Planner, Senior Writer Yahoo Finance, former NerdWallet personal finance columnist and contributor, United States",
+    "niche": "personal_finance",
+    "scan_source": "google_search",
+    "scan_timestamp": "2026-03-30T15:30:00Z"
+  },
+  {
+    "name": "Sean Pyles CFP",
+    "linkedin_url": "https://www.linkedin.com/in/seanloranpyles",
+    "raw_snippet": "CFP Certified Financial Planner, host NerdWallet personal finance podcast Smart Money, Senior writer contributor Forbes, United States",
+    "niche": "personal_finance",
+    "scan_source": "google_search",
+    "scan_timestamp": "2026-03-30T15:30:00Z"
+  },
+  {
+    "name": "Linda Bell",
+    "linkedin_url": "https://www.linkedin.com/in/lindanbell",
+    "raw_snippet": "Senior Writer Bankrate personal finance, contributor Reuters covering budgeting investing and retirement, United States",
+    "niche": "personal_finance",
+    "scan_source": "google_search",
+    "scan_timestamp": "2026-03-30T15:30:00Z"
+  }
+]

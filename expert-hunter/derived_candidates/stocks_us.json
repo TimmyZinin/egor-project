@@ -24,13 +24,17 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 0,
     "raw_source_title": "Christopher Shea, CFA - Senior Portfolio Manager - UBS ASSET MANAGEMENT AMERICAS INC | LinkedIn",
-    "raw_source_url": "https://www.linkedin.com/in/christopher-shea-cfa-419002b/"
+    "raw_source_url": "https://www.linkedin.com/in/christopher-shea-cfa-419002b/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Michael P. Stack",
     "linkedin_url": "https://www.linkedin.com/in/michael-p-stack-cfa/",
     "primary_role": "Michael P. Stack, CFA - Senior Equity PM who authored institutional caliber quar",
-    "company": "Senior Equity PM who authored institutional calibe",
+    "company": "",
     "location": "US",
     "niche_tags": "stocks",
     "credentials_claimed": "CFA",
@@ -51,13 +55,17 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 1,
     "raw_source_title": "Michael P. Stack, CFA - Senior Equity Portfolio Manager, Investment Thought Leader, Relationship Manager | LinkedIn",
-    "raw_source_url": "https://www.linkedin.com/in/michael-p-stack-cfa/"
+    "raw_source_url": "https://www.linkedin.com/in/michael-p-stack-cfa/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Jason Mann",
     "linkedin_url": "https://www.linkedin.com/in/jason-mann-cfa/",
     "primary_role": "Jason Mann, CFA - Senior Vice President Senior Portfolio Advisor at Northern Tru",
-    "company": "Senior Vice President Senior Portfolio Advisor at ",
+    "company": "Northern Trust",
     "location": "US",
     "niche_tags": "stocks",
     "credentials_claimed": "CFA",
@@ -78,13 +86,17 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 2,
     "raw_source_title": "Jason Mann, CFA - Senior Vice President & Senior Portfolio Advisor at Northern Trust | LinkedIn",
-    "raw_source_url": "https://www.linkedin.com/in/jason-mann-cfa/"
+    "raw_source_url": "https://www.linkedin.com/in/jason-mann-cfa/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Roberta Zeno",
     "linkedin_url": "https://www.linkedin.com/in/roberta-zeno-cfa/",
     "primary_role": "Roberta Zeno, CFA - Equity Research Technology Investing",
-    "company": "Equity Research Technology Investing",
+    "company": "",
     "location": "US",
     "niche_tags": "stocks",
     "credentials_claimed": "CFA",
@@ -105,7 +117,11 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 3,
     "raw_source_title": "Roberta Zeno, CFA - Equity Research | Technology Investing",
-    "raw_source_url": "https://www.linkedin.com/in/roberta-zeno-cfa/"
+    "raw_source_url": "https://www.linkedin.com/in/roberta-zeno-cfa/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Christopher K. Merker",
@@ -132,7 +148,14 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 4,
     "raw_source_title": "Christopher K. Merker, Ph.D., CFA - Executive Director - Fund Governance Analytics, LLC | LinkedIn",
-    "raw_source_url": "https://www.linkedin.com/in/christopher-k-merker-ph-d-cfa-b122981/"
+    "raw_source_url": "https://www.linkedin.com/in/christopher-k-merker-ph-d-cfa-b122981/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [
+      "https://blogs.cfainstitute.org/investor/author/chrismerker/",
+      "https://sustainablefinanceblog.com/author/cmerker/"
+    ],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Felipe Quaassdorff",
@@ -159,13 +182,17 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 5,
     "raw_source_title": "Felipe Quaassdorff, CFA - Walkner Condon Financial Advisors | LinkedIn",
-    "raw_source_url": "https://www.linkedin.com/in/fquaassdorff-cfa/"
+    "raw_source_url": "https://www.linkedin.com/in/fquaassdorff-cfa/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Stephen Mitchell",
     "linkedin_url": "https://www.linkedin.com/in/stephen-mitchell-8601a384/",
     "primary_role": "Stephen Mitchell - Portfolio Manager",
-    "company": "Portfolio Manager",
+    "company": "",
     "location": "US",
     "niche_tags": "stocks",
     "credentials_claimed": "",
@@ -183,13 +210,17 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 6,
     "raw_source_title": "Stephen Mitchell - Portfolio Manager",
-    "raw_source_url": "https://www.linkedin.com/in/stephen-mitchell-8601a384/"
+    "raw_source_url": "https://www.linkedin.com/in/stephen-mitchell-8601a384/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Christopher Lane",
     "linkedin_url": "https://www.linkedin.com/in/christopher-lane-cpa-4b81041b/",
     "primary_role": "Christopher Lane, CPA - Senior Equity Trader Russell Investments",
-    "company": "Senior Equity Trader Russell Investments",
+    "company": "",
     "location": "US",
     "niche_tags": "stocks",
     "credentials_claimed": "CPA",
@@ -210,13 +241,17 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 7,
     "raw_source_title": "Christopher Lane, CPA - Senior Equity Trader - Russell Investments | LinkedIn",
-    "raw_source_url": "https://www.linkedin.com/in/christopher-lane-cpa-4b81041b/"
+    "raw_source_url": "https://www.linkedin.com/in/christopher-lane-cpa-4b81041b/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Christopher Hooker",
     "linkedin_url": "https://www.linkedin.com/in/christopher-hooker-cfa-bbb1956/",
     "primary_role": "Christopher Hooker, CFA - Sr. Portfolio Analyst Amundi US",
-    "company": "Sr. Portfolio Analyst Amundi US",
+    "company": "",
     "location": "US",
     "niche_tags": "stocks",
     "credentials_claimed": "CFA",
@@ -237,13 +272,17 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 8,
     "raw_source_title": "Christopher Hooker, CFA - Sr. Portfolio Analyst - Amundi US | LinkedIn",
-    "raw_source_url": "https://www.linkedin.com/in/christopher-hooker-cfa-bbb1956/"
+    "raw_source_url": "https://www.linkedin.com/in/christopher-hooker-cfa-bbb1956/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   },
   {
     "name": "Reuben Scherzer",
     "linkedin_url": "https://www.linkedin.com/in/reubenscherzer/",
     "primary_role": "Reuben Scherzer - Senior Equity Analyst TimesSquare Capital Management",
-    "company": "Senior Equity Analyst TimesSquare Capital Manageme",
+    "company": "",
     "location": "US",
     "niche_tags": "stocks",
     "credentials_claimed": "",
@@ -261,6 +300,10 @@
     "raw_source_file": "stocks_us_20260331.json",
     "raw_source_index": 9,
     "raw_source_title": "Reuben Scherzer - Senior Equity Analyst - TimesSquare Capital Management, LLC | LinkedIn",
-    "raw_source_url": "https://www.linkedin.com/in/reubenscherzer/"
+    "raw_source_url": "https://www.linkedin.com/in/reubenscherzer/",
+    "citability_tier": "none",
+    "citability_outlets": [],
+    "citability_evidence_urls": [],
+    "citability_raw_source": "stocks_us.json"
   }
 ]

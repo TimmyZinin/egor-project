@@ -1,0 +1,30 @@
+# Christopher Vecchio
+"Christopher Vecchio" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# John Jagerson
+"John Jagerson" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# Joe Hoffman
+"Joe Hoffman" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# Paul Christopher
+"Paul Christopher" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# Richard Krivo
+"Richard Krivo" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# Jeff Schorer
+"Jeff Schorer" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# Tiger Berry
+"Tiger Berry" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# Mohammad H. Ali
+"Mohammad H. Ali" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# Rene Cueto
+"Rene Cueto" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+
+# Charlotte S. Parnell
+"Charlotte S. Parnell" ("Forbes" OR "Bloomberg" OR "CNBC" OR "WSJ" OR "Reuters" OR "MarketWatch" OR "Investopedia" OR "NerdWallet")
+

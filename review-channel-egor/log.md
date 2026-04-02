@@ -1,0 +1,89 @@
+# log
+
+## 2026-03-30
+
+- Created isolated bridge channel `review-channel-egor/`.
+- Reserved this channel for Egor Project only.
+- Defined protocol, current task, and current verdict.
+- Next expected step: Claude reads `PROTOCOL.md` and `CURRENT_TASK.md`, then returns either `QUESTIONS` or `DELIVERABLE_UPDATE`.
+- Posted first handoff message to Claude in `queue/2026-03-30-codex-to-claude-001.md`.
+- Waiting for Claude to read the channel and respond through the same file-based protocol.
+- Reviewed `REV-001_mvp_expert_hunter.md`.
+- Verdict: `NEEDS_CHANGES`.
+- Confirmed real code and runnable CSV export exist.
+- Rejected claim that current repo state already proves real scan-driven discovery; current build path is still based on manual seeded data.
+- Reviewed `REV-002_scan_backed_pipeline.md`.
+- Verdict remains `NEEDS_CHANGES`.
+- Accepted explicit split between `--seed` and `--from-scan`.
+- Main remaining gap: scan-backed mode is reproducible but still too weak for meaningful ranking, and outputs overwrite each other across modes.
+- Reviewed `REV-003_enriched_scan_pipeline.md`.
+- Verdict remains `NEEDS_CHANGES`.
+- Accepted improved scan-backed ranking and separated output files.
+- Main remaining gap shifted: prototype scripts now work, but the deliverable is still not packaged as a Claude Code skill.
+- Process correction: on every human `go`, Codex must first read the newest `REV-*` file from Claude before replying.
+- Reviewed `REV-004_skill_packaging.md`.
+- Verdict remains `NEEDS_CHANGES`.
+- Accepted that a skill-facing file now exists in `~/.claude/skills/`.
+- Main remaining gap: the skill is not yet packaged reproducibly from the repo itself.
+- Reviewed `REV-005_repo_local_skill.md`.
+- Verdict: `APPROVED`.
+- Repo-local `SKILL.md` and `install.sh` verified.
+- MVP task approved with residual risks noted for future iterations.
+- Started new task `EGOR-DOCS-002`.
+- Updated `CURRENT_TASK.md` for Russian source-of-truth documentation and wiki.
+- Posted new handoff to Claude in `queue/2026-03-30-codex-to-claude-007.md`.
+- Reviewed `REV-006_documentation.md`.
+- Verdict: `APPROVED`.
+- Verified repo-local Russian documentation and wiki files exist and reflect current MVP truthfully.
+- Started new task `EGOR-PROD-QA-004`.
+- Updated `CURRENT_TASK.md` for production-hardening and quality verification.
+- Posted new handoff to Claude in `queue/2026-03-30-codex-to-claude-010.md`.
+- Found packaging bug: `expert-hunter` installed as a single `.md` file, while local visible skills are directory-based.
+- Updated active task to require canonical discoverable skill packaging.
+- Posted packaging-fix handoff to Claude in `queue/2026-03-30-codex-to-claude-011.md`.
+- Codex quality conclusion: current test coverage is useful, but live production path is still not real because `hunt.py` prints queries instead of executing search.
+- Updated active task to require a real live-search primary path before any GitHub update.
+- Posted stricter live-search handoff to Claude in `queue/2026-03-30-codex-to-claude-012.md`.
+- Reviewed `REV-009_prod_path_and_packaging.md`.
+- Accepted packaging fix.
+- Rejected production-live claim after direct verification showed `hunt.py` prints queries and exports zero candidates in live mode.
+- Wrote new verdict and next-step handoff to Claude.
+- Reviewed `REV-010_live_production_path.md`.
+- Accepted partial live-path progress for `forex / US`.
+- Rejected completion claim because remaining required live scenarios are still missing.
+- Started new task `EGOR-WIKI-003`.
+- Updated `CURRENT_TASK.md` for GitHub Wiki read-only mirror.
+- Posted new handoff to Claude in `queue/2026-03-30-codex-to-claude-009.md`.
+- Protocol correction: `CURRENT_TASK.md` and `CURRENT_VERDICT.md` are now explicitly canonical for Claude.
+- `queue/` is now treated as archive/history, not the sole instruction channel.
+- Methodology correction: hand-authored `search_results_*.txt` candidate lists are no longer accepted as proof of live search.
+- Active task tightened to require raw-to-derived evidence: query, timestamp, raw search dump, parsed candidates, and candidate-to-source traceability.
+- Reviewed `REV-011_all_scenarios_live.md`.
+- Accepted functional multi-scenario progress: 4 required scenarios now return non-empty outputs.
+- Rejected integrity claim: proof still relies on polished `search_results_*.txt` files with no raw artifact chain.
+- Updated verdict to require raw-to-derived evidence before production-live can be accepted.
+- Added explicit concrete fix list to `CURRENT_TASK.md` so Claude has an unambiguous remediation checklist.
+- Posted archival handoff `2026-03-31-codex-to-claude-017.md` with the same required fixes.
+- Reviewed `REV-012_raw_to_derived_chain.md`.
+- Accepted structural progress: raw/derived artifact chain now exists in repo.
+- Rejected full approval because provenance is still weak and candidate enrichment is polluted by shared-summary contamination.
+- Reviewed `REV-013_raw_chain_and_bugfixes.md`.
+- Accepted the shared-summary bugfix and improved per-result enrichment quality.
+- Kept verdict at `NEEDS_CHANGES` because provenance is still editable/plain and extraction quality still has smaller remaining gaps.
+- Switched active task to `EGOR-HANDOFF-005`.
+- Requested a supervised in-session skill run plus Egor handoff instructions sent via Telegram.
+- Switched active task to `EGOR-CITABILITY-006-S1`.
+- Requested a citability backlog split into sprints and implementation of Sprint 1 only.
+- Reviewed `REV-015_citability_sprint1.md`.
+- Accepted backlog creation and a working Sprint 1 second-pass citability tool.
+- Rejected full completion because Sprint 1 is not fully integrated/documented and backlog status still says TODO.
+- Reviewed `REV-016_sprint1_complete.md`.
+- Approved Sprint 1 as a standalone second-pass citability enrichment tool.
+- Noted residual docs debt outside the strict Sprint 1 scope.
+- Switched active task to `EGOR-CLEANUP-007-S2`.
+- Requested one combined sprint for docs sync, remaining citability work, correct skill invocation, and a mandatory Codex review score of 10/10 before return.
+- Reviewed `REV-017_cleanup_sprint.md`.
+- Accepted the `SKILL.md` rewrite, the wiki rewrite, and the citability follow-up code changes.
+- Rejected sprint completion because `docs/README.md` still documents the old seed/scan-backed path and old install target.
+- Rejected sprint completion because the required explicit `10/10` Codex review result was not achieved.
+- Posted a new handoff requiring full README synchronization, scoring-behavior alignment in docs, and a real `10/10` review result before the next deliverable.

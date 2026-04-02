@@ -1,0 +1,15 @@
+[
+  {"name": "Christopher Shea", "query": "\"Christopher Shea\" CFA UBS (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T12:20:00Z", "results": []},
+  {"name": "Michael P. Stack", "query": "\"Michael P. Stack\" CFA (\"Forbes\" OR \"Bloomberg\" OR \"Investopedia\")", "timestamp": "2026-03-31T12:20:00Z", "results": []},
+  {"name": "Jason Mann", "query": "\"Jason Mann\" CFA Northern Trust (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T12:20:00Z", "results": []},
+  {"name": "Roberta Zeno", "query": "\"Roberta Zeno\" CFA (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T12:20:00Z", "results": []},
+  {"name": "Christopher K. Merker", "query": "\"Christopher Merker\" CFA (\"Forbes\" OR \"Bloomberg\" OR \"Barron's\")", "timestamp": "2026-03-31T12:20:00Z", "results": [
+    {"title": "Christopher K. Merker, PhD, CFA | CFA Institute Enterprising Investor", "url": "https://blogs.cfainstitute.org/investor/author/chrismerker/", "snippet": "CFA Institute Enterprising Investor blog author, sustainable finance"},
+    {"title": "Christopher K. Merker - Sustainable Finance Blog", "url": "https://sustainablefinanceblog.com/author/cmerker/", "snippet": "Director Baird Private Asset Management, sustainable finance blog, co-author Trustee Governance Guide"}
+  ]},
+  {"name": "Felipe Quaassdorff", "query": "\"Felipe Quaassdorff\" CFA (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T12:20:00Z", "results": []},
+  {"name": "Stephen Mitchell", "query": "\"Stephen Mitchell\" portfolio manager (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T12:20:00Z", "results": []},
+  {"name": "Christopher Lane", "query": "\"Christopher Lane\" CPA Russell Investments (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T12:20:00Z", "results": []},
+  {"name": "Christopher Hooker", "query": "\"Christopher Hooker\" CFA Amundi (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T12:20:00Z", "results": []},
+  {"name": "Reuben Scherzer", "query": "\"Reuben Scherzer\" TimesSquare (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T12:20:00Z", "results": []}
+]

@@ -1,0 +1,18 @@
+[
+  {"name": "Christopher Vecchio", "query": "\"Christopher Vecchio\" (\"Forbes\" OR \"Bloomberg\" OR \"CNBC\")", "timestamp": "2026-03-31T11:50:00Z", "results": []},
+  {"name": "Paul Christopher", "query": "\"Paul Christopher\" CFA Wells Fargo (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T11:50:00Z", "results": []},
+  {"name": "Mohammad H. Ali", "query": "\"Mohammad Ali\" CFA forex (\"Forbes\" OR \"Bloomberg\" OR \"FXStreet\")", "timestamp": "2026-03-31T11:50:00Z", "results": [
+    {"title": "Mohammad H. Ali, CFA", "url": "https://www.fxstreet.com/author/mohammad-h-ali-cfa", "snippet": "Mohammad H. Ali, CFA contributor on FXStreet"},
+    {"title": "Mohammad H. Ali, CFA Expert Witness - SEAK", "url": "https://www.seakexperts.com/members/21049-mohammad-h-ali", "snippet": "Expert witness, 26 years capital markets"},
+    {"title": "Mohammad Ali Shaikh, CFA, Author at CFA Institute Enterprising Investor", "url": "https://blogs.cfainstitute.org/investor/author/mohammadalishaikh/", "snippet": "CFA Institute Enterprising Investor blog author"}
+  ]},
+  {"name": "Joe Hoffman", "query": "\"Joe Hoffman\" CFA FXPA (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T11:50:00Z", "results": []},
+  {"name": "John Jagerson", "query": "\"John Jagerson\" (\"Forbes\" OR \"Bloomberg\" OR \"Investopedia\" OR \"MarketWatch\")", "timestamp": "2026-03-31T11:50:00Z", "results": [
+    {"title": "Articles by John Jagerson - Muck Rack", "url": "https://muckrack.com/john-jagerson/articles", "snippet": "John Jagerson InvestorPlace contributor, 15 years market news"}
+  ]},
+  {"name": "Rene Cueto", "query": "\"Rene Cueto\" CFA (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T11:50:00Z", "results": []},
+  {"name": "Jeff Schorer", "query": "\"Jeff Schorer\" Wells Fargo FX (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T11:50:00Z", "results": []},
+  {"name": "Richard Krivo", "query": "\"Richard Krivo\" forex (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T11:50:00Z", "results": []},
+  {"name": "Tiger Berry", "query": "\"Tiger Berry\" forex (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T11:50:00Z", "results": []},
+  {"name": "Charlotte S. Parnell", "query": "\"Charlotte Parnell\" (\"Forbes\" OR \"Bloomberg\")", "timestamp": "2026-03-31T11:50:00Z", "results": []}
+]

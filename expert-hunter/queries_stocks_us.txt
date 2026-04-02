@@ -1,0 +1,3 @@
+site:linkedin.com/in "CFA" "equity" OR "stock" ("analyst" OR "portfolio manager") ("author" OR "contributor") United States
+site:linkedin.com/in "investment" "CFA charterholder" ("writer" OR "columnist") ("Forbes" OR "Investopedia") United States
+site:linkedin.com/in "stock" "analyst" ("Bloomberg" OR "Motley Fool" OR "MarketWatch") United States
