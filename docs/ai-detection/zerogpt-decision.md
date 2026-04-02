@@ -111,7 +111,7 @@ flowchart TD
 
 **Без изменений.** Checker продолжает проверять structure/facts/SEO/compliance/humanization. AI detection — НЕ его ответственность.
 
-### `/broker-writer` (broker-writer-spec.md)
+### `/broker-writer` (broker-writer-spec-v2.md)
 
 **Без изменений.** Writer продолжает генерировать draft. При WARN/FAIL от ZeroGPT → writer получает список flagged sentences и делает targeted humanization pass.
 

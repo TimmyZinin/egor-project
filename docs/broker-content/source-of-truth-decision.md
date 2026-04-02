@@ -38,8 +38,8 @@
 egor-project/
 ├── expert-hunter/           # существует, работает
 ├── docs/                    # существует, спецификации
-│   ├── broker-writer-spec.md      # NEW
-│   ├── ahrefs-checker-spec.md     # NEW
+│   ├── broker-writer-spec-v2.md    # Source of Truth: writer
+│   ├── broker-checker-spec.md     # Source of Truth: checker
 │   ├── broker-writer-ahrefs-integration.md  # NEW
 │   └── source-of-truth-decision.md          # NEW (этот файл)
 ├── review-channel-egor/     # существует, review protocol

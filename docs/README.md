@@ -45,7 +45,7 @@ docs/
 | `/expert-hunter` | `docs/expert-hunter/spec.md` + `expert-hunter/SKILL.md` | Работает (MVP) |
 | `/broker-writer` | `docs/broker-content/broker-writer-spec-v2.md` (спека) + `broker-writer/SKILL.md` (скилл) | Скилл создан, готов к первому запуску |
 | `/broker-checker` | `docs/broker-content/broker-checker-spec.md` | Спека готова, код не написан |
-| AI Detection pipeline | `docs/ai-detection/` (6 документов) | Исследование завершено |
+| AI Detection pipeline | `docs/ai-detection/` (7 документов) | Исследование завершено |
 | Архитектура интеграции | `docs/broker-content/integration.md` | Спека готова |
 
 ## Live страницы (GitHub Pages)

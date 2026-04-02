@@ -188,7 +188,9 @@ Push notifications for price alerts work reliably. You can set alerts on specifi
 
 The range is one of IG's strongest selling points. Saxo Bank covers more instruments (71,000+), but a significant chunk of that is exchange-traded stocks across dozens of markets. For CFD traders specifically, IG's 17,000 markets cover everything you're likely to need.
 
-Crypto was added to IG's offering and now includes 55+ tokens, though spreads on crypto pairs tend to be wider than specialist crypto exchanges.
+Crypto was added to IG's offering and now includes 55+ tokens, though spreads on crypto pairs tend to be wider than specialist crypto exchanges. Since these are CFDs, you don't own the underlying crypto — you're trading price movements. The upside is regulatory protection (negative balance protection, segregated funds); the downside is no staking, no withdrawals to a wallet, and wider spreads than Binance or Coinbase.
+
+Options and futures access comes in two flavors. IG offers OTC (over-the-counter) options on major markets, plus access to US exchange-listed options and futures through tastytrade, IG's US subsidiary. This dual structure is unusual — most brokers offer one or the other, not both.
 
 [→ INTERNAL: Crypto CFD guide]
 [→ INTERNAL: Options trading explained]
@@ -207,7 +209,12 @@ Third-party research integration is solid. ProRealTime users get access to addit
 
 The gap between research (4.6) and education (4.3) reflects that IG's research targets active traders, while its educational content is more beginner-oriented. If you're an intermediate trader looking for advanced strategy content, you'll find more depth on platforms like TradingView or through independent sources.
 
+IG also provides an economic calendar integrated into the platform, real-time price alerts, and sentiment indicators showing the percentage of IG clients who are long vs short on any given market. The sentiment data is unique to IG — you won't find it on third-party platforms. Whether it improves your trading is debatable, but as a contrarian signal, some traders find it useful.
+
+For education, IG Academy covers the basics well: interactive courses on technical analysis, fundamental analysis, risk management, and platform-specific tutorials. Content is delivered through a mix of video, text, and quizzes. It won't replace a proper trading education, but it's more structured than what most brokers offer. Webinars run regularly, covering both market analysis and platform features.
+
 [→ INTERNAL: Best broker for research]
+[→ INTERNAL: Trading education guide]
 
 ---
 
@@ -224,9 +231,14 @@ Opening an IG account takes 5-10 minutes. Here's the process:
 
 The suitability questionnaire is a regulatory requirement, not a marketing exercise. IG is legally required to assess whether leveraged products are appropriate for you. Answer honestly — providing false information can lead to account restrictions later.
 
-Verification typically completes within 24 hours. Some jurisdictions require additional documentation.
+Verification typically completes within 24 hours. Some jurisdictions require additional documentation — for example, residents of certain countries may need to provide additional tax identification numbers or source-of-funds documentation.
+
+A demo account is available immediately after registration, even before verification completes. The demo comes loaded with virtual funds and mirrors the live platform exactly — same charts, same execution, same markets. It's the fastest way to test IG without committing any money.
+
+One detail worth knowing: the suitability questionnaire asks about your annual income, investment experience, and understanding of leveraged products. If your answers suggest CFDs aren't appropriate for you, IG may restrict your access to certain products. This isn't IG being difficult — it's a regulatory requirement under MiFID II and equivalent rules in other jurisdictions.
 
 [→ INTERNAL: Best brokers for beginners]
+[→ INTERNAL: Demo account guide]
 
 ---
 
@@ -242,7 +254,9 @@ Verification typically completes within 24 hours. Some jurisdictions require add
 
 **IG vs Saxo Bank:** Saxo offers tighter raw spreads on majors and nearly four times the instrument count. But Saxo lacks MT4/MT5 support — it's SaxoTraderGO or nothing. IG wins on platform flexibility. For pure forex, Saxo has a slight edge on pricing; for multi-platform traders, IG is the better choice.
 
-**IG vs CMC Markets:** CMC has competitive spreads and 330 forex pairs (far more than IG's 80). CMC's platform is well-designed but lacks ProRealTime and L2 Dealer DMA access. IG offers more platform options and stronger regulation. CMC is a good alternative for forex-heavy traders who want more pair variety.
+**IG vs CMC Markets:** CMC has competitive spreads and 330 forex pairs (far more than IG's 80). CMC's platform is well-designed — their Next Generation platform offers pattern recognition and client sentiment tools. But CMC lacks ProRealTime integration and L2 Dealer DMA access, which matters for traders who want institutional-grade charting or direct market access. IG also offers stronger regulation with 11+ licenses versus CMC's 7. CMC is a solid alternative for forex-heavy traders who want maximum pair variety, but IG has the edge on platform depth and regulatory breadth.
+
+Both competitors match IG on minimum deposit ($0 across the board). The real differentiation is in platform ecosystem and market range. Saxo wins on sheer instrument count. CMC wins on forex pair variety. IG wins on platform flexibility and regulatory coverage. There's no single "best" — it depends on what you trade and how you trade it.
 
 ---
 
@@ -254,9 +268,9 @@ Verification typically completes within 24 hours. Some jurisdictions require add
 - **Safety-focused traders** — 11+ Tier-1 regulators, FTSE 100 listed, 50 years of operating history, segregated client funds
 
 **Not ideal for:**
-- **Inactive traders** — the $18/month inactivity fee after 24 months is steep if you're not trading regularly
-- **High-volume share traders** — the $15 minimum commission on US shares makes small trades expensive; Interactive Brokers is cheaper for share-heavy strategies
-- **Budget traders** — while the minimum deposit is $0, card/PayPal funding requires ~$450
+- **Inactive traders** — the $18/month inactivity fee after 24 months is steep if you're not trading regularly. If you plan to open an account and trade sporadically, factor this in. A single trade every 23 months resets the clock, but that requires active attention.
+- **High-volume share traders** — the $15 minimum commission on US shares makes small trades expensive. If you're buying 10 shares of a $50 stock, that $15 commission eats 3% of your position. Interactive Brokers charges fractions of a penny per share with no meaningful minimum — for share-heavy strategies, IBKR is the better choice.
+- **Absolute beginners with small accounts** — while the minimum deposit is technically $0 via bank transfer, card and PayPal deposits start at ~$450. The platform itself isn't complicated, but the sheer number of options (6 platforms, 17,000 markets) can be overwhelming if you're just starting out. A simpler broker like eToro might provide a gentler learning curve.
 
 ---
 
@@ -377,9 +391,11 @@ Yes. IG offers 55+ cryptocurrency tokens as CFDs. This means you don't own the u
 
 Our broker reviews are based on hands-on testing with live accounts. We open real accounts, fund them, execute trades across different markets and platforms, and evaluate the experience over a period of at least 30 days.
 
-Our methodology covers seven categories: fees (spread measurements at multiple times of day), platforms (usability, charting, execution speed), research (quality and frequency of analysis), mobile (app functionality vs desktop), education (course depth and structure), and safety (regulatory licenses, fund segregation, corporate transparency).
+Our methodology covers seven categories: fees (spread measurements at multiple times of day, including peak and off-peak hours), platforms (usability, charting depth, execution speed, stability under load), research (quality, frequency, and actionability of analysis), mobile (feature parity with desktop, responsiveness, alert reliability), education (course depth, structure, and progression), and safety (number and tier of regulatory licenses, fund segregation policies, corporate transparency, and financial stability).
 
-We cross-reference our findings with regulatory filings, audited financial statements, and third-party review data. All ratings are updated annually.
+We cross-reference our findings with regulatory filings, audited financial statements, and third-party review data. Spread measurements are taken over multiple sessions across different market conditions. All ratings are updated annually, and we re-test whenever a broker makes significant platform or pricing changes.
+
+We do not accept payment from brokers for reviews, and brokers cannot influence their ratings. Affiliate links may be present, but editorial content is independent of commercial relationships. Our full methodology is published separately and available for review.
 
 ---
 
