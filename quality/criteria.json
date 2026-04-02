@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "description": "Quality gate criteria for /broker-checker. Source of truth: docs/broker-content/broker-checker-spec.md",
+  "criteria": [
+    {
+      "id": "struct-sections",
+      "category": "structure",
+      "check": "All 18 template sections present in correct order",
+      "severity_if_fail": "P0 if >=3 missing, P1 if 1-2 missing"
+    },
+    {
+      "id": "fact-numbers",
+      "category": "facts",
+      "check": "All numeric claims (spreads, fees, instruments, regulators) match input.json",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "fact-regulators",
+      "category": "facts",
+      "check": "Regulator names, tiers, countries, license numbers match input.json",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "fact-competitors",
+      "category": "facts",
+      "check": "Competitor metrics match input.json competitors block",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "seo-h1",
+      "category": "seo",
+      "check": "H1 contains broker_name and year",
+      "severity_if_fail": "P1"
+    },
+    {
+      "id": "seo-h2-keywords",
+      "category": "seo",
+      "check": ">=3 H2 headings contain target keywords from brief",
+      "severity_if_fail": "P2"
+    },
+    {
+      "id": "seo-internal-links",
+      "category": "seo",
+      "check": ">=10 internal link placeholders [→ INTERNAL: {topic}]",
+      "severity_if_fail": "P1"
+    },
+    {
+      "id": "seo-faq-count",
+      "category": "seo",
+      "check": ">=5 FAQ questions",
+      "severity_if_fail": "P1"
+    },
+    {
+      "id": "compliance-risk-disclaimer",
+      "category": "compliance",
+      "check": "CFD/forex risk disclaimer present in Hero section",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "compliance-not-advice",
+      "category": "compliance",
+      "check": "Not financial advice disclaimer in footer",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "compliance-author",
+      "category": "compliance",
+      "check": "Author attribution block with name, credentials",
+      "severity_if_fail": "P1"
+    },
+    {
+      "id": "compliance-methodology",
+      "category": "compliance",
+      "check": "Methodology section present",
+      "severity_if_fail": "P1"
+    },
+    {
+      "id": "humanize-patterns",
+      "category": "humanization",
+      "check": "No AI patterns from humanization-patterns.md (categories A, B, C)",
+      "severity_if_fail": "P1 if >=3 found, P2 if 1-2 found"
+    },
+    {
+      "id": "humanize-expert-take",
+      "category": "humanization",
+      "check": "Expert Take blockquote present with first-person voice",
+      "severity_if_fail": "P1"
+    },
+    {
+      "id": "schema-review",
+      "category": "schema",
+      "check": "Schema.org Review type present and valid",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "schema-article",
+      "category": "schema",
+      "check": "Schema.org Article type present",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "schema-product",
+      "category": "schema",
+      "check": "Schema.org Product type present",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "schema-faq",
+      "category": "schema",
+      "check": "Schema.org FAQPage type present with >=5 questions",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "schema-breadcrumb",
+      "category": "schema",
+      "check": "Schema.org BreadcrumbList present",
+      "severity_if_fail": "P0"
+    },
+    {
+      "id": "wordcount",
+      "category": "structure",
+      "check": "Word count >= 4000",
+      "severity_if_fail": "P1 if <3500, P2 if 3500-3999"
+    }
+  ]
+}
