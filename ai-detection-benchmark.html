@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Detection Benchmark + Skill Architecture — Проект Егора</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root { --bg:#0a0a0f; --surface:#12121a; --surface-2:#1a1a26; --border:#2a2a3a; --text:#e8e8f0; --dim:#8888a0; --accent:#ff6b35; --gold:#ffd700; --green:#00d68f; --red:#ff4757; --blue:#4ecdc4; --purple:#a855f7; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px}
+  .hero{padding:60px 40px;background:linear-gradient(135deg,#12121a,#0a1628);border-bottom:1px solid var(--border)}
+  .hero h1{font-size:36px;font-weight:900;letter-spacing:-1px;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .sub{font-size:16px;color:var(--dim);margin-top:12px}
+  .container{max-width:1200px;margin:0 auto;padding:40px}
+  section{margin-bottom:56px}
+  h2{font-size:24px;font-weight:800;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+  h3{font-size:18px;font-weight:700;margin:24px 0 12px;color:var(--gold)}
+  h4{font-size:15px;font-weight:600;margin:16px 0 8px;color:var(--blue)}
+  p{margin-bottom:14px}
+  table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:13px}
+  thead th{text-align:left;padding:10px 12px;background:var(--surface-2);color:var(--accent);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid var(--border)}
+  tbody td{padding:10px 12px;border-bottom:1px solid var(--border)}
+  tbody tr:hover{background:rgba(255,107,53,0.03)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px}
+  .card.highlight{border-color:var(--accent);background:linear-gradient(135deg,var(--surface),rgba(255,107,53,0.05))}
+  .card.green{border-color:var(--green)}
+  .card.red{border-color:var(--red)}
+  .tag{display:inline-block;padding:3px 8px;border-radius:4px;font-size:11px;font-weight:600;text-transform:uppercase}
+  .tag-green{background:rgba(0,214,143,0.15);color:var(--green)}
+  .tag-red{background:rgba(255,71,87,0.15);color:var(--red)}
+  .tag-blue{background:rgba(78,205,196,0.15);color:var(--blue)}
+  .tag-orange{background:rgba(255,107,53,0.15);color:var(--accent)}
+  .tag-purple{background:rgba(168,85,247,0.15);color:var(--purple)}
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:20px 0}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center}
+  .stat-card .value{font-size:28px;font-weight:900;color:var(--accent);font-family:'JetBrains Mono',monospace}
+  .stat-card .label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+  .verdict{background:linear-gradient(135deg,rgba(0,214,143,0.1),rgba(255,215,0,0.05));border:2px solid var(--green);border-radius:16px;padding:32px;margin:32px 0}
+  .verdict h3{color:var(--green);margin-top:0}
+  .arch-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px;position:relative;overflow:hidden}
+  .arch-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+  .arch-card.a::before{background:var(--blue)}
+  .arch-card.b::before{background:var(--green)}
+  .arch-card.c::before{background:var(--purple)}
+  .arch-card.d::before{background:var(--accent)}
+  .arch-card.e::before{background:var(--gold)}
+  .arch-card.f::before{background:var(--red)}
+  ul,ol{margin:8px 0 16px 20px}
+  li{margin-bottom:6px}
+  strong{color:#fff}
+  code{background:var(--surface-2);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px}
+  pre{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:16px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.5;margin:16px 0}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+  footer{text-align:center;padding:40px;color:var(--dim);font-size:13px;border-top:1px solid var(--border)}
+  .winner-row{background:rgba(0,214,143,0.08) !important}
+  .bar{height:8px;border-radius:4px;display:inline-block;vertical-align:middle}
+  .bar-green{background:var(--green)}
+  .bar-orange{background:var(--accent)}
+  .bar-red{background:var(--red)}
+  .bar-blue{background:var(--blue)}
+  .score-cell{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px}
+  .toc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:32px}
+  .toc a{display:block;padding:4px 0;color:var(--dim);font-size:14px}
+  .toc a:hover{color:var(--accent)}
+  .vs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:20px 0}
+  @media(max-width:768px){.vs-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}}
+  .pattern-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;position:relative;overflow:hidden}
+  .pattern-card .pattern-num{position:absolute;top:16px;right:20px;font-size:48px;font-weight:900;color:rgba(255,255,255,0.04);font-family:'JetBrains Mono',monospace}
+  .flow-diagram{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:20px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;text-align:center;color:var(--dim)}
+  .flow-diagram .node{display:inline-block;padding:6px 14px;border:1px solid var(--border);border-radius:6px;margin:0 4px;color:var(--text);background:var(--surface)}
+  .flow-diagram .arrow{color:var(--accent);margin:0 6px}
+  .medal{font-size:20px;margin-right:4px}
+  .compare-bar{display:flex;align-items:center;gap:8px;margin:4px 0}
+  .compare-fill{height:10px;border-radius:5px;transition:width .3s}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>AI Detection Benchmark + Skill Architecture</h1>
+  <div class="sub">Проект Егора | Бенчмарк 3 AI-детекторов + архитектура writer/checker скиллов</div>
+  <p style="font-size:12px;color:var(--dim);margin-top:12px">Маркировка: <span class="tag tag-green">verified</span> = подтверждено из первоисточника | <span class="tag tag-blue">observed</span> = наблюдение из тестов | <span class="tag tag-orange">estimate</span> = расчёт/оценка | <span class="tag tag-purple">third-party</span> = данные из независимых исследований</p>
+  <p style="font-size:12px;color:var(--dim);margin-top:4px"><strong>Disclaimer:</strong> Этот документ — research brief для принятия архитектурных решений. Не является рекламой или endorsement конкретных сервисов. Все цены и характеристики проверены на апрель 2026.</p>
+</div>
+
+<div style="display:flex;gap:0;padding:0 40px;background:#12121a;border-bottom:1px solid #2a2a3a;position:sticky;top:0;z-index:100;flex-wrap:wrap">
+  <a href="research.html" style="padding:14px 24px;font-size:14px;font-weight:600;color:#8888a0;text-decoration:none;font-family:'Inter',sans-serif">&larr; Исследование</a>
+  <a href="research.html#rated-brokers" style="padding:14px 24px;font-size:14px;font-weight:600;color:#8888a0;text-decoration:none;font-family:'Inter',sans-serif">Rated Brokers</a>
+  <a href="content-gen-research.html" style="padding:14px 24px;font-size:14px;font-weight:600;color:#8888a0;text-decoration:none;font-family:'Inter',sans-serif">Content Gen</a>
+  <span style="padding:14px 24px;font-size:14px;font-weight:600;color:#ff6b35;border-bottom:3px solid #ff6b35;font-family:'Inter',sans-serif">AI Detection + Architecture</span>
+</div>
+
+<div class="container">
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <h4 style="margin-top:0;margin-bottom:12px">Содержание</h4>
+  <a href="#benchmark">1. Бенчмарк: GPTZero vs ZeroGPT vs Grammarly</a>
+  <a href="#grammarly">2. Grammarly AI Detection: полное исследование</a>
+  <a href="#comparison">3. Сводная таблица: 30+ параметров</a>
+  <a href="#architecture">4. Архитектура Writer + Checker: 6 паттернов</a>
+  <a href="#recommendation">5. Рекомендация: поэтапная стратегия</a>
+  <a href="#cost-model">6. Финансовая модель при масштабе</a>
+</div>
+
+<!-- KEY NUMBERS -->
+<section>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="value">0.999</div><div class="label">Grammarly RAID score (#1) <span class="tag tag-purple">raid-bench.xyz</span></div></div>
+    <div class="stat-card"><div class="value">$0.15</div><div class="label">ZeroGPT за статью (4.5K слов) <span class="tag tag-green">verified</span></div></div>
+    <div class="stat-card"><div class="value">$0.675</div><div class="label">GPTZero за статью <span class="tag tag-green">verified</span></div></div>
+    <div class="stat-card"><div class="value">6</div><div class="label">Архитектурных паттернов проанализировано</div></div>
+  </div>
+</section>
+
+<!-- ==================== BENCHMARK ==================== -->
+<section id="benchmark">
+  <h2>Бенчмарк: GPTZero vs ZeroGPT vs Grammarly</h2>
+
+  <h3>Итоговый рейтинг для broker reviews (YMYL/finance)</h3>
+  <p style="font-size:12px;color:var(--dim)">Веса: API Accessibility 25% | Accuracy 25% | Cost Efficiency 20% | Output Granularity 15% | Integration Ease 15%. Рейтинг — editorial assessment для нашего конкретного use case (10-50 broker reviews/мес, финансовый контент). <span class="tag tag-orange">editorial</span></p>
+
+  <div style="overflow-x:auto">
+  <table>
+    <thead>
+      <tr><th>Rank</th><th>Сервис</th><th>API Access</th><th>Accuracy</th><th>Cost (4.5K слов)</th><th>Output</th><th>Best For</th></tr>
+    </thead>
+    <tbody>
+      <tr class="winner-row">
+        <td><span class="medal">1</span></td>
+        <td><strong>GPTZero</strong></td>
+        <td><span class="tag tag-green">Public REST</span></td>
+        <td class="score-cell">99.3% recall <span class="tag tag-purple">Chicago Booth</span></td>
+        <td class="score-cell" style="color:var(--accent)">$0.675</td>
+        <td>3-class + confidence + per-sentence + Relevant Sources API</td>
+        <td>Production quality gate</td>
+      </tr>
+      <tr>
+        <td><span class="medal">2</span></td>
+        <td><strong>ZeroGPT</strong></td>
+        <td><span class="tag tag-green">Public REST</span></td>
+        <td class="score-cell">70-85% <span class="tag tag-orange">independent</span></td>
+        <td class="score-cell" style="color:var(--green)">$0.15</td>
+        <td>% score + per-sentence highlighting</td>
+        <td>Дешёвый старт, калибровка</td>
+      </tr>
+      <tr>
+        <td><span class="medal">3</span></td>
+        <td><strong>Grammarly</strong></td>
+        <td><span class="tag tag-red">Enterprise only</span></td>
+        <td class="score-cell">0.999 RAID <span class="tag tag-purple">benchmark</span></td>
+        <td class="score-cell" style="color:var(--dim)">Custom</td>
+        <td>% score only (no per-sentence)</td>
+        <td>Если уже есть Enterprise подписка</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="card highlight">
+    <h4>Почему GPTZero #1, а не Grammarly (несмотря на RAID score)?</h4>
+    <ul>
+      <li><strong>API доступность:</strong> GPTZero API открыт для любого разработчика с $45/мес. Grammarly API доступен только Enterprise клиентам (custom pricing, sales call). Для стартапа/indie проекта Grammarly API недоступен</li>
+      <li><strong>Output granularity:</strong> GPTZero возвращает 3-class classification (HUMAN/MIXED/AI) + confidence level + per-sentence scores + Relevant Sources API (fact-check). Grammarly — только общий процент, без подсветки предложений</li>
+      <li><strong>RAID vs real-world:</strong> На RAID benchmark Grammarly лидирует (0.999). Но в реальных тестах GPTZero от конкурентов: тот же ChatGPT-текст Grammarly оценил как "50% AI", тогда как GPTZero корректно определил AI <span class="tag tag-purple">gptzero.me test</span></li>
+      <li><strong>Finance-specific:</strong> Relevant Sources API GPTZero может проверять factual claims — критично для YMYL/broker контента</li>
+    </ul>
+  </div>
+
+  <h3>Визуальное сравнение по ключевым метрикам</h3>
+
+  <table>
+    <thead><tr><th style="width:150px">Метрика</th><th>GPTZero</th><th>ZeroGPT</th><th>Grammarly</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Accuracy</strong></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-green" style="width:180px"></div> <span class="score-cell">99.3%</span></div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-orange" style="width:110px"></div> <span class="score-cell">~77%</span></div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-blue" style="width:170px"></div> <span class="score-cell">99.9%*</span></div></td>
+      </tr>
+      <tr>
+        <td><strong>Cost / article</strong></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-orange" style="width:90px"></div> <span class="score-cell">$0.675</span></div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-green" style="width:30px"></div> <span class="score-cell">$0.15</span></div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-red" style="width:150px"></div> <span class="score-cell">Custom</span></div></td>
+      </tr>
+      <tr>
+        <td><strong>API Openness</strong></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-green" style="width:180px"></div> <span style="font-size:12px">Public, documented</span></div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-green" style="width:150px"></div> <span style="font-size:12px">Public, pay-as-you-go</span></div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-red" style="width:40px"></div> <span style="font-size:12px">Enterprise only</span></div></td>
+      </tr>
+      <tr>
+        <td><strong>Output detail</strong></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-green" style="width:180px"></div> <span style="font-size:12px">3-class + confidence + sentences</span></div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-orange" style="width:120px"></div> <span style="font-size:12px">% + sentences</span></div></td>
+        <td><div class="compare-bar"><div class="compare-fill bar-red" style="width:50px"></div> <span style="font-size:12px">% only</span></div></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px;color:var(--dim)">* Grammarly 99.9% — результат RAID benchmark (контролируемый датасет). В real-world тестах accuracy значительно ниже. GPTZero 99.3% — Chicago Booth 2026 (academic study). ZeroGPT ~77% — среднее из independent reviews.</p>
+</section>
+
+<!-- ==================== GRAMMARLY ==================== -->
+<section id="grammarly">
+  <h2>Grammarly AI Detection: полное исследование</h2>
+
+  <h3>Обзор</h3>
+  <p>Grammarly запустил AI detection в <strong>августе 2024</strong> как часть writing suite. RAID benchmark score: <strong>0.999</strong> (#1, tied с GiantMelon и Veredict Labs). Дополнительно: Grammarly Authorship (отслеживание происхождения текста) и AI Humanizer (сент. 2025).</p>
+
+  <div class="card">
+    <h4>Grammarly Authorship — отдельный продукт</h4>
+    <p>В отличие от AI detection (анализ лингвистических паттернов), <strong>Authorship</strong> отслеживает происхождение каждого фрагмента текста в реальном времени: что напечатано, что скопировано, что сгенерировано AI. Это provenance tracking, не detection. Доступен в Pro+. Генерирует shareable report.</p>
+  </div>
+
+  <h3>API (Beta) <span class="tag tag-red">Enterprise only</span></h3>
+
+  <table>
+    <thead><tr><th>Параметр</th><th>Значение</th><th>Источник</th></tr></thead>
+    <tbody>
+      <tr><td>Base URL</td><td><code>https://api.grammarly.com/ecosystem/api/v1/ai-detection</code></td><td><span class="tag tag-green">developer.grammarly.com</span></td></tr>
+      <tr><td>Auth</td><td>OAuth 2.0 (Bearer token). Scopes: <code>ai-detection-api:read</code>, <code>ai-detection-api:write</code></td><td><span class="tag tag-green">docs</span></td></tr>
+      <tr><td>Доступ</td><td><strong>Enterprise / Education institution-wide only.</strong> Free и Pro — без API</td><td><span class="tag tag-green">docs</span></td></tr>
+      <tr><td>Форматы</td><td>.doc, .docx, .odt, .txt, .rtf</td><td><span class="tag tag-green">docs</span></td></tr>
+      <tr><td>Rate limits</td><td>POST: 10 req/sec, GET: 50 req/sec</td><td><span class="tag tag-green">docs</span></td></tr>
+      <tr><td>Max file</td><td>4 MB / 100,000 символов</td><td><span class="tag tag-green">docs</span></td></tr>
+      <tr><td>Min text</td><td>30 слов</td><td><span class="tag tag-green">docs</span></td></tr>
+      <tr><td>Retention</td><td>Scores: 30 дней. Documents: max 24 часа</td><td><span class="tag tag-green">docs</span></td></tr>
+      <tr><td>SDK</td><td>Нет. Только cURL / raw REST</td><td><span class="tag tag-green">docs</span></td></tr>
+    </tbody>
+  </table>
+
+  <h4>API workflow (3 шага)</h4>
+  <pre>1. POST /ai-detection          &rarr; получить score_request_id + pre-signed S3 URL
+2. PUT  {pre-signed URL}        &rarr; загрузить документ (120 сек timeout)
+3. GET  /ai-detection/{id}      &rarr; poll результата (PENDING / COMPLETED / FAILED)</pre>
+
+  <h4>Пример ответа API</h4>
+  <pre>{
+  "score_request_id": "...",
+  "status": "COMPLETED",
+  "score": {
+    "average_confidence": 0.89,
+    "ai_generated_percentage": 0.5
+  }
+}</pre>
+  <p style="font-size:12px;color:var(--dim)">Обратите внимание: <code>ai_generated_percentage</code> = decimal 0-1 (не 0-100). Нет per-sentence breakdown. Нет classification (human/mixed/ai). Нет confidence level per sentence.</p>
+
+  <h3>Ценообразование</h3>
+  <table>
+    <thead><tr><th>План</th><th>Цена</th><th>AI Detection</th><th>API</th></tr></thead>
+    <tbody>
+      <tr><td>Free</td><td>$0</td><td>Web tool (paste text)</td><td>Нет</td></tr>
+      <tr><td>Pro</td><td>$12/мес</td><td>In-app detection + Authorship</td><td>Нет</td></tr>
+      <tr><td>Enterprise</td><td>Custom (sales call)</td><td>Full suite + API</td><td>Да (Beta)</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Проблема для нашего use case:</strong> API pricing не публичен. Для доступа к API нужно Enterprise соглашение (минимум ~$15/user/мес при 150+ пользователях <span class="tag tag-orange">estimate</span>). Для одного разработчика / небольшой команды API недоступен.</p>
+
+  <h3>Accuracy: RAID vs Reality</h3>
+
+  <div class="vs-grid">
+    <div class="card green">
+      <h4 style="color:var(--green);margin-top:0">RAID Benchmark</h4>
+      <p class="score-cell" style="font-size:24px;color:var(--green)">0.999</p>
+      <p style="font-size:12px;color:var(--dim)">#1 (tied). 11 моделей протестировано. Perfect 1.000 на GPT-4, GPT-3, GPT-2, LLaMA-chat, MPT.</p>
+      <p style="font-size:12px;color:var(--dim)">Источник: <a href="https://raid-bench.xyz/leaderboard">raid-bench.xyz</a></p>
+    </div>
+    <div class="card red">
+      <h4 style="color:var(--red);margin-top:0">Independent Tests</h4>
+      <p class="score-cell" style="font-size:24px;color:var(--red)">50-94%</p>
+      <p style="font-size:12px;color:var(--dim)">GPTZero's test: 100% AI текст оценён как "50% AI". Один и тот же текст: 0% &rarr; 35% &rarr; 90% в разные дни. Humanized текст: пропускает ~22%.</p>
+      <p style="font-size:12px;color:var(--dim)">Источники: gptzero.me, originality.ai, aichecker.pro</p>
+    </div>
+    <div class="card highlight">
+      <h4 style="margin-top:0">False Positive Rate</h4>
+      <p class="score-cell" style="font-size:24px;color:var(--accent)">~6%</p>
+      <p style="font-size:12px;color:var(--dim)">Человеческий текст ошибочно помечен как AI. Decent, но не лучший (GPTZero: ~2% at high-confidence <span class="tag tag-orange">estimate</span>).</p>
+    </div>
+  </div>
+
+  <h3>Ограничения (критичные для нас)</h3>
+  <ol>
+    <li><strong>Только английский</strong> для AI detection (grammar check поддерживает 22 языка)</li>
+    <li><strong>Нет per-sentence highlighting</strong> — только общий % документа. Невозможно понять, какие именно абзацы вызвали flag</li>
+    <li><strong>Непоследовательность:</strong> один и тот же текст может показать 0%, 35%, 90% в разные дни</li>
+    <li><strong>Собственные AI-suggestions могут вызвать собственный detector</strong> — парадокс для пользователей Grammarly</li>
+    <li><strong>Слабость на mixed content:</strong> тексты с human + AI editing — основной real-world сценарий</li>
+    <li><strong>API в Beta</strong> — может измениться, нет SLA, нет SDK</li>
+  </ol>
+</section>
+
+<!-- ==================== COMPARISON TABLE ==================== -->
+<section id="comparison">
+  <h2>Сводная таблица: 30+ параметров</h2>
+
+  <div style="overflow-x:auto">
+  <table>
+    <thead>
+      <tr><th style="width:200px">Параметр</th><th>GPTZero</th><th>ZeroGPT</th><th>Grammarly</th></tr>
+    </thead>
+    <tbody>
+      <!-- API -->
+      <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">API & Integration</td></tr>
+      <tr><td>API</td><td><span class="tag tag-green">REST, public</span></td><td><span class="tag tag-green">REST, public</span></td><td><span class="tag tag-red">REST, Enterprise only (Beta)</span></td></tr>
+      <tr><td>Base URL</td><td><code>api.gptzero.me</code></td><td><code>api.zerogpt.com</code></td><td><code>api.grammarly.com/ecosystem/api/v1</code></td></tr>
+      <tr><td>Auth</td><td>Header <code>x-api-key</code></td><td>JWT Bearer token</td><td>OAuth 2.0 Bearer</td></tr>
+      <tr><td>Docs</td><td>Stoplight (хорошие)</td><td>Swagger (средние)</td><td>developer.grammarly.com (Beta)</td></tr>
+      <tr><td>SDK</td><td>Нет офиц. (PyPI v0.1.2 устаревший)</td><td>GitHub: JS + PHP примеры</td><td>Нет</td></tr>
+      <tr><td>Rate limit</td><td><strong>30,000 req/hr</strong> <span class="tag tag-green">documented</span></td><td>Не задокументирован</td><td>10 POST/sec, 50 GET/sec</td></tr>
+      <tr><td>Batch</td><td>50 файлов / request</td><td>40-150 файлов</td><td>1 файл / request</td></tr>
+      <tr><td>File formats</td><td>.txt, .docx, .pdf</td><td>Текст (JSON)</td><td>.doc, .docx, .odt, .txt, .rtf</td></tr>
+
+      <!-- Accuracy -->
+      <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">Accuracy</td></tr>
+      <tr><td>RAID benchmark</td><td>0.984 (#9)</td><td>Not listed</td><td><strong>0.999 (#1)</strong></td></tr>
+      <tr><td>Academic validation</td><td>Chicago Booth 2026: <strong>99.3% recall @ 0.1% FPR</strong></td><td>Нет peer-reviewed</td><td>RAID (controlled dataset)</td></tr>
+      <tr><td>Real-world accuracy</td><td>~85-99% (depends on content)</td><td>70-85%</td><td>50-94% (highly variable)</td></tr>
+      <tr><td>False positive rate</td><td>5-15% (real-world) / <1% (high-conf)</td><td>15-25%</td><td>~6%</td></tr>
+      <tr><td>Mixed content</td><td>Better</td><td>Weak</td><td>Weak</td></tr>
+      <tr><td>Humanized text</td><td>Drops after 3+ passes</td><td>Very weak</td><td>Misses ~22%</td></tr>
+      <tr><td>Non-native English</td><td>FPR increases (Yale lawsuit)</td><td>19%+ FPR</td><td>60-70% accuracy <span class="tag tag-orange">unverified</span></td></tr>
+
+      <!-- Output -->
+      <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">Output Format</td></tr>
+      <tr><td>Classification</td><td><strong>3-class</strong> (HUMAN / MIXED / AI)</td><td>Binary % (0-100)</td><td>Binary % (0-1)</td></tr>
+      <tr><td>Confidence level</td><td>high / medium / low</td><td>Нет</td><td>average_confidence (0-1)</td></tr>
+      <tr><td>Per-sentence scores</td><td><strong>Да</strong> (ai_probability)</td><td><strong>Да</strong> (highlighted sentences)</td><td><strong>Нет</strong></td></tr>
+      <tr><td>Fact-check / Sources</td><td><strong>Relevant Sources API</strong> (unique)</td><td>Нет</td><td>Нет</td></tr>
+
+      <!-- Pricing -->
+      <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">Pricing</td></tr>
+      <tr><td>Free tier</td><td>Web only</td><td>15K chars web</td><td>Web tool</td></tr>
+      <tr><td>Min API plan</td><td>$45/мес (300K слов)</td><td>Pay-as-you-go</td><td>Enterprise (custom)</td></tr>
+      <tr><td>Cost / article (4.5K слов)</td><td class="score-cell">$0.675</td><td class="score-cell" style="color:var(--green)">$0.15</td><td class="score-cell" style="color:var(--dim)">Unknown</td></tr>
+      <tr><td>Cost / 10 articles</td><td>$45 (min plan)</td><td>$1.50</td><td>Custom</td></tr>
+      <tr><td>Cost / 100 articles</td><td>$135 (1M plan)</td><td>$15</td><td>Custom</td></tr>
+
+      <!-- Unique Features -->
+      <tr><td colspan="4" style="background:var(--surface-2);color:var(--accent);font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1px">Unique Features</td></tr>
+      <tr><td>SOC 2</td><td><strong>Да</strong></td><td>Нет</td><td>Не заявлен для AI detection</td></tr>
+      <tr><td>Hallucination detection</td><td><strong>Relevant Sources API</strong></td><td>Нет</td><td>Нет</td></tr>
+      <tr><td>Writing assistance</td><td>Нет</td><td>AI Humanizer, Paraphraser</td><td><strong>Full writing suite (500K+ apps)</strong></td></tr>
+      <tr><td>Authorship tracking</td><td>Нет</td><td>Нет</td><td><strong>Да (Authorship)</strong></td></tr>
+      <tr><td>AI Humanizer</td><td>Нет</td><td>Встроен</td><td>Встроен (Pro+)</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ==================== ARCHITECTURE ==================== -->
+<section id="architecture">
+  <h2>Архитектура Writer + Checker: 6 паттернов</h2>
+  <p>Анализ различных подходов к организации двух скиллов: <code>/broker-writer</code> (генерация) и <code>/broker-checker</code> (проверка). Исследованы практики CI/CD, multi-agent frameworks (LangGraph, CrewAI, Google ADK), и production content pipelines.</p>
+
+  <!-- Pattern 1 -->
+  <div class="pattern-card" style="border-left:4px solid var(--green)">
+    <div class="pattern-num">01</div>
+    <h3 style="color:var(--green);margin-top:0">Shared File System <span class="tag tag-green">Рекомендуется</span></h3>
+    <p>Оба скилла читают/пишут в одну директорию. State в <code>manifest.json</code>. Git-коммиты как audit trail.</p>
+
+    <div class="flow-diagram">
+      <span class="node">Человек</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--green)">/broker-writer</span> <span class="arrow">&rarr;</span>
+      <span class="node">draft-v1.md</span> <span class="arrow">&rarr;</span>
+      <span class="node">Человек</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--blue)">/broker-checker</span> <span class="arrow">&rarr;</span>
+      <span class="node">review-v1.md</span>
+    </div>
+
+    <table>
+      <tbody>
+        <tr><td style="width:180px"><strong>State management</strong></td><td><code>manifest.json</code> — единый JSON со статусами всех артефактов. Git-native.</td></tr>
+        <tr><td><strong>Feedback loop</strong></td><td>Секция "Required Changes" в <code>review-v{N}.md</code>. Writer при <code>--revise</code> читает последний review.</td></tr>
+        <tr><td><strong>Human review</strong></td><td>Человек = оркестратор. Вызывает каждый скилл вручную.</td></tr>
+        <tr><td><strong>Scale</strong></td><td>1-50 статей: отлично. 50-500: работает, manifest может стать неудобным. 500+: миграция на SQLite.</td></tr>
+        <tr><td><strong>Сложность</strong></td><td><span class="tag tag-green">Низкая</span> — два SKILL.md + шаблоны + manifest.json. Zero infrastructure.</td></tr>
+        <tr><td><strong>Error recovery</strong></td><td>Manifest не обновлён = state не изменился = безопасный перезапуск.</td></tr>
+      </tbody>
+    </table>
+
+    <div style="display:flex;gap:24px;margin-top:16px">
+      <div style="flex:1">
+        <h4 style="color:var(--green)">Плюсы</h4>
+        <ul>
+          <li>Максимальная прозрачность (git log = полная история)</li>
+          <li>Zero infrastructure — ничего не нужно настраивать</li>
+          <li>LLM-friendly — скилл читает JSON + файлы</li>
+          <li>Уже спроектировано в <code>content-pipeline-spec.md</code></li>
+          <li>Audit trail через git-коммиты</li>
+        </ul>
+      </div>
+      <div style="flex:1">
+        <h4 style="color:var(--red)">Минусы</h4>
+        <ul>
+          <li>Нет автоматического запуска checker после writer</li>
+          <li>Человек = bottleneck (оркестрирует вручную)</li>
+          <li>Manifest merge conflicts при параллельной работе</li>
+          <li>Нет retry logic</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pattern 2 -->
+  <div class="pattern-card" style="border-left:4px solid var(--blue)">
+    <div class="pattern-num">02</div>
+    <h3 style="color:var(--blue);margin-top:0">Queue-Based / Message Passing</h3>
+    <p>Writer публикует сообщение в очередь (Redis / n8n). Checker подписан и автоматически забирает задачи.</p>
+
+    <div class="flow-diagram">
+      <span class="node" style="border-color:var(--green)">/writer</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--accent)">Queue</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--blue)">/checker</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--accent)">Result Queue</span>
+    </div>
+
+    <table>
+      <tbody>
+        <tr><td style="width:180px"><strong>Передача данных</strong></td><td>Message payload (path + metadata). State в queue attributes или отдельно.</td></tr>
+        <tr><td><strong>Автоматизация</strong></td><td>Полная — checker trigger-ится автоматически при появлении в очереди.</td></tr>
+        <tr><td><strong>Масштаб</strong></td><td>Отлично масштабируется. Параллельные consumers, backpressure, retry.</td></tr>
+        <tr><td><strong>Сложность</strong></td><td><span class="tag tag-orange">Средне-высокая</span> — нужен n8n/Redis, message schema, consumer logic, мониторинг.</td></tr>
+        <tr><td><strong>Best for</strong></td><td>100+ статей/мес, async processing, multiple workers.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--dim);margin-top:12px"><strong>Вердикт:</strong> Overkill для 10-50 статей/мес. Infrastructure overhead не оправдан. Рассмотреть при масштабировании до 100+.</p>
+  </div>
+
+  <!-- Pattern 3 -->
+  <div class="pattern-card" style="border-left:4px solid var(--red)">
+    <div class="pattern-num">03</div>
+    <h3 style="color:var(--red);margin-top:0">Monolithic Single Skill <span class="tag tag-red">Не рекомендуется</span></h3>
+    <p>Один скилл <code>/broker-review</code> делает всё: генерирует, проверяет, итерирует внутри одного prompt context.</p>
+
+    <div class="flow-diagram">
+      <span class="node">Человек</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--red)">/broker-review (всё внутри)</span> <span class="arrow">&rarr;</span>
+      <span class="node">Финальный артефакт</span>
+    </div>
+
+    <table>
+      <tbody>
+        <tr><td style="width:180px"><strong>Сложность</strong></td><td><span class="tag tag-green">Самая низкая</span> — один SKILL.md файл.</td></tr>
+        <tr><td><strong>Критический недостаток</strong></td><td><span class="tag tag-red">Self-review ≠ review.</span> Подтверждено практикой review-channel-egor/: независимый Codex ловит ошибки, которые Claude-writer пропускает.</td></tr>
+        <tr><td><strong>Audit trail</strong></td><td>Минимальный — нет промежуточных версий.</td></tr>
+        <tr><td><strong>Context pressure</strong></td><td>4-5K слов статья + criteria + feedback = 15K+ токенов в одном prompt.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--dim);margin-top:12px"><strong>Вердикт:</strong> Скилл, проверяющий собственный output — не проверка. Исследования и практический опыт подтверждают: независимый reviewer критичен для quality.</p>
+  </div>
+
+  <!-- Pattern 4 -->
+  <div class="pattern-card" style="border-left:4px solid var(--accent)">
+    <div class="pattern-num">04</div>
+    <h3 style="color:var(--accent);margin-top:0">Pipeline / Chain Pattern</h3>
+    <p>Скиллы соединены в цепочку. Output writer-а автоматически подаётся checker-у. Оркестратор (shell script / n8n / master skill) управляет порядком.</p>
+
+    <div class="flow-diagram">
+      <span class="node" style="border-color:var(--green)">writer</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--blue)">checker</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--gold)">ZeroGPT</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--purple)">human QA</span>
+    </div>
+
+    <table>
+      <tbody>
+        <tr><td style="width:180px"><strong>Автоматизация</strong></td><td>Человек запускает один раз — pipeline делает остальное.</td></tr>
+        <tr><td><strong>Skill chaining</strong></td><td>Claude Code поддерживает skill chaining через Skill tool. <span class="tag tag-green">verified</span></td></tr>
+        <tr><td><strong>Ограничение</strong></td><td>Линейный — нет feedback loop. Если NEEDS_CHANGES, pipeline останавливается.</td></tr>
+        <tr><td><strong>Сложность</strong></td><td><span class="tag tag-orange">Средняя</span> — нужен orchestrator skill.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--dim);margin-top:12px"><strong>Вердикт:</strong> Хороший паттерн для batch processing без revision loops. Используется как основа для Pattern 5.</p>
+  </div>
+
+  <!-- Pattern 5 -->
+  <div class="pattern-card" style="border-left:4px solid var(--gold)">
+    <div class="pattern-num">05</div>
+    <h3 style="color:var(--gold);margin-top:0">Review Loop (Reflection Pattern) <span class="tag tag-blue">Этап 2</span></h3>
+    <p>Writer и checker в автоматическом цикле: write &rarr; check &rarr; if NEEDS_CHANGES &rarr; revise &rarr; check &rarr; ... &rarr; APPROVED или max iterations. Это <strong>Reflection Pattern</strong> — один из самых документированных agentic patterns.</p>
+
+    <div class="flow-diagram">
+      <span class="node" style="border-color:var(--green)">writer</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--blue)">checker</span> <span class="arrow">&rarr;</span>
+      <span style="color:var(--gold)">NEEDS_CHANGES?</span> <span class="arrow">&rarr;</span>
+      <span style="color:var(--accent)">loop (max 3)</span> <span class="arrow">&rarr;</span>
+      <span class="node" style="border-color:var(--green)">APPROVED</span>
+    </div>
+
+    <table>
+      <tbody>
+        <tr><td style="width:180px"><strong>Implementations</strong></td><td>Google ADK: <code>LoopAgent</code>. LangGraph: conditional edges. CrewAI: task delegation loops. Claude Code: orchestrator skill.</td></tr>
+        <tr><td><strong>Typical iterations</strong></td><td>2-3 итерации до APPROVED <span class="tag tag-purple">industry observation</span></td></tr>
+        <tr><td><strong>Token cost</strong></td><td>3 iterations = 3x writer + 3x checker. При 50 статей: ~300 вызовов скиллов.</td></tr>
+        <tr><td><strong>Diminishing returns</strong></td><td>После 2-3 итераций improvement marginal. Risk: oscillation (фиксим одно, ломаем другое).</td></tr>
+        <tr><td><strong>Сложность</strong></td><td><span class="tag tag-orange">Средняя</span> — orchestrator skill с loop logic + max iteration cap.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--dim);margin-top:12px"><strong>Вердикт:</strong> Самый высокий quality output. Итеративное улучшение доказано эффективным. Рекомендуется как этап 2 (после стабилизации Pattern 1).</p>
+
+    <h4>Пример orchestrator skill</h4>
+    <pre>/broker-pipeline {slug}
+  1. Invoke /broker-writer {slug}
+  2. Invoke /broker-checker {slug}
+  3. If NEEDS_CHANGES and iteration &lt; 3:
+     &rarr; Invoke /broker-writer {slug} --revise
+     &rarr; Goto step 2
+  4. If APPROVED or max_iterations:
+     &rarr; Invoke ZeroGPT API check
+     &rarr; Notify human for final QA</pre>
+  </div>
+
+  <!-- Pattern 6 -->
+  <div class="pattern-card" style="border-left:4px solid var(--purple)">
+    <div class="pattern-num">06</div>
+    <h3 style="color:var(--purple);margin-top:0">Event-Driven / Webhook</h3>
+    <p>Полностью decoupled. Действия генерируют события. n8n webhooks / file watchers ловят и запускают consumers.</p>
+
+    <table>
+      <tbody>
+        <tr><td style="width:180px"><strong>Масштаб</strong></td><td>Отличный — горизонтальное масштабирование, event replay.</td></tr>
+        <tr><td><strong>Сложность</strong></td><td><span class="tag tag-red">Высокая</span> — event schema, routing, ordering, DLQ, мониторинг.</td></tr>
+        <tr><td><strong>Claude Code native?</strong></td><td>Нет — skills синхронные по природе, event-driven требует внешней инфраструктуры.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--dim);margin-top:12px"><strong>Вердикт:</strong> Massive overkill для 10-50 статей/мес. 10x complexity, zero выигрыш при текущем масштабе. Рассмотреть только при 500+ статей/мес.</p>
+  </div>
+
+  <!-- Comparison Matrix -->
+  <h3>Сводная матрица паттернов</h3>
+  <div style="overflow-x:auto">
+  <table>
+    <thead>
+      <tr><th>Критерий</th><th>1. Shared FS</th><th>2. Queue</th><th>3. Monolith</th><th>4. Pipeline</th><th>5. Loop</th><th>6. Events</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Сложность</strong></td>
+        <td><span class="tag tag-green">Low</span></td>
+        <td><span class="tag tag-orange">Med-High</span></td>
+        <td><span class="tag tag-green">Lowest</span></td>
+        <td><span class="tag tag-orange">Medium</span></td>
+        <td><span class="tag tag-orange">Medium</span></td>
+        <td><span class="tag tag-red">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>Quality output</strong></td>
+        <td><span class="tag tag-blue">Medium</span></td>
+        <td><span class="tag tag-blue">Medium</span></td>
+        <td><span class="tag tag-red">Low*</span></td>
+        <td><span class="tag tag-blue">Medium</span></td>
+        <td><span class="tag tag-green">High</span></td>
+        <td><span class="tag tag-blue">Medium</span></td>
+      </tr>
+      <tr>
+        <td><strong>Автоматизация</strong></td>
+        <td>Manual</td>
+        <td>Full</td>
+        <td>Full</td>
+        <td>Full</td>
+        <td>Full</td>
+        <td>Full</td>
+      </tr>
+      <tr>
+        <td><strong>Git audit trail</strong></td>
+        <td><span class="tag tag-green">Full</span></td>
+        <td><span class="tag tag-orange">Partial</span></td>
+        <td><span class="tag tag-red">Minimal</span></td>
+        <td><span class="tag tag-green">Full</span></td>
+        <td><span class="tag tag-green">Full</span></td>
+        <td>Event log</td>
+      </tr>
+      <tr>
+        <td><strong>10 стат./мес</strong></td>
+        <td style="color:var(--green)">+++++</td>
+        <td>+++</td>
+        <td style="color:var(--green)">+++++</td>
+        <td>++++</td>
+        <td>++++</td>
+        <td style="color:var(--red)">+</td>
+      </tr>
+      <tr>
+        <td><strong>100 стат./мес</strong></td>
+        <td>+++</td>
+        <td style="color:var(--green)">+++++</td>
+        <td>+++</td>
+        <td>++++</td>
+        <td>+++</td>
+        <td style="color:var(--green)">+++++</td>
+      </tr>
+      <tr>
+        <td><strong>Claude Code native</strong></td>
+        <td><span class="tag tag-green">Yes</span></td>
+        <td><span class="tag tag-red">No</span></td>
+        <td><span class="tag tag-green">Yes</span></td>
+        <td><span class="tag tag-blue">Partial</span></td>
+        <td><span class="tag tag-blue">Partial</span></td>
+        <td><span class="tag tag-red">No</span></td>
+      </tr>
+      <tr>
+        <td><strong>Независимый review</strong></td>
+        <td><span class="tag tag-green">Yes</span></td>
+        <td><span class="tag tag-green">Yes</span></td>
+        <td><span class="tag tag-red">No*</span></td>
+        <td><span class="tag tag-green">Yes</span></td>
+        <td><span class="tag tag-green">Yes</span></td>
+        <td><span class="tag tag-green">Yes</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--dim)">* Monolith: self-review не является genuine review. Подтверждено практикой review-channel-egor/ — Codex (independent reviewer) ловит ошибки, которые Claude (writer) пропускает.</p>
+</section>
+
+<!-- ==================== RECOMMENDATION ==================== -->
+<section id="recommendation">
+  <h2>Рекомендация: поэтапная стратегия</h2>
+
+  <div class="verdict">
+    <h3>Стратегия: 3 этапа эволюции</h3>
+    <p><span class="tag tag-orange">editorial recommendation</span> Основано на анализе 6 паттернов, опыте review-channel-egor/, и практике production content pipelines. Не является единственно верным решением.</p>
+
+    <h4>Этап 1: Shared File System (сейчас) <span class="tag tag-green">Start here</span></h4>
+    <p>Два отдельных скилла + manifest.json + git. Человек = оркестратор.</p>
+    <ul>
+      <li><strong>Реализация:</strong> два SKILL.md файла, manifest, файловые конвенции</li>
+      <li><strong>AI detection:</strong> ZeroGPT API (дешёвый старт, $0.15/статья)</li>
+      <li><strong>Цель:</strong> первые 5-10 статей, сбор данных (сколько iterations, типичные findings, token cost)</li>
+      <li><strong>Zero infrastructure</strong> — только git и Claude Code</li>
+    </ul>
+
+    <h4>Этап 2: Review Loop (после 5-10 статей)</h4>
+    <p>Orchestrator skill <code>/broker-pipeline</code> с автоматическим writer &harr; checker loop (max 3 iterations).</p>
+    <ul>
+      <li><strong>Реализация:</strong> один master SKILL.md, вызывающий writer + checker через skill chaining</li>
+      <li><strong>AI detection:</strong> upgrade на GPTZero если FPR ZeroGPT >20% или нужен Relevant Sources API</li>
+      <li><strong>Цель:</strong> автоматизация до human QA, batch processing</li>
+    </ul>
+
+    <h4>Этап 3: n8n Scale (если 100+ статей/мес)</h4>
+    <p>Перенос orchestration в n8n. Manifest &rarr; SQLite. Параллельная обработка.</p>
+    <ul>
+      <li><strong>Реализация:</strong> n8n workflows + Claude API + webhook triggers</li>
+      <li><strong>AI detection:</strong> GPTZero API + Ahrefs post-publish monitoring</li>
+      <li><strong>Цель:</strong> полная автоматизация, enterprise scale</li>
+    </ul>
+  </div>
+
+  <h3>AI Detection: поэтапный выбор</h3>
+  <table>
+    <thead><tr><th>Этап</th><th>Tool</th><th>Почему</th><th>Стоимость</th></tr></thead>
+    <tbody>
+      <tr class="winner-row">
+        <td><strong>Start (0-20 статей)</strong></td>
+        <td><strong>ZeroGPT</strong></td>
+        <td>Pay-as-you-go, $0.15/статья, достаточно для калибровки порогов</td>
+        <td>$1.50-3/мес</td>
+      </tr>
+      <tr>
+        <td><strong>Scale (20+ статей)</strong></td>
+        <td><strong>GPTZero</strong></td>
+        <td>3-class confidence, Relevant Sources API, лучшая accuracy, SOC 2</td>
+        <td>$45-135/мес</td>
+      </tr>
+      <tr>
+        <td><strong>Post-publish (всегда)</strong></td>
+        <td><strong>Ahrefs</strong></td>
+        <td>Незаменим для SEO + Site Audit AI levels + Brand Radar</td>
+        <td>Подписка</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Grammarly — когда использовать</h3>
+  <div class="card">
+    <p>Grammarly AI Detection <strong>не подходит</strong> как automated pre-publish gate для нашего use case:</p>
+    <ul>
+      <li>API доступен только Enterprise (custom pricing, sales call)</li>
+      <li>Нет per-sentence highlighting — невозможно точечно исправить flagged content</li>
+      <li>Непоследовательные результаты в real-world тестах</li>
+    </ul>
+    <p><strong>Когда подходит:</strong> если у Егора уже есть Grammarly Enterprise подписка (для других целей) — тогда AI detection = бесплатный бонус. Использовать как дополнительный сигнал, не основной gate.</p>
+  </div>
+</section>
+
+<!-- ==================== COST MODEL ==================== -->
+<section id="cost-model">
+  <h2>Финансовая модель при масштабе</h2>
+  <p style="font-size:12px;color:var(--dim)">Все расчёты — <span class="tag tag-orange">estimate</span>. Учтены re-checks (2x среднее), не учтены Claude API costs (зависит от модели подписки).</p>
+
+  <div style="overflow-x:auto">
+  <table>
+    <thead><tr><th>Масштаб</th><th>ZeroGPT</th><th>GPTZero</th><th>Grammarly*</th><th>Рекомендация</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>5 статей/мес</strong></td>
+        <td style="color:var(--green)">$1.50</td>
+        <td>$45 (min plan)</td>
+        <td>Unknown</td>
+        <td><span class="tag tag-green">ZeroGPT</span></td>
+      </tr>
+      <tr>
+        <td><strong>10 статей/мес</strong></td>
+        <td style="color:var(--green)">$3</td>
+        <td>$45 (min plan)</td>
+        <td>Unknown</td>
+        <td><span class="tag tag-green">ZeroGPT</span></td>
+      </tr>
+      <tr>
+        <td><strong>20 статей/мес</strong></td>
+        <td>$6</td>
+        <td>$45</td>
+        <td>Unknown</td>
+        <td><span class="tag tag-blue">ZeroGPT или GPTZero</span> (зависит от FPR)</td>
+      </tr>
+      <tr>
+        <td><strong>50 статей/мес</strong></td>
+        <td>$15</td>
+        <td>$55-60</td>
+        <td>Unknown</td>
+        <td><span class="tag tag-blue">GPTZero</span> (Relevant Sources окупается)</td>
+      </tr>
+      <tr>
+        <td><strong>100 статей/мес</strong></td>
+        <td>$30</td>
+        <td>$135</td>
+        <td>Unknown</td>
+        <td><span class="tag tag-orange">GPTZero</span> (accuracy критична при объёме)</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:11px;color:var(--dim)">* Grammarly Enterprise pricing не публичен. Требует sales call. Минимум ~$15/user/мес при 150+ пользователях. Для малых команд — экономически не оправдан только ради AI detection.</p>
+
+  <h3>Break-even: ZeroGPT &rarr; GPTZero</h3>
+  <div class="card">
+    <p>При каком объёме переключаться на GPTZero?</p>
+    <ul>
+      <li><strong>По cost:</strong> ZeroGPT всегда дешевле. Переключение не по цене, а по quality.</li>
+      <li><strong>По quality triggers:</strong></li>
+      <ul>
+        <li>ZeroGPT FPR > 20% (каждый 5-й хороший текст отклоняется) &rarr; переключаться</li>
+        <li>Нужен Relevant Sources API для fact-check &rarr; переключаться</li>
+        <li>20+ статей/мес (operations overhead от false positives дороже $45/мес) &rarr; переключаться</li>
+      </ul>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== SOURCES ==================== -->
+<section>
+  <h2>Источники</h2>
+  <table>
+    <thead><tr><th>Тема</th><th>Источник</th><th>Тип</th></tr></thead>
+    <tbody>
+      <tr><td>RAID Benchmark</td><td><a href="https://raid-bench.xyz/leaderboard">raid-bench.xyz/leaderboard</a></td><td><span class="tag tag-green">verified</span></td></tr>
+      <tr><td>GPTZero API</td><td><a href="https://gptzero.stoplight.io/docs/gptzero-api">gptzero.stoplight.io</a></td><td><span class="tag tag-green">verified</span></td></tr>
+      <tr><td>GPTZero Pricing</td><td><a href="https://gptzero.me/pricing">gptzero.me/pricing</a></td><td><span class="tag tag-green">verified</span></td></tr>
+      <tr><td>ZeroGPT API</td><td><a href="https://api.zerogpt.com/docs">api.zerogpt.com/docs</a> + <a href="https://github.com/zerogpt-net/zerogpt-api">GitHub</a></td><td><span class="tag tag-green">verified</span></td></tr>
+      <tr><td>ZeroGPT Pricing</td><td><a href="https://zerogpt.com/pricing">zerogpt.com/pricing</a></td><td><span class="tag tag-green">verified</span></td></tr>
+      <tr><td>Grammarly API</td><td><a href="https://developer.grammarly.com/ai-detection-api.html">developer.grammarly.com</a></td><td><span class="tag tag-green">verified</span></td></tr>
+      <tr><td>Grammarly Plans</td><td><a href="https://www.grammarly.com/plans">grammarly.com/plans</a></td><td><span class="tag tag-green">verified</span></td></tr>
+      <tr><td>Grammarly vs GPTZero</td><td><a href="https://gptzero.me/news/grammarly-ai-review/">gptzero.me/news/grammarly-ai-review</a></td><td><span class="tag tag-purple">third-party</span></td></tr>
+      <tr><td>Chicago Booth GPTZero Study</td><td>Academic benchmark, 2026</td><td><span class="tag tag-purple">third-party</span></td></tr>
+      <tr><td>Agentic Design Patterns</td><td><a href="https://docs.cloud.google.com/architecture/choose-design-pattern-agentic-ai-system">Google Cloud Architecture</a></td><td><span class="tag tag-green">verified</span></td></tr>
+      <tr><td>Reflection Pattern</td><td><a href="https://agentic-patterns.com/patterns/reflection/">agentic-patterns.com</a></td><td><span class="tag tag-purple">third-party</span></td></tr>
+      <tr><td>Claude Code Skill Chaining</td><td><a href="https://www.mindstudio.ai/blog/claude-code-skill-collaboration-chaining-workflows">MindStudio Blog</a></td><td><span class="tag tag-purple">third-party</span></td></tr>
+      <tr><td>LangGraph vs CrewAI</td><td><a href="https://markaicode.com/vs/langgraph-vs-crewai-multi-agent-production/">markaicode.com</a></td><td><span class="tag tag-purple">third-party</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+
+<footer>
+  Проект Егора | AI Detection Benchmark + Skill Architecture | 2 апреля 2026 | 3 сервиса, 6 паттернов, 30+ параметров
+</footer>
+
+</body>
+</html>
