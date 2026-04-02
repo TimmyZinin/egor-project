@@ -18,7 +18,7 @@ docs/
 │   └── citability-backlog.md      Бэклог citability enrichment
 │
 ├── broker-content/                ← /broker-writer + /broker-checker
-│   ├── broker-writer-spec.md      Source of Truth: генерация reviews
+│   ├── broker-writer-spec-v2.md   Source of Truth: генерация reviews
 │   ├── broker-checker-spec.md     Source of Truth: quality gate
 │   ├── integration.md             Как writer + checker + Ahrefs работают вместе
 │   ├── content-pipeline-spec.md   Полная спецификация контент-пайплайна
@@ -43,7 +43,7 @@ docs/
 | Компонент | Source of Truth | Статус |
 |-----------|----------------|--------|
 | `/expert-hunter` | `docs/expert-hunter/spec.md` + `expert-hunter/SKILL.md` | Работает (MVP) |
-| `/broker-writer` | `docs/broker-content/broker-writer-spec.md` | Спека готова, код не написан |
+| `/broker-writer` | `docs/broker-content/broker-writer-spec-v2.md` (спека) + `broker-writer/SKILL.md` (скилл) | Скилл создан, готов к первому запуску |
 | `/broker-checker` | `docs/broker-content/broker-checker-spec.md` | Спека готова, код не написан |
 | AI Detection pipeline | `docs/ai-detection/` (6 документов) | Исследование завершено |
 | Архитектура интеграции | `docs/broker-content/integration.md` | Спека готова |
@@ -66,3 +66,20 @@ docs/
 2. Спеки writer/checker → `docs/broker-content/`
 3. AI detection research → `docs/ai-detection/`
 4. Handoff из предыдущей сессии → `.agent-bridge/workspace11/CLAUDE_SOLO_HANDOFF_FULL_2026-04-02.md`
+
+## Collaborative Data
+
+Данные брокеров можно подготовить в приватном Google Sheet (shared Tim + Egor).
+
+Sheet помогает заполнить поля для `brokers/{slug}/input.json`.
+При запуске `/broker-writer {slug}`:
+- Если `input.json` уже существует → используется напрямую
+- Если нет → данные вводятся в диалог скилла (можно читать из Sheet)
+
+Sheet **не заменяет** `content/{slug}/brief.md` — бриф создаётся отдельно
+(в диалоге скилла или вручную).
+
+Структура Sheet tab "BrokerData": колонки соответствуют полям `input.json`
+(см. docs/broker-content/broker-writer-spec-v2.md → "Формат input.json").
+
+Sheet URL НЕ хранится в репозитории. Передаётся участникам приватно.
