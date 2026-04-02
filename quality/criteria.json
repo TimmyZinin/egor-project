@@ -39,6 +39,12 @@
       "severity_if_fail": "P2"
     },
     {
+      "id": "seo-meta-description",
+      "category": "seo",
+      "check": "Meta description placeholder present",
+      "severity_if_fail": "P1"
+    },
+    {
       "id": "seo-internal-links",
       "category": "seo",
       "check": ">=10 internal link placeholders [→ INTERNAL: {topic}]",

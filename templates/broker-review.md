@@ -9,7 +9,7 @@
 - **H1:** {broker_name} Review {year}: Pros & Cons
 - Author attribution: {expert_name}, {expert_credentials}
 - Date: "Updated {month} {year}"
-- Risk disclaimer: "CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. {X}% of retail investor accounts lose money when trading CFDs with this provider. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money."
+- Risk disclaimer: "CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. Between 51% and 89% of retail investor accounts lose money when trading CFDs. You should consider whether you understand how CFDs work and whether you can afford to take the high risk of losing your money." If input.json contains `retail_cfd_loss_pct`, use the exact percentage instead of the generic range.
 - Length: 50-100 words
 
 ## Section 2: Verdict Box

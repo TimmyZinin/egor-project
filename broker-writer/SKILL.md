@@ -66,6 +66,18 @@
 - Пустые обязательные → "Empty required field: {field}"
 - competitors < 2 → "Need ≥2 competitors"
 
+Валидация manifest.json (если существует):
+- JSON парсится → если нет: "Corrupted manifest.json — backup and recreate"
+- Проверить state для {slug}:
+  - Новый draft: state должен быть `planned`, отсутствовать, или не иметь записи → OK
+  - Если state = `drafted`/`revised`/`approved` → "Cannot overwrite: state is '{state}'. Use --revise or create new slug."
+- При --revise: state должен быть `revision_requested` → если нет: "Cannot revise: state is '{state}', expected 'revision_requested'"
+
+State transitions writer-а:
+- `(none)` → `drafted` — новый draft
+- `planned` → `drafted` — новый draft
+- `revision_requested` → `revised` — ревизия по feedback
+
 ### Шаг 2: GENERATE
 
 ```
@@ -134,13 +146,20 @@ saxo    | (no manifest)      | -     | no
 
 ## Self-check (перед сохранением)
 
-- [ ] Все 18 секций присутствуют
+Все пункты кроме CTA проверяются checker-ом. Провал self-check = провал checker.
+
+- [ ] Все 18 секций присутствуют в правильном порядке
+- [ ] H1 содержит broker_name + год
+- [ ] ≥3 H2 содержат target keywords из brief
+- [ ] Meta description placeholder присутствует
 - [ ] Schema.org JSON-LD: Review + Article + Product + FAQPage + BreadcrumbList
 - [ ] ≥5 FAQ вопросов
 - [ ] ≥10 internal link плейсхолдеров `[→ INTERNAL: {topic}]`
-- [ ] 3 CTA плейсхолдера (self-check, checker не проверяет)
-- [ ] Expert Take blockquote
+- [ ] 3 CTA плейсхолдера (self-check only, checker не проверяет)
+- [ ] Expert Take blockquote с first-person voice
+- [ ] Author attribution block (имя, credentials)
 - [ ] Risk disclaimer (Hero) + Compliance disclaimer (footer)
+- [ ] Methodology section присутствует
 - [ ] Word count ≥4000
 - [ ] Manifest обновлён
 
@@ -160,8 +179,11 @@ saxo    | (no manifest)      | -     | no
 
 - НЕ проверяет текст (→ /broker-checker)
 - НЕ публикует (→ человек)
-- НЕ выдумывает данные
+- НЕ выдумывает данные, которых нет в input.json
 - НЕ перезаписывает существующие draft-ы
+- НЕ модифицирует существующий input.json (read-only после создания)
+
+**Уточнение:** шаг 0 (INPUT COLLECT) **создаёт** input.json и brief.md если они не существуют, после подтверждения человеком. После создания — файлы read-only для writer-а. Модификация — только человеком вручную.
 
 ## Полная спецификация
 
