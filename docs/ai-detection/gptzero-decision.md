@@ -116,7 +116,7 @@ Broker review содержит десятки factual claims:
 
 ### Когда интегрировать
 
-Не сейчас. Relevant Sources API — upgrade для масштаба. На старте:
+Не сейчас. Relevant Sources API — дополнительная функция для масштаба. На текущем этапе:
 1. `/broker-checker` достаточен для fact-checking (сверка с input.json)
 2. Human QA ловит остальное
 3. Relevant Sources API = Layer 3b при масштабировании
