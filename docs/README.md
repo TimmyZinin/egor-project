@@ -1,8 +1,10 @@
 # Проект Егора — Документация (Source of Truth)
 
-> Обновлено: 2 апреля 2026
+> Обновлено: 3 апреля 2026
 
 Система инструментов для финансового контент-проекта: поиск экспертов, генерация broker reviews, проверка качества текстов.
+
+**Wiki:** [github.com/TimmyZinin/egor-project/wiki](https://github.com/TimmyZinin/egor-project/wiki) (12 страниц с Mermaid-диаграммами)
 
 ---
 
@@ -43,9 +45,9 @@ docs/
 | Компонент | Source of Truth | Статус |
 |-----------|----------------|--------|
 | `/expert-hunter` | `docs/expert-hunter/spec.md` + `expert-hunter/SKILL.md` | Работает (MVP) |
-| `/broker-writer` | `docs/broker-content/broker-writer-spec-v2.md` (спека) + `broker-writer/SKILL.md` (скилл) | Скилл создан, готов к первому запуску |
-| `/broker-checker` | `docs/broker-content/broker-checker-spec.md` | Спека готова, код не написан |
-| AI Detection pipeline | `docs/ai-detection/` (7 документов) | Исследование завершено |
+| `/broker-writer` | `docs/broker-content/broker-writer-spec-v2.md` (спека) + `broker-writer/SKILL.md` (скилл) | Скилл создан, установлен, первый draft IG готов |
+| `/broker-checker-gptzero` | `docs/broker-content/broker-checker-spec.md` (базовая спека) + GPTZero интеграция | **В разработке** — спека базового checker готова, GPTZero API ключ получен, скилл не создан |
+| AI Detection pipeline | `docs/ai-detection/` (7 документов) | Исследование завершено, GPTZero выбран |
 | Архитектура интеграции | `docs/broker-content/integration.md` | Спека готова |
 
 ## Live страницы (GitHub Pages)
@@ -63,9 +65,11 @@ docs/
 ## Для следующей Claude-сессии
 
 1. Начни с этого README
-2. Спеки writer/checker → `docs/broker-content/`
-3. AI detection research → `docs/ai-detection/`
-4. Handoff из предыдущей сессии → `.agent-bridge/workspace11/CLAUDE_SOLO_HANDOFF_FULL_2026-04-02.md`
+2. Wiki: [github.com/TimmyZinin/egor-project/wiki](https://github.com/TimmyZinin/egor-project/wiki) — обзор всего проекта
+3. Спеки writer/checker → `docs/broker-content/`
+4. AI detection research → `docs/ai-detection/`
+5. Текущий план → `~/.claude/plans/shiny-imagining-harbor.md` (4 спринта: Wiki → Source of Truth → Скилл → Тест)
+6. GPTZero API ключ → env var `GPTZERO_API_KEY` (ключ Егора, лимит 300K слов/мес, экономить)
 
 ## Collaborative Data
 
