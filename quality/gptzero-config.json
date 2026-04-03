@@ -12,7 +12,7 @@
     "ai_only_min": 0.70,
     "mixed_min": 0.30,
     "human_only_max": 0.30,
-    "description": "Based on completely_generated_prob: >0.7=AI_ONLY, 0.3-0.7=MIXED, <0.3=HUMAN_ONLY"
+    "description": "Based on completely_generated_prob: >0.7=AI_ONLY, >0.3 and <=0.7=MIXED, <=0.3=HUMAN_ONLY"
   },
   "confidence_policy": {
     "actionable": ["high", "medium"],
