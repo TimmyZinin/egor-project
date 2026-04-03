@@ -1,7 +1,7 @@
 # Решение: ZeroGPT в broker content pipeline
 
-> Версия: 1.0 | Дата: 2026-04-02
-> Статус: РЕШЕНИЕ (требует согласования)
+> Версия: 1.1 | Дата: 2026-04-03
+> Статус: ОТКЛОНЁН (GPTZero выбран вместо ZeroGPT, см. gptzero-decision.md)
 > Задача: EGOR-ZEROGPT-RESEARCH-009
 > Автор: Claude (executor session)
 
