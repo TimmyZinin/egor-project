@@ -1,6 +1,27 @@
 {
   "month": "2026-04",
   "monthly_limit": 300000,
-  "total_words_used": 0,
-  "checks": []
+  "total_words_used": 969,
+  "checks": [
+    {
+      "slug": "test",
+      "version": 0,
+      "mode": "connection_test",
+      "words": 82,
+      "timestamp": "2026-04-03T17:41:40Z"
+    },
+    {
+      "slug": "ig",
+      "version": 1,
+      "mode": "economy",
+      "sections_checked": [
+        5,
+        7,
+        13,
+        14
+      ],
+      "words": 887,
+      "timestamp": "2026-04-03T17:41:40Z"
+    }
+  ]
 }

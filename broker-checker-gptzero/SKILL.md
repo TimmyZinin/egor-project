@@ -51,15 +51,12 @@
                      -d '{"document": "<section_text>"}'
                    Timeout: 10 секунд. При ошибке → skip секцию, записать в отчёт.
 7. PARSE        — из каждого ответа извлечь:
+                   - documents[0].document_classification → HUMAN_ONLY / MIXED / AI_ONLY (нативное поле API)
+                   - documents[0].confidence_category → high / medium / low (нативное поле API)
                    - documents[0].completely_generated_prob → AI Prob (0-1)
                    - documents[0].average_generated_prob → средний AI score
                    - documents[0].sentences[].generated_prob → per-sentence AI scores
-                   Маппинг в Classification:
-                     completely_generated_prob > 0.7  → AI_ONLY
-                     completely_generated_prob > 0.3  → MIXED
-                     completely_generated_prob <= 0.3 → HUMAN_ONLY
-                   Confidence = high если |completely_generated_prob - 0.5| > 0.2,
-                     medium если > 0.1, иначе low
+                   API возвращает classification и confidence нативно — кастомный маппинг НЕ нужен.
 8. REPORT       — сгенерировать отчёт (формат ниже)
 9. SAVE         — сохранить:
                    - quality/gptzero-checks/{slug}-v{N}.json (raw API responses)

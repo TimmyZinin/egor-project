@@ -1,0 +1,13 @@
+{
+  "type": "connection_test",
+  "timestamp": "2026-04-03T15:30:00Z",
+  "words_used": 82,
+  "result": {
+    "document_classification": "AI_ONLY",
+    "completely_generated_prob": 0.9999,
+    "confidence_category": "high",
+    "sentences_count": 5,
+    "all_sentences_ai": true
+  },
+  "note": "Test text was AI-generated, correctly detected as AI_ONLY with high confidence. API returns document_classification and confidence_category natively — no custom mapping needed."
+}
