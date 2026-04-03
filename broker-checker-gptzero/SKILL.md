@@ -212,16 +212,17 @@ ig   | v1      | section | MIXED          | 0.42    | 2026-04-03
     {
       "number": 5,
       "name": "Trust & Safety",
-      "classification": "MIXED",
-      "completely_generated_prob": 0.42,
-      "average_generated_prob": 0.38,
+      "classification": "AI_ONLY",
+      "completely_generated_prob": 0.9999,
+      "average_generated_prob": 1.0,
       "confidence": "high",
-      "high_ai_sentences": [
-        {"text": "The platform provides...", "generated_prob": 0.89}
+      "sentences_total": 15,
+      "high_ai_sentences": 15,
+      "top_ai_sentences": [
+        {"text": "Short answer: IG is one of the safest brokers...", "generated_prob": 1.0}
       ]
     }
-  ],
-  "api_responses_raw": ["...truncated..."]
+  ]
 }
 ```
 
