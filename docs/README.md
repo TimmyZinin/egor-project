@@ -28,9 +28,9 @@ docs/
 │
 ├── ai-detection/                  ← Исследование AI-детекторов
 │   ├── zerogpt-research.md        ZeroGPT: API, pricing, accuracy
-│   ├── zerogpt-decision.md        Решение: ZeroGPT как стартовый detector
+│   ├── zerogpt-decision.md        Решение: ZeroGPT отклонён
 │   ├── gptzero-research.md        GPTZero: API, pricing, accuracy
-│   ├── gptzero-decision.md        Решение: GPTZero как upgrade path
+│   ├── gptzero-decision.md        Решение: GPTZero — основной AI-детектор (согласовано)
 │   ├── grammarly-research.md      Grammarly: API (Enterprise only), RAID #1
 │   ├── trustpilot-benchmark.md    Trustpilot рейтинги трёх сервисов
 │   └── ahrefs-verification-plan.md  Ahrefs AI detection capabilities
