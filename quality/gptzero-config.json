@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "api_endpoint": "https://api.gptzero.me/v2/predict/text",
   "auth_header": "x-api-key",
   "monthly_word_limit": 300000,
@@ -8,14 +8,19 @@
     "default_sections": [5, 7, 13, 14],
     "description": "Check 4 key sections instead of full article"
   },
-  "thresholds": {
-    "human_only": 0.30,
-    "mixed": 0.60,
-    "ai_only": 0.60
+  "classification_thresholds": {
+    "ai_only_min": 0.70,
+    "mixed_min": 0.30,
+    "human_only_max": 0.30,
+    "description": "Based on completely_generated_prob: >0.7=AI_ONLY, 0.3-0.7=MIXED, <0.3=HUMAN_ONLY"
   },
-  "confidence_filter": "high",
+  "confidence_policy": {
+    "actionable": ["high", "medium"],
+    "informational_only": ["low"],
+    "description": "Recommendations given at high/medium confidence. Low = shown with (unreliable) tag, no recommendations."
+  },
   "max_chars_per_request": 150000,
   "request_timeout_ms": 10000,
   "severity": "P2",
-  "notes": "Advisory only. High FPR (5-15%). Only high-confidence results are actionable. Key from Egor's account."
+  "notes": "Advisory only. High FPR (5-15%). Key from Egor's account (300K words/month)."
 }
