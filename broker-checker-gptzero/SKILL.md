@@ -51,10 +51,15 @@
                      -d '{"document": "<section_text>"}'
                    Timeout: 10 секунд. При ошибке → skip секцию, записать в отчёт.
 7. PARSE        — из каждого ответа извлечь:
-                   - documents[0].class_probabilities (ai, human, mixed)
-                   - documents[0].completely_generated_prob
-                   - documents[0].average_generated_prob
-                   - sentences (per-sentence AI scores)
+                   - documents[0].completely_generated_prob → AI Prob (0-1)
+                   - documents[0].average_generated_prob → средний AI score
+                   - documents[0].sentences[].generated_prob → per-sentence AI scores
+                   Маппинг в Classification:
+                     completely_generated_prob > 0.7  → AI_ONLY
+                     completely_generated_prob > 0.3  → MIXED
+                     completely_generated_prob <= 0.3 → HUMAN_ONLY
+                   Confidence = high если |completely_generated_prob - 0.5| > 0.2,
+                     medium если > 0.1, иначе low
 8. REPORT       — сгенерировать отчёт (формат ниже)
 9. SAVE         — сохранить:
                    - quality/gptzero-checks/{slug}-v{N}.json (raw API responses)
@@ -64,7 +69,7 @@
 
 ### При --full
 
-Шаги 3-4 пропускаются. Весь текст отправляется одним запросом (до 50K символов).
+Шаги 3-4 пропускаются. Весь текст отправляется одним запросом (до 150K символов на API плане).
 **ВНИМАНИЕ:** расходует ~4500 слов из бюджета за один запрос.
 
 ### При --section N
@@ -129,12 +134,14 @@ ig   | v1      | section | MIXED          | 0.42    | 2026-04-03
 
 ## Классификация GPTZero
 
-| Classification | Значение | Действие |
-|---------------|----------|----------|
-| `HUMAN_ONLY` + high confidence | Текст выглядит человеческим | Ничего не делать |
-| `MIXED` + any confidence | Смесь AI и человеческого | Рекомендовать humanization |
-| `AI_ONLY` + high confidence | Текст выглядит AI-сгенерированным | Настоятельно рекомендовать humanization |
-| Any + low confidence | Результат ненадёжен | Игнорировать |
+| Classification | Confidence | Действие |
+|---------------|------------|----------|
+| `HUMAN_ONLY` | high/medium | Ничего не делать |
+| `MIXED` | high/medium | Рекомендовать humanization целевых предложений |
+| `AI_ONLY` | high/medium | Настоятельно рекомендовать humanization всей секции |
+| Any | low | Показать с пометкой "(unreliable)", НЕ давать рекомендаций |
+
+**Правило:** рекомендации даются ТОЛЬКО при high/medium confidence. Low confidence = только информация.
 
 ## Error handling
 
@@ -170,7 +177,64 @@ ig   | v1      | section | MIXED          | 0.42    | 2026-04-03
 ## Конфигурация
 
 `quality/gptzero-config.json` — пороги, endpoint, лимиты.
+
+## Budget tracking
+
 `quality/gptzero-budget.json` — трекер расхода по месяцам.
+
+### Схема budget entry
+
+```json
+{
+  "month": "2026-04",
+  "monthly_limit": 300000,
+  "total_words_used": 1234,
+  "checks": [
+    {
+      "slug": "ig",
+      "version": 1,
+      "mode": "economy",
+      "sections_checked": [5, 7, 13, 14],
+      "words": 1234,
+      "timestamp": "2026-04-03T15:00:00Z"
+    }
+  ]
+}
+```
+
+### Схема check result (`quality/gptzero-checks/{slug}-v{N}.json`)
+
+```json
+{
+  "slug": "ig",
+  "version": 1,
+  "mode": "economy",
+  "checked_at": "2026-04-03T15:00:00Z",
+  "words_checked": 1234,
+  "sections": [
+    {
+      "number": 5,
+      "name": "Trust & Safety",
+      "classification": "MIXED",
+      "completely_generated_prob": 0.42,
+      "average_generated_prob": 0.38,
+      "confidence": "high",
+      "high_ai_sentences": [
+        {"text": "The platform provides...", "generated_prob": 0.89}
+      ]
+    }
+  ],
+  "api_responses_raw": ["...truncated..."]
+}
+```
+
+### Month rollover
+
+При первом запуске нового месяца: если `month` в budget.json ≠ текущий месяц → сбросить `total_words_used` в 0, очистить `checks[]`, обновить `month`. Старые данные доступны в git history.
+
+### Failed/skipped секции
+
+Пропущенные секции (API error, timeout) НЕ считаются в `total_words_used`. Учитываются только секции с успешным API response.
 
 ## Полная спецификация
 

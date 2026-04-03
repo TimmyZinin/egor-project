@@ -14,7 +14,7 @@
     "ai_only": 0.60
   },
   "confidence_filter": "high",
-  "max_chars_per_request": 50000,
+  "max_chars_per_request": 150000,
   "request_timeout_ms": 10000,
   "severity": "P2",
   "notes": "Advisory only. High FPR (5-15%). Only high-confidence results are actionable. Key from Egor's account."
